@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { use } from "react";
+import { useParams } from "next/navigation";
 
 interface PricingTier {
   nights: number;
@@ -100,9 +100,9 @@ function formatPrice(amount: number) {
   return `$${amount.toLocaleString()}`;
 }
 
-export default function PackageDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
-  const pkg = PACKAGES[slug];
+export default function PackageDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const pkg = slug ? PACKAGES[slug] : undefined;
   if (!pkg) notFound();
 
   const [selectedDuration, setSelectedDuration] = useState(0);
