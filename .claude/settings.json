@@ -1,0 +1,92 @@
+{
+  "permissions": {
+    "allowedTools": [
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git branch *)",
+      "Bash(git stash *)",
+      "Bash(git restore *)",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(npx *)",
+      "Bash(pnpm *)",
+      "Bash(bun *)",
+      "Bash(python3 *)",
+      "Bash(python *)",
+      "Bash(pip3 *)",
+      "Bash(pip *)",
+      "Bash(go *)",
+      "Bash(cargo *)",
+      "Bash(make *)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean -fd*)",
+      "Bash(rm -rf *)",
+      "Bash(sudo rm *)",
+      "Bash(curl *|*sh*)",
+      "Bash(wget *|*sh*)",
+      "Bash(chmod 777 *)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(.env.local)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git push*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[autopilot] About to git push \u2014 confirm this is intentional'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write(*.ts)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f tsconfig.json ] && npx tsc --noEmit 2>&1 | head -20 || echo '[hook] No tsconfig.json \u2014 skipping type check'"
+          }
+        ]
+      },
+      {
+        "matcher": "Write(*.tsx)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f tsconfig.json ] && npx tsc --noEmit 2>&1 | head -20 || echo '[hook] No tsconfig.json \u2014 skipping type check'"
+          }
+        ]
+      },
+      {
+        "matcher": "Write(*.js)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v node >/dev/null && node --check \"$CLAUDE_TOOL_WRITE_PATH\" 2>&1 || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Write(*.py)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v python3 >/dev/null && python3 -m py_compile \"$CLAUDE_TOOL_WRITE_PATH\" 2>&1 || true"
+          }
+        ]
+      }
+    ]
+  }
+}
