@@ -175,7 +175,7 @@
 ---
 
 ## Phase 9: CMS Integration
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Sanity content models for all 8 types, studio configured, all pages wired to live CMS data.
 **Tasks**:
 - [ ] Define Sanity schemas: Room, Activity, Package, GalleryImage, Review, FAQItem, SiteNotice, SEOMetadata
@@ -197,7 +197,7 @@
 ---
 
 ## Phase 10: SEO, Analytics & Redirects
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Structured data, meta tags, GA4 event tracking, sitemap, and all 16 Wix URL redirects.
 **Tasks**:
 - [ ] Structured data: Hotel (homepage), FAQPage (FAQ), BreadcrumbList (all pages)

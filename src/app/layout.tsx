@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import NavBar from "@/components/global/NavBar";
 import Footer from "@/components/global/Footer";
 import WhatsAppButton from "@/components/global/WhatsAppButton";
+import GoogleAnalytics from "@/lib/analytics/GoogleAnalytics";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body className="font-body antialiased">
+        <GoogleAnalytics />
         <a href="#main-content" className="skip-nav">
           Skip to main content
         </a>

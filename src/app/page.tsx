@@ -1,3 +1,4 @@
+import { hotelSchema } from "@/lib/structuredData";
 import HeroSection from "@/components/home/HeroSection";
 import BrandStatement from "@/components/home/BrandStatement";
 import HanifaruFeature from "@/components/home/HanifaruFeature";
@@ -10,6 +11,10 @@ import AboutTeaser from "@/components/home/AboutTeaser";
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelSchema()) }}
+      />
       <HeroSection />
       <BrandStatement />
       <HanifaruFeature />
