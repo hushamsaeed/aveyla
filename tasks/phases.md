@@ -71,7 +71,7 @@
 ---
 
 ## Phase 4: Homepage
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Complete homepage with all 9 FSD sections implementing the "descent/ascent" visual narrative.
 **Tasks**:
 - [ ] Hero section: 100vh, video/parallax with poster fallback, headline, dual CTAs, scroll indicator, pause button
@@ -96,7 +96,7 @@
 ---
 
 ## Phase 5: Room Pages
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Rooms overview listing and 3 room detail pages with gallery lightbox, amenities, notice banner, and booking CTA.
 **Tasks**:
 - [ ] Rooms overview page: 3 room cards linking to detail pages
@@ -115,7 +115,7 @@
 ---
 
 ## Phase 6: Activity Pages
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Activities overview and 8 activity detail pages with safety/certification blocks where required.
 **Tasks**:
 - [ ] Activities overview page: 8 activity cards in grid
@@ -134,7 +134,7 @@
 ---
 
 ## Phase 7: Package & Hanifaru Bay Pages
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Packages overview, 3 package detail pages, and the Hanifaru Bay editorial feature page.
 **Tasks**:
 - [ ] Packages overview: 3 package cards
@@ -153,7 +153,7 @@
 ---
 
 ## Phase 8: Gallery, FAQ, Contact, About, Privacy
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Remaining 5 pages — gallery with filters, FAQ accordion, contact form, about page, privacy policy.
 **Tasks**:
 - [ ] Gallery: masonry grid, filter tabs (All/Underwater/Rooms/Beach/Dining/Activities), URL params, lightbox
