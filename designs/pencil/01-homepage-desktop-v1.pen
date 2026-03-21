@@ -1,0 +1,1999 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "IejwQ",
+      "x": 0,
+      "y": -200,
+      "name": "Component/NavBar",
+      "reusable": true,
+      "width": 1440,
+      "height": 80,
+      "fill": "$deep-ocean",
+      "padding": [
+        0,
+        64
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "AsJQ4",
+          "name": "Logo",
+          "fill": "$pure-white",
+          "content": "AVEYLA",
+          "fontFamily": "Cormorant Garamond",
+          "fontSize": 28,
+          "fontWeight": "600",
+          "letterSpacing": 3
+        },
+        {
+          "type": "frame",
+          "id": "KsaNA",
+          "name": "NavLinks",
+          "gap": 32,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "eD8M5",
+              "name": "link1",
+              "fill": "$pure-white",
+              "content": "Rooms",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "P43ps",
+              "name": "link2",
+              "fill": "$pure-white",
+              "content": "Activities",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "aJkXU",
+              "name": "link3",
+              "fill": "$pure-white",
+              "content": "Packages",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "wiIiF",
+              "name": "link4",
+              "fill": "$pure-white",
+              "content": "Hanifaru Bay",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "9z4xE",
+              "name": "link5",
+              "fill": "$pure-white",
+              "content": "Gallery",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "g8aIj",
+              "name": "link6",
+              "fill": "$pure-white",
+              "content": "Contact",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nyeha",
+          "name": "BookNowBtn",
+          "fill": "$sand-gold",
+          "cornerRadius": 2,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "kSK76",
+              "name": "bookText",
+              "fill": "$deep-ocean",
+              "content": "Book Now",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "1aanO",
+      "x": 0,
+      "y": -300,
+      "name": "Component/ButtonPrimary",
+      "reusable": true,
+      "fill": "$sand-gold",
+      "cornerRadius": 2,
+      "padding": [
+        14,
+        32
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "AhUtY",
+          "name": "label",
+          "fill": "$deep-ocean",
+          "content": "Book Now",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KS65z",
+      "x": 200,
+      "y": -300,
+      "name": "Component/ButtonSecondary",
+      "reusable": true,
+      "cornerRadius": 2,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$pure-white"
+      },
+      "padding": [
+        14,
+        32
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "TnsqO",
+          "name": "label",
+          "fill": "$pure-white",
+          "content": "Explore",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "yYyyY",
+      "x": 0,
+      "y": -600,
+      "name": "Component/RoomCard",
+      "reusable": true,
+      "clip": true,
+      "width": 400,
+      "fill": "$pure-white",
+      "cornerRadius": 4,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "sW4cA",
+          "name": "image",
+          "width": "fill_container",
+          "height": 260
+        },
+        {
+          "type": "frame",
+          "id": "kCUsp",
+          "name": "content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "Aasa7",
+              "name": "title",
+              "fill": "$deep-ocean",
+              "content": "Ocean Deluxe Room",
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 24,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "0cgHj",
+              "name": "description",
+              "fill": "$slate",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Wake to panoramic ocean views from your private terrace.",
+              "lineHeight": 1.6,
+              "fontFamily": "Inter",
+              "fontSize": 14
+            },
+            {
+              "type": "text",
+              "id": "ZOdUM",
+              "name": "cta",
+              "fill": "$reef-teal",
+              "content": "View Details →",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "uYUfG",
+      "x": 500,
+      "y": -600,
+      "name": "Component/ActivityCard",
+      "reusable": true,
+      "clip": true,
+      "width": 320,
+      "height": 280,
+      "cornerRadius": 4,
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "g7zgW",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "image",
+          "width": 320,
+          "height": 280
+        },
+        {
+          "type": "frame",
+          "id": "vwOS2",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "overlay",
+          "width": 320,
+          "height": 280,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#0A162800",
+                "position": 0
+              },
+              {
+                "color": "#0A1628CC",
+                "position": 1
+              }
+            ]
+          }
+        },
+        {
+          "type": "frame",
+          "id": "mj9rH",
+          "layoutPosition": "absolute",
+          "x": 20,
+          "y": 220,
+          "name": "content",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "GuYt9",
+              "name": "title",
+              "fill": "$pure-white",
+              "content": "Scuba Diving",
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 22,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "0O6Tz",
+              "name": "subtitle",
+              "fill": "#FFFFFFCC",
+              "content": "Explore vibrant coral reefs",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "aIxGc",
+      "x": 0,
+      "y": -1000,
+      "name": "Component/Footer",
+      "reusable": true,
+      "width": 1440,
+      "fill": "$deep-ocean",
+      "layout": "vertical",
+      "gap": 48,
+      "padding": [
+        64,
+        64,
+        32,
+        64
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "xLA1x",
+          "name": "footerTop",
+          "width": "fill_container",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "BL3hV",
+              "name": "logoCol",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "tPba5",
+                  "name": "fLogoText",
+                  "fill": "$pure-white",
+                  "content": "AVEYLA",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 24,
+                  "fontWeight": "600",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "JZogx",
+                  "name": "fTagline",
+                  "fill": "#FFFFFF99",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Manta Village · Maldives",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "BbwTf",
+              "name": "navCol1",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "2irgy",
+                  "name": "navCol1Title",
+                  "fill": "$sand-gold",
+                  "content": "Explore",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "Gk6Mv",
+                  "name": "navCol1L1",
+                  "fill": "#FFFFFFBB",
+                  "content": "Rooms",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "fl1K8",
+                  "name": "navCol1L2",
+                  "fill": "#FFFFFFBB",
+                  "content": "Activities",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "WZcvs",
+                  "name": "navCol1L3",
+                  "fill": "#FFFFFFBB",
+                  "content": "Packages",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "sm6C3",
+                  "name": "navCol1L4",
+                  "fill": "#FFFFFFBB",
+                  "content": "Gallery",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5Ym8D",
+              "name": "navCol2",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "6rP1x",
+                  "name": "navCol2Title",
+                  "fill": "$sand-gold",
+                  "content": "Information",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "QdRfN",
+                  "name": "navCol2L1",
+                  "fill": "#FFFFFFBB",
+                  "content": "About Us",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Wwe1s",
+                  "name": "navCol2L2",
+                  "fill": "#FFFFFFBB",
+                  "content": "FAQ",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "3V35j",
+                  "name": "navCol2L3",
+                  "fill": "#FFFFFFBB",
+                  "content": "Contact",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "BQkv3",
+                  "name": "navCol2L4",
+                  "fill": "#FFFFFFBB",
+                  "content": "Privacy Policy",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IEY6N",
+              "name": "contactCol",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YrpYP",
+                  "name": "navCol3Title",
+                  "fill": "$sand-gold",
+                  "content": "Contact",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "TiB8f",
+                  "name": "navCol3L1",
+                  "fill": "#FFFFFFBB",
+                  "content": "+960 668-0068",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "R48Q5",
+                  "name": "navCol3L2",
+                  "fill": "#FFFFFFBB",
+                  "content": "info@aveyla.com",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "gwxEt",
+                  "name": "navCol3L3",
+                  "fill": "#FFFFFFBB",
+                  "content": "WhatsApp",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "KPmjg",
+          "name": "footerBottom",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#FFFFFF22"
+          },
+          "padding": [
+            24,
+            0,
+            0,
+            0
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "BRKWn",
+              "name": "footerCopy",
+              "fill": "#FFFFFF66",
+              "content": "© 2024 Aveyla Manta Village. All rights reserved.",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "u85i7",
+      "x": 900,
+      "y": -300,
+      "name": "Component/WhatsAppButton",
+      "reusable": true,
+      "width": 56,
+      "height": 56,
+      "fill": "#25D366",
+      "cornerRadius": 28,
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#00000033",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "blur": 12
+      },
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "Ei9yJ",
+          "name": "icon",
+          "width": 24,
+          "height": 24,
+          "iconFontName": "message-circle",
+          "iconFontFamily": "lucide",
+          "fill": "$pure-white"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "xeXyO",
+      "x": 0,
+      "y": 0,
+      "name": "Homepage Desktop",
+      "width": 1440,
+      "fill": "$coral-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "pdcVI",
+          "type": "ref",
+          "ref": "IejwQ",
+          "width": "fill_container",
+          "name": "nav",
+          "y": 0
+        },
+        {
+          "type": "frame",
+          "id": "JTdMN",
+          "name": "Hero Section",
+          "clip": true,
+          "width": "fill_container",
+          "height": 800,
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "cMZr7",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "heroBg",
+              "metadata": {
+                "type": "unsplash",
+                "username": "xidhern",
+                "link": "https://unsplash.com/@xidhern",
+                "author": "Zidhan Ibrahim"
+              },
+              "width": 1440,
+              "height": 800,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1619382590986-e2ac189b0658?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc1MzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "qusIT",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "heroOverlay",
+              "width": 1440,
+              "height": 800,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 0,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#0A162866",
+                    "position": 0
+                  },
+                  {
+                    "color": "#0A1628BB",
+                    "position": 1
+                  }
+                ]
+              }
+            },
+            {
+              "type": "frame",
+              "id": "Q6gUA",
+              "layoutPosition": "absolute",
+              "x": 120,
+              "y": 280,
+              "name": "heroContent",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8oule",
+                  "name": "heroTag",
+                  "fill": "$sand-gold",
+                  "content": "MALDIVES · BAA ATOLL",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "YWKzO",
+                  "name": "heroTitle",
+                  "fill": "$pure-white",
+                  "content": "Where the Ocean\nMeets Paradise",
+                  "lineHeight": 1.1,
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 64,
+                  "fontWeight": "300"
+                },
+                {
+                  "type": "text",
+                  "id": "CugUb",
+                  "name": "heroSub",
+                  "fill": "#FFFFFFCC",
+                  "content": "An intimate island retreat in the heart of the world's\nlargest manta ray feeding ground.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "C41CP",
+                  "name": "heroCTAs",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "id": "QBXrA",
+                      "type": "ref",
+                      "ref": "1aanO",
+                      "name": "heroBtn1",
+                      "y": 0
+                    },
+                    {
+                      "id": "VXy8e",
+                      "type": "ref",
+                      "ref": "KS65z",
+                      "name": "heroBtn2",
+                      "x": 149,
+                      "y": 0,
+                      "descendants": {
+                        "TnsqO": {
+                          "content": "Explore the Reef"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cuYtj",
+              "layoutPosition": "absolute",
+              "x": 700,
+              "y": 730,
+              "name": "scrollIndicator",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rG6Vi",
+                  "name": "scrollText",
+                  "fill": "#FFFFFF88",
+                  "content": "Scroll",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "icon_font",
+                  "id": "6CxpJ",
+                  "name": "scrollIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-down",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FFFFFF88"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "SOgp4",
+          "name": "Brand Statement",
+          "width": "fill_container",
+          "fill": "$deep-ocean",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            96,
+            200
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "QG48Q",
+              "name": "brandTitle",
+              "fill": "$pure-white",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "A Sanctuary Beyond the Ordinary",
+              "textAlign": "center",
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 44,
+              "fontWeight": "300"
+            },
+            {
+              "type": "rectangle",
+              "id": "0oeO1",
+              "name": "brandDivider",
+              "fill": "$sand-gold",
+              "width": 60,
+              "height": 1
+            },
+            {
+              "type": "text",
+              "id": "kVKvz",
+              "name": "brandDesc",
+              "fill": "#FFFFFFCC",
+              "textGrowth": "fixed-width",
+              "width": 700,
+              "content": "Nestled in the pristine waters of Baa Atoll — a UNESCO Biosphere Reserve — Aveyla Manta Village offers an authentic Maldivian experience where luxury meets nature. Swim alongside majestic manta rays, explore vibrant coral gardens, and retreat to the serenity of your ocean-view room.",
+              "lineHeight": 1.8,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YRY0c",
+          "name": "Hanifaru Bay Feature",
+          "width": "fill_container",
+          "height": 600,
+          "fill": "$coral-white",
+          "children": [
+            {
+              "type": "frame",
+              "id": "7YLNt",
+              "name": "haniImage",
+              "metadata": {
+                "type": "unsplash",
+                "username": "ahmedd_saalim",
+                "link": "https://unsplash.com/@ahmedd_saalim",
+                "author": "Ahmed Saalim Hussain"
+              },
+              "clip": true,
+              "width": 720,
+              "height": 600,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1674029996193-850f2f1bb4b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc1NjN8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "ofD1S",
+              "name": "haniContent",
+              "width": 720,
+              "height": 600,
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 80,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hBrRn",
+                  "name": "haniTag",
+                  "fill": "$reef-teal",
+                  "content": "SIGNATURE EXPERIENCE",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "2evYo",
+                  "name": "haniTitle",
+                  "fill": "$deep-ocean",
+                  "content": "Hanifaru Bay",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 40,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "iQjBX",
+                  "name": "pullQuote",
+                  "stroke": {
+                    "thickness": {
+                      "left": 3
+                    },
+                    "fill": "$sand-gold"
+                  },
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "l3n1x",
+                      "name": "haniQuoteText",
+                      "fill": "$slate",
+                      "content": "'One of the greatest natural spectacles\non Earth — hundreds of manta rays\nfeeding in crystal-clear waters.'",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Cormorant Garamond",
+                      "fontSize": 20,
+                      "fontWeight": "300",
+                      "fontStyle": "italic"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "eq7tF",
+                  "name": "haniDesc",
+                  "fill": "$slate",
+                  "textGrowth": "fixed-width",
+                  "width": 540,
+                  "content": "Just a short boat ride from Aveyla, Hanifaru Bay is a marine protected area renowned for the world's largest gathering of manta rays. Between June and November, witness this extraordinary natural phenomenon.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "0IU7Z",
+                  "name": "haniCta",
+                  "fill": "$reef-teal",
+                  "content": "Discover Hanifaru Bay →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NDITl",
+          "name": "Rooms Section",
+          "width": "fill_container",
+          "fill": "$lagoon-light",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "YSUm6",
+              "name": "sectionHeader",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "b79V6",
+                  "name": "roomsTag",
+                  "fill": "$reef-teal",
+                  "content": "ACCOMMODATION",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "RuKq5",
+                  "name": "roomsTitle",
+                  "fill": "$deep-ocean",
+                  "content": "Your Island Retreat",
+                  "textAlign": "center",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 40,
+                  "fontWeight": "300"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "XflwW",
+                  "name": "roomsDivider",
+                  "fill": "$sand-gold",
+                  "width": 40,
+                  "height": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "O83VR",
+              "name": "roomCards",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "id": "kwvqr",
+                  "type": "ref",
+                  "ref": "yYyyY",
+                  "width": "fill_container",
+                  "name": "rc1",
+                  "height": "fit_content",
+                  "y": 0,
+                  "x": -5.684341886080802e-14,
+                  "descendants": {
+                    "sW4cA": {
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1763689389852-3f050e1750a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc1ODB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "kCUsp": {
+                      "width": "fill_container",
+                      "height": "fit_content"
+                    },
+                    "0cgHj": {
+                      "width": "fill_container"
+                    },
+                    "ZOdUM": {
+                      "y": 121
+                    }
+                  }
+                },
+                {
+                  "id": "OykmD",
+                  "type": "ref",
+                  "ref": "yYyyY",
+                  "width": "fill_container",
+                  "name": "rc2",
+                  "height": "fit_content",
+                  "x": 434.6666666666667,
+                  "y": 0,
+                  "descendants": {
+                    "sW4cA": {
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1727993398984-3e8794f95dd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc1ODF8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "kCUsp": {
+                      "width": "fill_container",
+                      "height": "fit_content"
+                    },
+                    "Aasa7": {
+                      "content": "Beach Deluxe Room"
+                    },
+                    "0cgHj": {
+                      "width": "fill_container",
+                      "content": "Steps from the pristine white sand beach with garden views."
+                    },
+                    "ZOdUM": {
+                      "y": 121
+                    }
+                  }
+                },
+                {
+                  "id": "mhGS7",
+                  "type": "ref",
+                  "ref": "yYyyY",
+                  "width": "fill_container",
+                  "name": "rc3",
+                  "x": 869.3333333333333,
+                  "y": 0,
+                  "descendants": {
+                    "sW4cA": {
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1604253427899-9e98c7d4ae73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc1ODJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "kCUsp": {
+                      "width": "fill_container"
+                    },
+                    "Aasa7": {
+                      "content": "Village Deluxe Room"
+                    },
+                    "0cgHj": {
+                      "width": "fill_container",
+                      "content": "Authentic island charm with modern comforts and lush tropical surroundings."
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PdNmN",
+          "name": "Activities Section",
+          "width": "fill_container",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#0D4F6E",
+                "position": 0
+              },
+              {
+                "color": "#0A1628",
+                "position": 1
+              }
+            ]
+          },
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "bd8sE",
+              "name": "sectionHeader",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Idt4f",
+                  "name": "actTag",
+                  "fill": "$sand-gold",
+                  "content": "EXPERIENCES",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "snRSz",
+                  "name": "actTitle",
+                  "fill": "$pure-white",
+                  "content": "Discover Your Adventure",
+                  "textAlign": "center",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 40,
+                  "fontWeight": "300"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "GIFlU",
+                  "name": "actDiv",
+                  "fill": "$sand-gold",
+                  "width": 40,
+                  "height": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "H2Pn8",
+              "name": "actRow1",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "r49SU",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac1",
+                  "x": 0,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1637804438194-a638908197b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "5H3mV",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac2",
+                  "x": 325,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1770535849294-021b9743bcdb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MDR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "GuYt9": {
+                      "content": "Snorkelling"
+                    },
+                    "0O6Tz": {
+                      "content": "Discover tropical marine life"
+                    }
+                  }
+                },
+                {
+                  "id": "saHzY",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac3",
+                  "x": 650,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1604914913552-b15bb61f02b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MDV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "GuYt9": {
+                      "content": "Night Snorkelling"
+                    },
+                    "0O6Tz": {
+                      "content": "Bioluminescent adventures"
+                    }
+                  }
+                },
+                {
+                  "id": "zuxXP",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac4",
+                  "x": 975,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1619324221911-f3695259df01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MDV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "GuYt9": {
+                      "content": "Freediving"
+                    },
+                    "0O6Tz": {
+                      "content": "Explore the deep blue"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WD634",
+              "name": "actRow2",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "KDQnv",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac5",
+                  "x": 0,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1759676026675-6a5fab68256a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "GuYt9": {
+                      "content": "Sandbank Trips"
+                    },
+                    "0O6Tz": {
+                      "content": "Private island escapes"
+                    }
+                  }
+                },
+                {
+                  "id": "SMibA",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac6",
+                  "x": 325,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1661054094612-2a3848be037e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "GuYt9": {
+                      "content": "Big Game Fishing"
+                    },
+                    "0O6Tz": {
+                      "content": "Deep sea adventures"
+                    }
+                  }
+                },
+                {
+                  "id": "SGPXW",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac7",
+                  "x": 650,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1724172143955-d3a226eff1c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MTd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "GuYt9": {
+                      "content": "Local Island Visits"
+                    },
+                    "0O6Tz": {
+                      "content": "Authentic Maldivian culture"
+                    }
+                  }
+                },
+                {
+                  "id": "oPuuW",
+                  "type": "ref",
+                  "ref": "uYUfG",
+                  "width": "fill_container",
+                  "height": 300,
+                  "name": "ac8",
+                  "x": 975,
+                  "y": 0,
+                  "descendants": {
+                    "g7zgW": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1689251546710-bf15f2b81c6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MTh8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "GuYt9": {
+                      "content": "Dining"
+                    },
+                    "0O6Tz": {
+                      "content": "Ocean-to-table cuisine"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nBiQf",
+          "name": "Packages Section",
+          "width": "fill_container",
+          "fill": "$deep-ocean",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "P82kJ",
+              "name": "sectionHeader",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HkSH8",
+                  "name": "pkgTag",
+                  "fill": "$sand-gold",
+                  "content": "CURATED PACKAGES",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "EnARV",
+                  "name": "pkgTitle",
+                  "fill": "$pure-white",
+                  "content": "Tailored Experiences",
+                  "textAlign": "center",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 40,
+                  "fontWeight": "300"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "aCmIP",
+                  "name": "pkgDiv",
+                  "fill": "$sand-gold",
+                  "width": 40,
+                  "height": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cnsAt",
+              "name": "packageCards",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "m1UK2",
+                  "name": "MantaMadness",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": "#0D4F6E33",
+                  "cornerRadius": 4,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "eHGDk",
+                      "name": "pkgImg",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "croccol",
+                        "link": "https://unsplash.com/@croccol",
+                        "author": "Corentin Largeron"
+                      },
+                      "width": 360,
+                      "height": 220,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1762717564486-f79627c1310d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ln52v",
+                      "name": "pkgContent",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        32,
+                        40
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "kpqYK",
+                          "name": "pkg1Title",
+                          "fill": "$pure-white",
+                          "content": "Manta Madness",
+                          "fontFamily": "Cormorant Garamond",
+                          "fontSize": 28,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "n0e4k",
+                          "name": "pkg1Desc",
+                          "fill": "#FFFFFFBB",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "5 nights, unlimited snorkelling, Hanifaru Bay excursion, full board dining. The ultimate manta ray experience.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "v4k1b",
+                          "name": "pkg1Cta",
+                          "fill": "$sand-gold",
+                          "content": "View Package →",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2hqV2",
+                  "name": "DiveDiveDive",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": "#0D4F6E33",
+                  "cornerRadius": 4,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ip4uz",
+                      "name": "pkgImg",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "connerbaker",
+                        "link": "https://unsplash.com/@connerbaker",
+                        "author": "Conner Baker"
+                      },
+                      "width": 360,
+                      "height": 220,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1694059243941-1d2f9c8b6de3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2NDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AqmXY",
+                      "name": "pkgContent",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        32,
+                        40
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gx9tG",
+                          "name": "pkg2Title",
+                          "fill": "$pure-white",
+                          "content": "Dive Dive Dive",
+                          "fontFamily": "Cormorant Garamond",
+                          "fontSize": 28,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "u2Lkp",
+                          "name": "pkg2Desc",
+                          "fill": "#FFFFFFBB",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "7 nights, 10 guided dives, PADI certification option, full board. For dedicated divers seeking underwater paradise.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "gQxw9",
+                          "name": "pkg2Cta",
+                          "fill": "$sand-gold",
+                          "content": "View Package →",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5sXPg",
+                  "name": "DiveHanifaru",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": "#0D4F6E33",
+                  "cornerRadius": 4,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "0AIx4",
+                      "name": "pkgImg",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "melina_dominic",
+                        "link": "https://unsplash.com/@melina_dominic",
+                        "author": "Melina Dominic Streit"
+                      },
+                      "width": 360,
+                      "height": 220,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1764057534128-b882901e1592?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2NDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kbcUF",
+                      "name": "pkgContent",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        32,
+                        40
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "003Sx",
+                          "name": "pkg3Title",
+                          "fill": "$pure-white",
+                          "content": "Dive Hanifaru",
+                          "fontFamily": "Cormorant Garamond",
+                          "fontSize": 28,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "zFbcb",
+                          "name": "pkg3Desc",
+                          "fill": "#FFFFFFBB",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "4 nights, Hanifaru Bay diving + snorkelling, whale shark encounters, half board. A focused marine adventure.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "jzvlp",
+                          "name": "pkg3Cta",
+                          "fill": "$sand-gold",
+                          "content": "View Package →",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9NDgz",
+          "name": "Social Proof",
+          "width": "fill_container",
+          "fill": "$lagoon-light",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "a6KeS",
+              "name": "tripAdvisorBadge",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "pc952",
+                  "name": "tripIcon",
+                  "width": 32,
+                  "height": 32,
+                  "iconFontName": "award",
+                  "iconFontFamily": "lucide",
+                  "fill": "#00AA6C"
+                },
+                {
+                  "type": "frame",
+                  "id": "bRP7M",
+                  "name": "tripText",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Qak3X",
+                      "name": "tripRating",
+                      "fill": "$deep-ocean",
+                      "content": "Travellers' Choice 2024",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wn1P2",
+                      "name": "tripStars",
+                      "fill": "$slate",
+                      "content": "★★★★★  4.8 / 5",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "TgizW",
+              "name": "reviewQuote",
+              "fill": "$deep-ocean",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "'An unforgettable experience — the manta rays were magical, the staff made us feel like family, and the rooms were spotless with stunning views. We're already planning our return.'",
+              "lineHeight": 1.6,
+              "textAlign": "center",
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 22,
+              "fontWeight": "300",
+              "fontStyle": "italic"
+            },
+            {
+              "type": "text",
+              "id": "5Njj9",
+              "name": "reviewAuthor",
+              "fill": "$slate",
+              "content": "— Sarah & James, London",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "05K0z",
+          "name": "About Teaser",
+          "width": "fill_container",
+          "height": 500,
+          "fill": "$coral-white",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Monvi",
+              "name": "aboutContent",
+              "width": 720,
+              "height": 500,
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 80,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ts6Fo",
+                  "name": "aboutTag",
+                  "fill": "$reef-teal",
+                  "content": "OUR STORY",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "0d0vY",
+                  "name": "aboutTitle",
+                  "fill": "$deep-ocean",
+                  "content": "Conservation at Heart",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 40,
+                  "fontWeight": "300"
+                },
+                {
+                  "type": "text",
+                  "id": "rhU8M",
+                  "name": "aboutDesc",
+                  "fill": "$slate",
+                  "textGrowth": "fixed-width",
+                  "width": 540,
+                  "content": "Aveyla Manta Village is committed to marine conservation and sustainable tourism. Powered by solar energy, supporting local communities, and protecting the UNESCO Biosphere Reserve we call home.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "OujJx",
+                  "name": "aboutCta",
+                  "fill": "$reef-teal",
+                  "content": "Learn More About Us →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cTXJc",
+              "name": "aboutImage",
+              "metadata": {
+                "type": "unsplash",
+                "username": "alxndrustinov",
+                "link": "https://unsplash.com/@alxndrustinov",
+                "author": "Alexander Ustinov"
+              },
+              "clip": true,
+              "width": 720,
+              "height": 500,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1678188416081-a0135754c241?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              }
+            }
+          ]
+        },
+        {
+          "id": "YfAxp",
+          "type": "ref",
+          "ref": "aIxGc",
+          "width": "fill_container",
+          "name": "footerInst",
+          "y": 5362
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "coral-white": {
+      "type": "color",
+      "value": "#FDFAF6"
+    },
+    "deep-ocean": {
+      "type": "color",
+      "value": "#0A1628"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Cormorant Garamond"
+    },
+    "lagoon-light": {
+      "type": "color",
+      "value": "#E8F4F8"
+    },
+    "ocean-blue": {
+      "type": "color",
+      "value": "#0D4F6E"
+    },
+    "pure-white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "reef-teal": {
+      "type": "color",
+      "value": "#0E7490"
+    },
+    "sand-gold": {
+      "type": "color",
+      "value": "#C8A96E"
+    },
+    "slate": {
+      "type": "color",
+      "value": "#4A5568"
+    },
+    "spacing-2xl": {
+      "type": "number",
+      "value": 48
+    },
+    "spacing-3xl": {
+      "type": "number",
+      "value": 64
+    },
+    "spacing-4xl": {
+      "type": "number",
+      "value": 80
+    },
+    "spacing-lg": {
+      "type": "number",
+      "value": 24
+    },
+    "spacing-md": {
+      "type": "number",
+      "value": 16
+    },
+    "spacing-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "spacing-xl": {
+      "type": "number",
+      "value": 32
+    },
+    "spacing-xs": {
+      "type": "number",
+      "value": 4
+    }
+  }
+}

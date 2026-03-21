@@ -25,7 +25,7 @@
 ---
 
 ## Phase 2: Design — Pencil Screens
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: All page designs created in Pencil (.pen files) covering desktop and mobile for every page type. Designs validated before any component code is written.
 **Tasks**:
 - [ ] Create homepage design (desktop + mobile) — all 9 sections with descent/ascent narrative
