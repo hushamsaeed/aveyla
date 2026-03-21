@@ -232,7 +232,8 @@
               "content": "Wake to panoramic ocean views from your private terrace.",
               "lineHeight": 1.6,
               "fontFamily": "Inter",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -645,7 +646,44 @@
           "ref": "IejwQ",
           "width": "fill_container",
           "name": "nav",
-          "y": 0
+          "y": 0,
+          "descendants": {
+            "AsJQ4": {
+              "x": 64,
+              "y": 23
+            },
+            "KsaNA": {
+              "width": "fit_content",
+              "height": "fit_content",
+              "x": 464.5,
+              "y": 31.5
+            },
+            "P43ps": {
+              "x": 78
+            },
+            "aJkXU": {
+              "x": 172
+            },
+            "wiIiF": {
+              "x": 270
+            },
+            "9z4xE": {
+              "x": 388
+            },
+            "g8aIj": {
+              "x": 468
+            },
+            "nyeha": {
+              "width": "fit_content",
+              "height": "fit_content",
+              "x": 1264,
+              "y": 20
+            },
+            "kSK76": {
+              "x": 24,
+              "y": 12
+            }
+          }
         },
         {
           "type": "frame",
@@ -761,7 +799,15 @@
                       "type": "ref",
                       "ref": "1aanO",
                       "name": "heroBtn1",
-                      "y": 0
+                      "y": 0,
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "descendants": {
+                        "AhUtY": {
+                          "x": 32,
+                          "y": 14
+                        }
+                      }
                     },
                     {
                       "id": "VXy8e",
@@ -770,9 +816,13 @@
                       "name": "heroBtn2",
                       "x": 149,
                       "y": 0,
+                      "width": "fit_content",
+                      "height": "fit_content",
                       "descendants": {
                         "TnsqO": {
-                          "content": "Explore the Reef"
+                          "content": "Explore the Reef",
+                          "x": 32,
+                          "y": 14
                         }
                       }
                     }
@@ -1065,13 +1115,21 @@
                     },
                     "kCUsp": {
                       "width": "fill_container",
-                      "height": "fit_content"
+                      "height": "fit_content",
+                      "y": 260
+                    },
+                    "Aasa7": {
+                      "x": 24,
+                      "y": 24
                     },
                     "0cgHj": {
-                      "width": "fill_container"
+                      "width": "fill_container",
+                      "x": 24,
+                      "y": 65
                     },
                     "ZOdUM": {
-                      "y": 121
+                      "y": 121,
+                      "x": 24
                     }
                   }
                 },
@@ -1096,17 +1154,23 @@
                     },
                     "kCUsp": {
                       "width": "fill_container",
-                      "height": "fit_content"
+                      "height": "fit_content",
+                      "y": 260
                     },
                     "Aasa7": {
-                      "content": "Beach Deluxe Room"
+                      "content": "Beach Deluxe Room",
+                      "x": 24,
+                      "y": 24
                     },
                     "0cgHj": {
                       "width": "fill_container",
-                      "content": "Steps from the pristine white sand beach with garden views."
+                      "content": "Steps from the pristine white sand beach with garden views.",
+                      "x": 24,
+                      "y": 65
                     },
                     "ZOdUM": {
-                      "y": 121
+                      "y": 121,
+                      "x": 24
                     }
                   }
                 },
@@ -1118,6 +1182,7 @@
                   "name": "rc3",
                   "x": 869.3333333333333,
                   "y": 0,
+                  "height": "fit_content",
                   "descendants": {
                     "sW4cA": {
                       "width": "fill_container",
@@ -1129,14 +1194,24 @@
                       }
                     },
                     "kCUsp": {
-                      "width": "fill_container"
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "y": 260
                     },
                     "Aasa7": {
-                      "content": "Village Deluxe Room"
+                      "content": "Village Deluxe Room",
+                      "x": 24,
+                      "y": 24
                     },
                     "0cgHj": {
                       "width": "fill_container",
-                      "content": "Authentic island charm with modern comforts and lush tropical surroundings."
+                      "content": "Authentic island charm with modern comforts and lush tropical surroundings.",
+                      "x": 24,
+                      "y": 65
+                    },
+                    "ZOdUM": {
+                      "x": 24,
+                      "y": 121
                     }
                   }
                 }
@@ -1237,6 +1312,13 @@
                         "url": "https://images.unsplash.com/photo-1637804438194-a638908197b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzQwOTc2MDN8&ixlib=rb-4.1.0&q=80&w=1080",
                         "mode": "fill"
                       }
+                    },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    "0O6Tz": {
+                      "y": 31
                     }
                   }
                 },
@@ -1258,11 +1340,16 @@
                         "mode": "fill"
                       }
                     },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
                     "GuYt9": {
                       "content": "Snorkelling"
                     },
                     "0O6Tz": {
-                      "content": "Discover tropical marine life"
+                      "content": "Discover tropical marine life",
+                      "y": 31
                     }
                   }
                 },
@@ -1284,11 +1371,16 @@
                         "mode": "fill"
                       }
                     },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
                     "GuYt9": {
                       "content": "Night Snorkelling"
                     },
                     "0O6Tz": {
-                      "content": "Bioluminescent adventures"
+                      "content": "Bioluminescent adventures",
+                      "y": 31
                     }
                   }
                 },
@@ -1310,11 +1402,16 @@
                         "mode": "fill"
                       }
                     },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
                     "GuYt9": {
                       "content": "Freediving"
                     },
                     "0O6Tz": {
-                      "content": "Explore the deep blue"
+                      "content": "Explore the deep blue",
+                      "y": 31
                     }
                   }
                 }
@@ -1345,11 +1442,16 @@
                         "mode": "fill"
                       }
                     },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
                     "GuYt9": {
                       "content": "Sandbank Trips"
                     },
                     "0O6Tz": {
-                      "content": "Private island escapes"
+                      "content": "Private island escapes",
+                      "y": 31
                     }
                   }
                 },
@@ -1371,11 +1473,16 @@
                         "mode": "fill"
                       }
                     },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
                     "GuYt9": {
                       "content": "Big Game Fishing"
                     },
                     "0O6Tz": {
-                      "content": "Deep sea adventures"
+                      "content": "Deep sea adventures",
+                      "y": 31
                     }
                   }
                 },
@@ -1397,11 +1504,16 @@
                         "mode": "fill"
                       }
                     },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
                     "GuYt9": {
                       "content": "Local Island Visits"
                     },
                     "0O6Tz": {
-                      "content": "Authentic Maldivian culture"
+                      "content": "Authentic Maldivian culture",
+                      "y": 31
                     }
                   }
                 },
@@ -1423,11 +1535,16 @@
                         "mode": "fill"
                       }
                     },
+                    "mj9rH": {
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
                     "GuYt9": {
                       "content": "Dining"
                     },
                     "0O6Tz": {
-                      "content": "Ocean-to-table cuisine"
+                      "content": "Ocean-to-table cuisine",
+                      "y": 31
                     }
                   }
                 }
@@ -1917,7 +2034,81 @@
           "ref": "aIxGc",
           "width": "fill_container",
           "name": "footerInst",
-          "y": 5362
+          "y": 5362,
+          "height": "fit_content",
+          "descendants": {
+            "xLA1x": {
+              "width": "fill_container",
+              "height": "fit_content",
+              "x": 64,
+              "y": 64
+            },
+            "BL3hV": {
+              "width": "fit_content",
+              "height": "fit_content"
+            },
+            "JZogx": {
+              "y": 45
+            },
+            "BbwTf": {
+              "width": "fit_content",
+              "height": "fit_content",
+              "x": 486.6666666666667
+            },
+            "Gk6Mv": {
+              "y": 28
+            },
+            "fl1K8": {
+              "y": 56
+            },
+            "WZcvs": {
+              "y": 84
+            },
+            "sm6C3": {
+              "y": 112
+            },
+            "5Ym8D": {
+              "width": "fit_content",
+              "height": "fit_content",
+              "x": 833.3333333333335
+            },
+            "QdRfN": {
+              "y": 28
+            },
+            "Wwe1s": {
+              "y": 56
+            },
+            "3V35j": {
+              "y": 84
+            },
+            "BQkv3": {
+              "y": 112
+            },
+            "IEY6N": {
+              "width": "fit_content",
+              "height": "fit_content",
+              "x": 1206.0000000000002
+            },
+            "TiB8f": {
+              "y": 28
+            },
+            "R48Q5": {
+              "y": 56
+            },
+            "gwxEt": {
+              "y": 84
+            },
+            "KPmjg": {
+              "width": "fill_container",
+              "height": "fit_content",
+              "x": 64,
+              "y": 240
+            },
+            "BRKWn": {
+              "x": 528,
+              "y": 24
+            }
+          }
         }
       ]
     }
