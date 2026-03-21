@@ -1,7 +1,7 @@
 # Aveyla Manta Village — Project Phases
 
 ## Phase 1: Project Setup & Design System
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Scaffolded Next.js project with Tailwind design tokens matching the FSD colour palette, typography, and spacing system. Sanity project initialised. Dev environment runnable.
 **Tasks**:
 - [ ] Initialise Next.js 14+ project with App Router, TypeScript, pnpm

@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colour palette */
+  --color-deep-ocean: #0A1628;
+  --color-ocean-blue: #0D4F6E;
+  --color-reef-teal: #0E7490;
+  --color-sand-gold: #C8A96E;
+  --color-lagoon-light: #E8F4F8;
+  --color-coral-white: #FDFAF6;
+  --color-pure-white: #FFFFFF;
+  --color-slate: #4A5568;
+
+  /* Spacing (8px base) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
+  --space-15: 120px;
+
+  /* Grid */
+  --grid-max-width: 1440px;
+  --content-max-width: 1200px;
+  --editorial-max-width: 720px;
+  --gutter-desktop: 32px;
+  --gutter-mobile: 16px;
+
+  /* Motion */
+  --duration-scroll: 400ms;
+  --duration-nav: 200ms;
+  --duration-cta: 180ms;
+  --ease-scroll: ease-out;
+  --parallax-depth: 20%;
+  --fade-translate: 24px;
+
+  /* Typography */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Backgrounds */
+  background-color: var(--color-coral-white);
+  color: var(--color-deep-ocean);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-scroll: 0ms;
+    --duration-nav: 0ms;
+    --duration-cta: 0ms;
+    --parallax-depth: 0%;
+    --fade-translate: 0px;
+  }
+}
+
+/* Base typography */
+body {
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-weight: var(--font-weight-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus indicators — Sand Gold on dark, Ocean Blue on light */
+:focus-visible {
+  outline: 2px solid var(--color-sand-gold);
+  outline-offset: 2px;
+}
+
+/* Skip navigation */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 1000;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-deep-ocean);
+  color: var(--color-pure-white);
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-nav:focus {
+  top: 0;
+}
+
+/* Section vertical rhythm */
+.section-padding {
+  padding-top: var(--space-15);
+  padding-bottom: var(--space-15);
+}
+
+@media (max-width: 1023px) {
+  .section-padding {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+  }
+}
+
+@media (max-width: 767px) {
+  .section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}

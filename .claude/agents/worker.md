@@ -2,7 +2,7 @@
 name: worker
 description: Executes and verifies a single project phase. Reads the spec, builds the phase, runs acceptance criteria, and writes a result file. Called directly by the shell loop.
 model: claude-sonnet-4-6
-allowed-tools: Read, Write, Edit, MultiEdit, Glob, Grep, Bash(npm run *), Bash(npm install *), Bash(npx *), Bash(python *), Bash(python3 *), Bash(pip *), Bash(pip3 *), Bash(go run *), Bash(go build *), Bash(go test *), Bash(cargo *), Bash(make *), Bash(ls *), Bash(cat *), Bash(echo *), Bash(mkdir *), Bash(cp *), Bash(mv *), Bash(touch *), Bash(which *), Bash(node *), Bash(find *), Bash(grep *), TodoRead, TodoWrite
+allowed-tools: Read, Write, Edit, MultiEdit, Glob, Grep, Bash(pnpm *), Bash(pnpm install *), Bash(pnpm run *), Bash(pnpm dev *), Bash(pnpm build *), Bash(pnpm test *), Bash(pnpm add *), Bash(pnpm exec *), Bash(npm run *), Bash(npm install *), Bash(npx *), Bash(python *), Bash(python3 *), Bash(pip *), Bash(pip3 *), Bash(go run *), Bash(go build *), Bash(go test *), Bash(cargo *), Bash(make *), Bash(ls *), Bash(cat *), Bash(echo *), Bash(mkdir *), Bash(cp *), Bash(mv *), Bash(touch *), Bash(which *), Bash(node *), Bash(find *), Bash(grep *), Bash(git *), Bash(curl *), TodoRead, TodoWrite
 ---
 
 Execute phase $PHASE_NUM of the project.

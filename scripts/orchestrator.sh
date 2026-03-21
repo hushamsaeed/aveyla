@@ -184,7 +184,7 @@ Fix the specific issue above before proceeding."
   out=$(claude -p \
     "You are the worker agent. PHASE_NUM=$n. $retry_note
 Execute phase $n per your agent instructions." \
-    --allowedTools "Read,Write,Edit,MultiEdit,Glob,Grep,Bash(npm run *),Bash(npm install *),Bash(npx *),Bash(python *),Bash(python3 *),Bash(pip *),Bash(pip3 *),Bash(go run *),Bash(go build *),Bash(go test *),Bash(cargo *),Bash(make *),Bash(ls *),Bash(cat *),Bash(echo *),Bash(mkdir *),Bash(cp *),Bash(mv *),Bash(touch *),Bash(which *),Bash(node *),Bash(find *),Bash(grep *),TodoRead,TodoWrite" \
+    --allowedTools "Read,Write,Edit,MultiEdit,Glob,Grep,Bash(pnpm *),Bash(pnpm install *),Bash(pnpm run *),Bash(pnpm dev *),Bash(pnpm build *),Bash(pnpm test *),Bash(pnpm add *),Bash(pnpm exec *),Bash(npm run *),Bash(npm install *),Bash(npx *),Bash(python *),Bash(python3 *),Bash(pip *),Bash(pip3 *),Bash(go run *),Bash(go build *),Bash(go test *),Bash(cargo *),Bash(make *),Bash(ls *),Bash(cat *),Bash(echo *),Bash(mkdir *),Bash(cp *),Bash(mv *),Bash(touch *),Bash(which *),Bash(node *),Bash(find *),Bash(grep *),Bash(git *),Bash(curl *),TodoRead,TodoWrite" \
     --max-turns "$MAX_TURNS" \
     --output-format json \
     2>"$stderr_file") || exit_code=$?
