@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const EXPLORE_LINKS = [
@@ -50,9 +51,13 @@ export default function Footer() {
         <div className="flex flex-col tablet:flex-row justify-between gap-10 tablet:gap-8">
           {/* Logo column */}
           <div className="flex flex-col gap-4">
-            <span className="font-display text-[24px] font-semibold tracking-[3px] text-pure-white">
-              AVEYLA
-            </span>
+            <Image
+              src="/images/logo/aveyla-logo-gold.webp"
+              alt="Aveyla Manta Village"
+              width={152}
+              height={82}
+              className="h-12 w-auto"
+            />
             <span className="font-body text-[13px] font-normal text-white/60">
               Manta Village · Maldives
             </span>

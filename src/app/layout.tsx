@@ -26,10 +26,27 @@ export const metadata: Metadata = {
   description:
     "Affordable luxury resort on Dharavandhoo Island, Baa Atoll UNESCO Biosphere Reserve. PADI dive centre, manta ray encounters at Hanifaru Bay.",
   metadataBase: new URL("https://www.aveyla.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Aveyla Manta Village",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Aveyla Manta Village — Maldives",
+      },
+    ],
   },
 };
 

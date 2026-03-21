@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -57,10 +58,16 @@ export default function NavBar() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-display text-[28px] font-semibold tracking-[3px] text-pure-white"
           aria-label="Aveyla Manta Village — Home"
         >
-          AVEYLA
+          <Image
+            src="/images/logo/aveyla-logo-white-teal-dot.webp"
+            alt="Aveyla Manta Village"
+            width={152}
+            height={82}
+            className="h-10 w-auto tablet:h-12"
+            priority
+          />
         </Link>
 
         {/* Desktop nav links */}
