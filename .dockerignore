@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+_intake
+designs
+tasks
+e2e
+.env.local
+.env
