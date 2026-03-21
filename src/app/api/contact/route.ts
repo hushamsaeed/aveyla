@@ -29,6 +29,7 @@ export async function POST(request: NextRequest) {
   const arrival = formData.get("arrival")?.toString() || "";
   const departure = formData.get("departure")?.toString() || "";
   const guests = formData.get("guests")?.toString() || "";
+  const selectedPackage = formData.get("package")?.toString() || "";
   const message = formData.get("message")?.toString() || "";
 
   if (!name || !email) {
@@ -56,7 +57,7 @@ export async function POST(request: NextRequest) {
           from: "Aveyla Website <noreply@aveyla.com>",
           to: contactEmail,
           subject: `New Enquiry from ${name}`,
-          text: `Name: ${name}\nEmail: ${email}\nArrival: ${arrival || "Not specified"}\nDeparture: ${departure || "Not specified"}\nGuests: ${guests || "Not specified"}\n\nMessage:\n${message || "No message provided"}`,
+          text: `Name: ${name}\nEmail: ${email}\nPackage: ${selectedPackage || "General Enquiry"}\nArrival: ${arrival || "Not specified"}\nDeparture: ${departure || "Not specified"}\nGuests: ${guests || "Not specified"}\n\nMessage:\n${message || "No message provided"}`,
         }),
       });
 
@@ -79,7 +80,7 @@ export async function POST(request: NextRequest) {
       // Don't fail the request — form was still received
     }
   } else {
-    console.log("Contact form submission (no RESEND_API_KEY):", { name, email, arrival, departure, guests, message });
+    console.log("Contact form submission (no RESEND_API_KEY):", { name, email, selectedPackage, arrival, departure, guests, message });
   }
 
   return NextResponse.json({ success: true });

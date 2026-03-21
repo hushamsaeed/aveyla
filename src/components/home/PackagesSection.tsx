@@ -2,25 +2,25 @@ import Link from "next/link";
 
 const PACKAGES = [
   {
-    name: "Manta Madness",
-    slug: "manta-madness",
-    tagline: "The ultimate Hanifaru Bay experience",
-    inclusions: "5 nights · Ocean Deluxe room · 6 guided dives · Hanifaru Bay excursion · Full board · Airport transfer",
-    image: "/images/packages/manta-madness.jpg",
-  },
-  {
     name: "Dive Dive Dive",
     slug: "dive-dive-dive",
     tagline: "For those who want nothing but reef time",
-    inclusions: "7 nights · Beach Deluxe room · 10 guided dives · Equipment included · Half board · Airport transfer",
+    inclusions: "3–7 nights · 6–14 dives · Full board · Domestic flights · From $1,020 pp",
     image: "/images/packages/dive-dive-dive.jpg",
   },
   {
     name: "Dive Hanifaru",
     slug: "dive-hanifaru",
-    tagline: "Hanifaru Bay, concentrated",
-    inclusions: "4 nights · Any room type · 4 Hanifaru dives · Snorkelling excursion · Breakfast · Airport transfer",
+    tagline: "Diving and manta encounters, combined",
+    inclusions: "3–7 nights · Dives + manta snorkelling · Full board · June–Nov · From $1,020 pp",
     image: "/images/packages/dive-hanifaru.jpg",
+  },
+  {
+    name: "Manta Madness",
+    slug: "manta-madness",
+    tagline: "The ultimate Hanifaru Bay snorkelling experience",
+    inclusions: "3–7 nights · Manta snorkelling trips · Full board · June–Nov · From $720 pp",
+    image: "/images/packages/manta-madness.jpg",
   },
 ];
 

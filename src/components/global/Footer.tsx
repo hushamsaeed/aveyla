@@ -56,7 +56,7 @@ export default function Footer() {
               alt="Aveyla Manta Village"
               width={152}
               height={82}
-              className="h-12 w-auto"
+              className="h-10 w-auto max-w-[120px] object-contain tablet:h-12 tablet:max-w-none"
             />
             <span className="font-body text-[13px] font-normal text-white/60">
               Manta Village · Maldives

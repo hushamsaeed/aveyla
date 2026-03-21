@@ -1,9 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function ContactPage() {
+const PACKAGE_OPTIONS = [
+  { value: "", label: "General Enquiry" },
+  { value: "dive-dive-dive", label: "Dive Dive Dive" },
+  { value: "dive-hanifaru", label: "Dive Hanifaru" },
+  { value: "manta-madness", label: "Manta Madness" },
+];
+
+function ContactForm() {
+  const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState("");
+
+  useEffect(() => {
+    const pkg = searchParams.get("package");
+    if (pkg && PACKAGE_OPTIONS.some((o) => o.value === pkg)) {
+      setSelectedPackage(pkg);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,6 +39,68 @@ export default function ContactPage() {
     }
   };
 
+  if (submitted) {
+    return (
+      <div className="bg-lagoon-light p-8">
+        <h2 className="font-display text-heading-lg font-semibold text-deep-ocean">Message Sent</h2>
+        <p className="mt-2 font-body text-body-md text-slate">Thank you. We&apos;ll reply within 24 hours.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot */}
+      <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+      <div>
+        <label htmlFor="package" className="font-body text-body-sm font-medium text-deep-ocean">Interested In</label>
+        <select
+          id="package"
+          name="package"
+          value={selectedPackage}
+          onChange={(e) => setSelectedPackage(e.target.value)}
+          className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue"
+        >
+          {PACKAGE_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label htmlFor="name" className="font-body text-body-sm font-medium text-deep-ocean">Name</label>
+        <input id="name" name="name" required className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" placeholder="Your full name" />
+      </div>
+      <div>
+        <label htmlFor="email" className="font-body text-body-sm font-medium text-deep-ocean">Email</label>
+        <input id="email" name="email" type="email" required className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" placeholder="you@example.com" />
+      </div>
+      <div className="flex gap-6">
+        <div className="flex-1">
+          <label htmlFor="arrival" className="font-body text-body-sm font-medium text-deep-ocean">Arrival Date</label>
+          <input id="arrival" name="arrival" type="date" className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" />
+        </div>
+        <div className="flex-1">
+          <label htmlFor="departure" className="font-body text-body-sm font-medium text-deep-ocean">Departure Date</label>
+          <input id="departure" name="departure" type="date" className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="guests" className="font-body text-body-sm font-medium text-deep-ocean">Number of Guests</label>
+        <input id="guests" name="guests" type="number" min={1} defaultValue={2} className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" />
+      </div>
+      <div>
+        <label htmlFor="message" className="font-body text-body-sm font-medium text-deep-ocean">Message</label>
+        <textarea id="message" name="message" rows={4} className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" placeholder="Tell us about your trip..." />
+      </div>
+      <button type="submit" className="w-full bg-sand-gold py-4 font-body text-[14px] font-semibold text-deep-ocean transition-colors hover:bg-sand-gold/90">
+        Send Message
+      </button>
+    </form>
+  );
+}
+
+export default function ContactPage() {
   return (
     <>
       <section className="bg-deep-ocean px-6 pb-16 pt-32 tablet:px-14">
@@ -38,47 +118,9 @@ export default function ContactPage() {
         <div className="mx-auto flex max-w-content flex-col gap-14 tablet:flex-row">
           {/* Form */}
           <div className="flex-1">
-            {submitted ? (
-              <div className="bg-lagoon-light p-8">
-                <h2 className="font-display text-heading-lg font-semibold text-deep-ocean">Message Sent</h2>
-                <p className="mt-2 font-body text-body-md text-slate">Thank you. We&apos;ll reply within 24 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Honeypot */}
-                <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-
-                <div>
-                  <label htmlFor="name" className="font-body text-body-sm font-medium text-deep-ocean">Name</label>
-                  <input id="name" name="name" required className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" placeholder="Your full name" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="font-body text-body-sm font-medium text-deep-ocean">Email</label>
-                  <input id="email" name="email" type="email" required className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" placeholder="you@example.com" />
-                </div>
-                <div className="flex gap-6">
-                  <div className="flex-1">
-                    <label htmlFor="arrival" className="font-body text-body-sm font-medium text-deep-ocean">Arrival Date</label>
-                    <input id="arrival" name="arrival" type="date" className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" />
-                  </div>
-                  <div className="flex-1">
-                    <label htmlFor="departure" className="font-body text-body-sm font-medium text-deep-ocean">Departure Date</label>
-                    <input id="departure" name="departure" type="date" className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="guests" className="font-body text-body-sm font-medium text-deep-ocean">Number of Guests</label>
-                  <input id="guests" name="guests" type="number" min={1} defaultValue={2} className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" />
-                </div>
-                <div>
-                  <label htmlFor="message" className="font-body text-body-sm font-medium text-deep-ocean">Message</label>
-                  <textarea id="message" name="message" rows={4} className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-deep-ocean outline-none focus:border-ocean-blue" placeholder="Tell us about your trip..." />
-                </div>
-                <button type="submit" className="w-full bg-sand-gold py-4 font-body text-[14px] font-semibold text-deep-ocean transition-colors hover:bg-sand-gold/90">
-                  Send Message
-                </button>
-              </form>
-            )}
+            <Suspense fallback={<div className="h-[600px] animate-pulse bg-lagoon-light" />}>
+              <ContactForm />
+            </Suspense>
           </div>
 
           {/* Sidebar */}
