@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Aveyla Manta Village | Maldives",
+  description: "Privacy policy for Aveyla Manta Village website — data collection, cookies, and your rights.",
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <section className="bg-coral-white px-6 pb-section-mobile pt-32 tablet:px-14 tablet:pb-section-tablet">

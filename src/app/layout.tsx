@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import NavBar from "@/components/global/NavBar";
 import Footer from "@/components/global/Footer";
 import WhatsAppButton from "@/components/global/WhatsAppButton";
+import CookieConsent from "@/components/global/CookieConsent";
 import GoogleAnalytics from "@/lib/analytics/GoogleAnalytics";
 import "./globals.css";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <CookieConsent />
       </body>
     </html>
   );

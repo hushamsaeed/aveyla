@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Rooms | Aveyla Manta Village | Maldives",
+  description: "Three room types at Aveyla Manta Village — Ocean Deluxe, Beach Deluxe, and Village Deluxe. All steps from the reef on Dharavandhoo Island.",
+};
 
 const ROOMS = [
   { name: "Ocean Deluxe", slug: "ocean-deluxe", desc: "Ocean-facing with private balcony. Four rooms.", amenities: "Ocean view · King bed · Balcony · A/C", image: "/images/rooms/ocean-deluxe.jpg" },

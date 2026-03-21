@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dining | Aveyla Manta Village | Maldives",
+  description: "Fresh-caught seafood, coconut curries, and tropical fruit. Open-air restaurant overlooking the lagoon on Dharavandhoo Island.",
+};
+
 export default function DiningPage() {
   return (
     <>

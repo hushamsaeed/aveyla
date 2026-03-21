@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Aveyla Manta Village | Maldives",
+  description: "Aveyla Manta Village — 16 rooms, 100% solar powered, PADI dive centre on Dharavandhoo Island, Baa Atoll UNESCO Biosphere Reserve since 2014.",
+};
+
 export default function AboutPage() {
   return (
     <>

@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Packages | Aveyla Manta Village | Maldives",
+  description: "Dive packages at Aveyla — Manta Madness, Dive Dive Dive, and Dive Hanifaru. All-inclusive stays with guided dives in the Baa Atoll.",
+};
 
 const PACKAGES = [
   { name: "Manta Madness", slug: "manta-madness", tagline: "The ultimate Hanifaru Bay experience", image: "/images/packages/manta-madness.jpg" },

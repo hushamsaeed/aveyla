@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Activities | Aveyla Manta Village | Maldives",
+  description: "Scuba diving, snorkelling, freediving, night snorkelling, sandbank trips, fishing, island visits, and dining at Aveyla Manta Village, Baa Atoll.",
+};
 
 const ACTIVITIES = [
   { name: "Scuba Diving", slug: "scuba-diving", desc: "PADI-certified encounters at 30+ dive sites", image: "/images/activities/scuba.jpg" },
