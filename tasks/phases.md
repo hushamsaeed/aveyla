@@ -49,7 +49,7 @@
 ---
 
 ## Phase 3: Global Components
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Navigation bar, footer, WhatsApp floating button, and root layout shell — the persistent UI that wraps every page.
 **Tasks**:
 - [ ] Build fixed nav: logo (SVG), nav links, mega-menu (Activities), dropdown (Packages), Book Now CTA

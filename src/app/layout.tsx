@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import NavBar from "@/components/global/NavBar";
+import Footer from "@/components/global/Footer";
+import WhatsAppButton from "@/components/global/WhatsAppButton";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -39,7 +42,10 @@ export default function RootLayout({
         <a href="#main-content" className="skip-nav">
           Skip to main content
         </a>
+        <NavBar />
         <main id="main-content">{children}</main>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
