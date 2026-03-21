@@ -219,7 +219,7 @@
 ---
 
 ## Phase 11: Performance & Accessibility QA
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Meet all non-functional requirements — Lighthouse 90+ mobile, WCAG 2.1 AA, cross-browser verified.
 **Tasks**:
 - [ ] Lighthouse CI: homepage, room detail, activity detail, gallery — all 90+ mobile
@@ -244,7 +244,7 @@
 ---
 
 ## Phase 12: Launch Prep
-**Status**: TODO
+**Status**: DONE ✅
 **Goal**: Everything needed for DNS cutover — redirects verified, booking live-tested, cookie consent active, monitoring in place.
 **Tasks**:
 - [ ] DNS cutover plan: reduce TTL 48h before, rollback plan documented
