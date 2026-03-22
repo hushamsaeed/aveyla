@@ -36,7 +36,7 @@ const PACKAGES = [
 export default function PackagesPage() {
   return (
     <>
-      <section className="bg-deep-ocean px-6 pb-16 pt-32 tablet:px-14">
+      <section className="bg-dark-driftwood px-6 pb-16 pt-32 tablet:px-14">
         <div className="mx-auto max-w-content">
           <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">Packages</h1>
           <p className="mt-4 font-body text-body-lg text-white/60">
@@ -53,14 +53,14 @@ export default function PackagesPage() {
                 <div className="flex items-center gap-3">
                   <h2 className="font-display text-display-md font-semibold text-pure-white">{pkg.name}</h2>
                   {pkg.season && (
-                    <span className="rounded-sm bg-reef-teal/20 px-2 py-0.5 font-body text-[11px] font-medium text-reef-teal">
+                    <span className="rounded-sm bg-terracotta/20 px-2 py-0.5 font-body text-[11px] font-medium text-terracotta">
                       {pkg.season}
                     </span>
                   )}
                 </div>
-                <p className="font-body text-[14px] text-sand-gold">{pkg.tagline}</p>
+                <p className="font-body text-[14px] text-coral-clay">{pkg.tagline}</p>
                 <p className="font-body text-[14px] text-white/50">From ${pkg.fromPrice} pp twin share · 3–7 nights</p>
-                <span className="font-body text-[14px] font-medium text-sand-gold">View Pricing & Details →</span>
+                <span className="font-body text-[14px] font-medium text-coral-clay">View Pricing & Details →</span>
               </div>
             </Link>
           ))}

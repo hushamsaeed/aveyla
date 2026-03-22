@@ -1,6 +1,6 @@
 export default function BrandStatement() {
   return (
-    <section className="bg-deep-ocean px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
+    <section className="bg-dark-driftwood px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
       <div className="mx-auto max-w-content text-center">
         <h2 className="font-display text-display-lg font-semibold leading-[1.2] tracking-[-0.02em] text-pure-white">
           Affordable luxury.

@@ -23,7 +23,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-deep-ocean">
+    <section className="relative h-screen w-full overflow-hidden bg-dark-driftwood">
       {/* Video / Poster fallback */}
       <video
         ref={videoRef}
@@ -45,7 +45,7 @@ export default function HeroSection() {
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-deep-ocean/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark-driftwood/80" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-20 tablet:px-14">
@@ -60,7 +60,7 @@ export default function HeroSection() {
           <div className="flex gap-4">
             <button
               onClick={scrollToActivities}
-              className="bg-sand-gold px-8 py-4 font-body text-[14px] font-semibold text-deep-ocean transition-transform duration-cta hover:scale-[1.02]"
+              className="bg-coral-clay px-8 py-4 font-body text-[14px] font-semibold text-dark-driftwood transition-transform duration-cta hover:scale-[1.02]"
             >
               Explore the Reef
             </button>
@@ -79,7 +79,7 @@ export default function HeroSection() {
       {/* Pause button */}
       <button
         onClick={toggleVideo}
-        className="absolute right-6 top-24 z-20 rounded-full bg-deep-ocean/50 p-2 text-pure-white backdrop-blur-sm transition-opacity hover:bg-deep-ocean/70 motion-reduce:hidden"
+        className="absolute right-6 top-24 z-20 rounded-full bg-dark-driftwood/50 p-2 text-pure-white backdrop-blur-sm transition-opacity hover:bg-dark-driftwood/70 motion-reduce:hidden"
         aria-label={paused ? "Play video" : "Pause video"}
       >
         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

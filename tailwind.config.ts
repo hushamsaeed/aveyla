@@ -9,18 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "deep-ocean": "#0A1628",
-        "ocean-blue": "#0D4F6E",
-        "reef-teal": "#0E7490",
-        "sand-gold": "#C8A96E",
-        "lagoon-light": "#E8F4F8",
-        "coral-white": "#FDFAF6",
+        "dark-driftwood": "#2A2018",
+        "muted-ocean": "#3D6B72",
+        terracotta: "#C4724A",
+        "coral-clay": "#E8A87C",
+        "salt-white": "#FFFDF9",
+        linen: "#FAF6F0",
         "pure-white": "#FFFFFF",
-        slate: "#4A5568",
+        driftwood: "#8B7355",
+        "warm-sand": "#D4B896",
       },
       fontFamily: {
-        display: ["var(--font-cormorant)", "Cormorant Garamond", "serif"],
-        body: ["var(--font-inter)", "Inter", "sans-serif"],
+        display: ["var(--font-young-serif)", "YoungSerif", "serif"],
+        editorial: ["var(--font-lora)", "Lora", "serif"],
+        body: ["var(--font-instrument-sans)", "Instrument Sans", "sans-serif"],
       },
       fontSize: {
         "display-xl": ["clamp(3.25rem, 5vw + 1rem, 7.5rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],

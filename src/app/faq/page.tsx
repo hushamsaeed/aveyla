@@ -18,7 +18,7 @@ export default function FAQPage() {
 
   return (
     <>
-      <section className="bg-deep-ocean px-6 pb-16 pt-32 tablet:px-14">
+      <section className="bg-dark-driftwood px-6 pb-16 pt-32 tablet:px-14">
         <div className="mx-auto max-w-content">
           <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">
             Frequently Asked Questions
@@ -29,7 +29,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="bg-coral-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
+      <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto max-w-[800px]">
           {FAQ_ITEMS.map((item, i) => (
             <div key={i} className="border-b border-gray-200">
@@ -38,9 +38,9 @@ export default function FAQPage() {
                 className="flex w-full items-center justify-between py-6 text-left"
                 aria-expanded={openIndex === i}
               >
-                <span className="font-body text-body-lg font-medium text-deep-ocean">{item.q}</span>
+                <span className="font-body text-body-lg font-medium text-dark-driftwood">{item.q}</span>
                 <svg
-                  className={`h-5 w-5 shrink-0 text-slate transition-transform ${openIndex === i ? "rotate-180" : ""}`}
+                  className={`h-5 w-5 shrink-0 text-driftwood transition-transform ${openIndex === i ? "rotate-180" : ""}`}
                   fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -48,7 +48,7 @@ export default function FAQPage() {
               </button>
               {openIndex === i && (
                 <div className="pb-6">
-                  <p className="font-body text-body-md leading-[1.7] text-slate">{item.a}</p>
+                  <p className="font-body text-body-md leading-[1.7] text-driftwood">{item.a}</p>
                 </div>
               )}
             </div>

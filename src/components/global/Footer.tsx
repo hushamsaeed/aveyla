@@ -24,7 +24,7 @@ function FooterColumn({
 }) {
   return (
     <div className="flex flex-col gap-3">
-      <span className="font-body text-[13px] font-semibold text-sand-gold">
+      <span className="font-body text-[13px] font-semibold text-coral-clay">
         {title}
       </span>
       {children}
@@ -45,14 +45,14 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-deep-ocean" role="contentinfo">
+    <footer className="w-full bg-dark-driftwood" role="contentinfo">
       <div className="mx-auto max-w-[1440px] px-4 tablet:px-16 pt-16 pb-8">
         {/* Top section */}
         <div className="flex flex-col tablet:flex-row justify-between gap-10 tablet:gap-8">
           {/* Logo column */}
           <div className="flex flex-col gap-4">
             <Image
-              src="/images/logo/aveyla-logo-gold.webp"
+              src="/images/logo/aveyla-footer.png"
               alt="Aveyla Manta Village"
               width={152}
               height={82}

@@ -24,7 +24,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <section className="bg-deep-ocean px-6 pb-8 pt-32 tablet:px-14">
+      <section className="bg-dark-driftwood px-6 pb-8 pt-32 tablet:px-14">
         <div className="mx-auto max-w-content">
           <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">Gallery</h1>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -34,7 +34,7 @@ export default function GalleryPage() {
                 onClick={() => setFilter(cat)}
                 className={`px-5 py-2 font-body text-[13px] transition-colors ${
                   filter === cat
-                    ? "bg-sand-gold font-semibold text-deep-ocean"
+                    ? "bg-coral-clay font-semibold text-dark-driftwood"
                     : "border border-white/40 text-white/60 hover:border-white hover:text-white"
                 }`}
               >
@@ -45,7 +45,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="bg-coral-white px-6 py-8 tablet:px-14">
+      <section className="bg-linen px-6 py-8 tablet:px-14">
         <div className="mx-auto max-w-content columns-1 gap-2 tablet:columns-2 desktop:columns-3">
           {filtered.map((img, i) => (
             <button
@@ -67,7 +67,7 @@ export default function GalleryPage() {
       {/* Lightbox */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-deep-ocean/95"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-dark-driftwood/95"
           onClick={() => setLightbox(null)}
           onKeyDown={(e) => {
             if (e.key === "Escape") setLightbox(null);

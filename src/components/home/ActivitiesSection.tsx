@@ -15,7 +15,7 @@ export default function ActivitiesSection() {
   return (
     <section
       id="activities"
-      className="bg-gradient-to-b from-ocean-blue to-deep-ocean px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop"
+      className="bg-gradient-to-b from-muted-ocean to-dark-driftwood px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop"
     >
       <div className="mx-auto max-w-content">
         <div className="mb-12">
@@ -40,7 +40,7 @@ export default function ActivitiesSection() {
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-scroll-animation group-hover:scale-105"
                   style={{ backgroundImage: `url(${act.image})` }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-ocean/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-driftwood/70 to-transparent" />
                 <div className="relative z-10">
                   <h3 className="font-display text-heading-lg font-semibold text-pure-white">
                     {act.name}

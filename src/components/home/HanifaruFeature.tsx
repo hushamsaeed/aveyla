@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HanifaruFeature() {
   return (
-    <section className="bg-deep-ocean">
+    <section className="bg-dark-driftwood">
       <div className="flex flex-col tablet:flex-row">
         {/* Image */}
         <div className="relative h-[400px] w-full tablet:h-auto tablet:w-1/2">
@@ -14,12 +14,12 @@ export default function HanifaruFeature() {
 
         {/* Content */}
         <div className="flex w-full flex-col justify-center gap-8 px-6 py-16 tablet:w-1/2 tablet:px-14 tablet:py-20">
-          <blockquote className="font-display text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.3] text-sand-gold">
+          <blockquote className="font-display text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.3] text-coral-clay">
             Hanifaru Bay. The single greatest congregation of manta rays on
             earth.
           </blockquote>
 
-          <div className="h-[2px] w-[60px] bg-sand-gold" />
+          <div className="h-[2px] w-[60px] bg-coral-clay" />
 
           <p className="max-w-[560px] font-body text-body-lg leading-[1.7] text-white/80">
             Every year between June and November, the currents of the Baa Atoll
@@ -33,7 +33,7 @@ export default function HanifaruFeature() {
 
           <Link
             href="/hanifaru-bay"
-            className="group flex items-center gap-2 font-body text-[14px] font-medium text-sand-gold"
+            className="group flex items-center gap-2 font-body text-[14px] font-medium text-coral-clay"
           >
             Discover Hanifaru Bay
             <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>

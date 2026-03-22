@@ -113,34 +113,34 @@ export default function PackageDetailPage() {
       {/* Hero */}
       <section className="relative h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${pkg.image})` }} />
-        <div className="absolute inset-0 bg-deep-ocean/70" />
+        <div className="absolute inset-0 bg-dark-driftwood/70" />
         <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-12 tablet:px-14">
           <div className="flex items-center gap-4">
             <h1 className="font-display text-display-lg font-semibold text-pure-white">{pkg.name}</h1>
             {pkg.season && (
-              <span className="rounded-sm bg-reef-teal/20 px-3 py-1 font-body text-body-sm font-medium text-reef-teal">
+              <span className="rounded-sm bg-terracotta/20 px-3 py-1 font-body text-body-sm font-medium text-terracotta">
                 {pkg.season}
               </span>
             )}
           </div>
-          <p className="mt-2 font-body text-body-lg text-sand-gold">{pkg.tagline}</p>
+          <p className="mt-2 font-body text-body-lg text-coral-clay">{pkg.tagline}</p>
         </div>
       </section>
 
-      <section className="bg-coral-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
+      <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto max-w-content space-y-12">
           {/* Description */}
-          <p className="max-w-editorial font-body text-body-lg leading-[1.7] text-slate">
+          <p className="max-w-editorial font-body text-body-lg leading-[1.7] text-driftwood">
             {pkg.description}
           </p>
 
           {/* Inclusions */}
           <div>
-            <h2 className="font-display text-heading-lg font-semibold text-deep-ocean">What&apos;s Included</h2>
+            <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">What&apos;s Included</h2>
             <ul className="mt-6 space-y-3">
               {pkg.inclusions.map((item) => (
-                <li key={item} className="flex items-center gap-3 font-body text-body-md text-slate">
-                  <svg className="h-5 w-5 shrink-0 text-reef-teal" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                <li key={item} className="flex items-center gap-3 font-body text-body-md text-driftwood">
+                  <svg className="h-5 w-5 shrink-0 text-terracotta" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                   {item}
@@ -151,8 +151,8 @@ export default function PackageDetailPage() {
 
           {/* Pricing Table */}
           <div>
-            <h2 className="font-display text-heading-lg font-semibold text-deep-ocean">Pricing</h2>
-            <p className="mt-2 font-body text-body-sm text-slate">Per person, in USD. All taxes and transfers included.</p>
+            <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">Pricing</h2>
+            <p className="mt-2 font-body text-body-sm text-driftwood">Per person, in USD. All taxes and transfers included.</p>
 
             {/* Duration tabs */}
             <div className="mt-6 flex flex-wrap gap-2">
@@ -162,8 +162,8 @@ export default function PackageDetailPage() {
                   onClick={() => setSelectedDuration(i)}
                   className={`px-4 py-2 font-body text-body-sm font-medium transition-colors ${
                     i === selectedDuration
-                      ? "bg-deep-ocean text-pure-white"
-                      : "bg-lagoon-light text-deep-ocean hover:bg-ocean-blue/10"
+                      ? "bg-dark-driftwood text-pure-white"
+                      : "bg-salt-white text-dark-driftwood hover:bg-muted-ocean/10"
                   }`}
                 >
                   {t.label}
@@ -176,13 +176,13 @@ export default function PackageDetailPage() {
             {/* Activity summary */}
             <div className="mt-4 flex flex-wrap gap-4">
               {tier.dives && (
-                <span className="flex items-center gap-2 font-body text-body-sm text-ocean-blue">
+                <span className="flex items-center gap-2 font-body text-body-sm text-muted-ocean">
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                   {tier.dives} dives
                 </span>
               )}
               {tier.snorkelTrips && (
-                <span className="flex items-center gap-2 font-body text-body-sm text-ocean-blue">
+                <span className="flex items-center gap-2 font-body text-body-sm text-muted-ocean">
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   {tier.snorkelTrips} manta snorkel trips
                 </span>
@@ -194,26 +194,26 @@ export default function PackageDetailPage() {
               <table className="w-full min-w-[500px]">
                 <thead>
                   <tr className="border-b border-gray-200">
-                    <th className="py-3 text-left font-body text-body-sm font-semibold text-deep-ocean">Room Type</th>
-                    <th className="py-3 text-right font-body text-body-sm font-semibold text-deep-ocean">Twin Share (pp)</th>
-                    <th className="py-3 text-right font-body text-body-sm font-semibold text-deep-ocean">Single (pp)</th>
+                    <th className="py-3 text-left font-body text-body-sm font-semibold text-dark-driftwood">Room Type</th>
+                    <th className="py-3 text-right font-body text-body-sm font-semibold text-dark-driftwood">Twin Share (pp)</th>
+                    <th className="py-3 text-right font-body text-body-sm font-semibold text-dark-driftwood">Single (pp)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-100">
-                    <td className="py-4 font-body text-body-md text-slate">Village Deluxe</td>
-                    <td className="py-4 text-right font-body text-body-md font-medium text-deep-ocean">{formatPrice(tier.rooms.village.twin)}</td>
-                    <td className="py-4 text-right font-body text-body-md text-slate">{formatPrice(tier.rooms.village.single)}</td>
+                    <td className="py-4 font-body text-body-md text-driftwood">Village Deluxe</td>
+                    <td className="py-4 text-right font-body text-body-md font-medium text-dark-driftwood">{formatPrice(tier.rooms.village.twin)}</td>
+                    <td className="py-4 text-right font-body text-body-md text-driftwood">{formatPrice(tier.rooms.village.single)}</td>
                   </tr>
                   <tr className="border-b border-gray-100">
-                    <td className="py-4 font-body text-body-md text-slate">Beach Deluxe</td>
-                    <td className="py-4 text-right font-body text-body-md font-medium text-deep-ocean">{formatPrice(tier.rooms.beach.twin)}</td>
-                    <td className="py-4 text-right font-body text-body-md text-slate">{formatPrice(tier.rooms.beach.single)}</td>
+                    <td className="py-4 font-body text-body-md text-driftwood">Beach Deluxe</td>
+                    <td className="py-4 text-right font-body text-body-md font-medium text-dark-driftwood">{formatPrice(tier.rooms.beach.twin)}</td>
+                    <td className="py-4 text-right font-body text-body-md text-driftwood">{formatPrice(tier.rooms.beach.single)}</td>
                   </tr>
                   <tr>
-                    <td className="py-4 font-body text-body-md text-slate">Ocean Deluxe</td>
-                    <td className="py-4 text-right font-body text-body-md font-medium text-deep-ocean">{formatPrice(tier.rooms.beach.twin)}</td>
-                    <td className="py-4 text-right font-body text-body-md text-slate">{formatPrice(tier.rooms.beach.single)}</td>
+                    <td className="py-4 font-body text-body-md text-driftwood">Ocean Deluxe</td>
+                    <td className="py-4 text-right font-body text-body-md font-medium text-dark-driftwood">{formatPrice(tier.rooms.beach.twin)}</td>
+                    <td className="py-4 text-right font-body text-body-md text-driftwood">{formatPrice(tier.rooms.beach.single)}</td>
                   </tr>
                 </tbody>
               </table>
@@ -224,7 +224,7 @@ export default function PackageDetailPage() {
           <div className="flex flex-wrap gap-4">
             <Link
               href={`/contact?package=${slug}`}
-              className="bg-sand-gold px-8 py-4 font-body text-[14px] font-semibold text-deep-ocean transition-transform duration-cta hover:scale-[1.02]"
+              className="bg-coral-clay px-8 py-4 font-body text-[14px] font-semibold text-dark-driftwood transition-transform duration-cta hover:scale-[1.02]"
             >
               Enquire About This Package
             </Link>
@@ -232,7 +232,7 @@ export default function PackageDetailPage() {
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9607773998"}?text=${encodeURIComponent(`Hi, I'm interested in the ${pkg.name} package.`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-deep-ocean px-8 py-4 font-body text-[14px] font-medium text-deep-ocean"
+              className="border border-dark-driftwood px-8 py-4 font-body text-[14px] font-medium text-dark-driftwood"
             >
               Enquire via WhatsApp
             </Link>

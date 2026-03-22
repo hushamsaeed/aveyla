@@ -42,13 +42,13 @@ export default function PackagesSection() {
               <h3 className="font-display text-display-md font-semibold text-pure-white">
                 {pkg.name}
               </h3>
-              <p className="font-body text-[14px] text-sand-gold">{pkg.tagline}</p>
+              <p className="font-body text-[14px] text-coral-clay">{pkg.tagline}</p>
               <p className="max-w-[480px] font-body text-[14px] leading-[1.7] text-white/60">
                 {pkg.inclusions}
               </p>
               <Link
                 href={`/packages/${pkg.slug}`}
-                className="mt-2 w-fit bg-sand-gold px-7 py-3.5 font-body text-[13px] font-semibold text-deep-ocean transition-transform duration-cta hover:scale-[1.02]"
+                className="mt-2 w-fit bg-coral-clay px-7 py-3.5 font-body text-[13px] font-semibold text-dark-driftwood transition-transform duration-cta hover:scale-[1.02]"
               >
                 Explore Package
               </Link>

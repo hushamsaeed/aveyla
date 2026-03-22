@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 :root {
-  /* Colour palette */
-  --color-deep-ocean: #0A1628;
-  --color-ocean-blue: #0D4F6E;
-  --color-reef-teal: #0E7490;
-  --color-sand-gold: #C8A96E;
-  --color-lagoon-light: #E8F4F8;
-  --color-coral-white: #FDFAF6;
+  /* Colour palette — Beach House Rebrand */
+  --color-dark-driftwood: #2A2018;
+  --color-muted-ocean: #3D6B72;
+  --color-terracotta: #C4724A;
+  --color-coral-clay: #E8A87C;
+  --color-salt-white: #FFFDF9;
+  --color-linen: #FAF6F0;
   --color-pure-white: #FFFFFF;
-  --color-slate: #4A5568;
+  --color-driftwood: #8B7355;
+  --color-warm-sand: #D4B896;
 
   /* Spacing (8px base) */
   --space-1: 8px;
@@ -41,14 +42,14 @@
   --fade-translate: 24px;
 
   /* Typography */
-  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   /* Backgrounds */
-  background-color: var(--color-coral-white);
-  color: var(--color-deep-ocean);
+  background-color: var(--color-linen);
+  color: var(--color-dark-driftwood);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -63,15 +64,15 @@
 
 /* Base typography */
 body {
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
   font-weight: var(--font-weight-regular);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Focus indicators — Sand Gold on dark, Ocean Blue on light */
+/* Focus indicators — Terracotta */
 :focus-visible {
-  outline: 2px solid var(--color-sand-gold);
+  outline: 2px solid var(--color-terracotta);
   outline-offset: 2px;
 }
 
@@ -82,9 +83,9 @@ body {
   left: 0;
   z-index: 1000;
   padding: var(--space-2) var(--space-3);
-  background: var(--color-deep-ocean);
+  background: var(--color-dark-driftwood);
   color: var(--color-pure-white);
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
   font-size: 0.875rem;
   text-decoration: none;
 }

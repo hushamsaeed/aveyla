@@ -24,13 +24,13 @@ const ROOMS = [
 
 export default function RoomsSection() {
   return (
-    <section className="bg-lagoon-light px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
+    <section className="bg-salt-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
       <div className="mx-auto max-w-content">
         <div className="mb-12">
-          <h2 className="font-display text-display-md font-semibold tracking-[-0.01em] text-deep-ocean">
+          <h2 className="font-display text-display-md font-semibold tracking-[-0.01em] text-dark-driftwood">
             Your Base Camp.
           </h2>
-          <p className="mt-3 font-body text-body-lg text-slate">
+          <p className="mt-3 font-body text-body-lg text-driftwood">
             Three room types, all steps from the reef.
           </p>
         </div>
@@ -43,10 +43,10 @@ export default function RoomsSection() {
                 style={{ backgroundImage: `url(${room.image})` }}
               />
               <div className="flex flex-1 flex-col gap-3 p-6">
-                <h3 className="font-display text-heading-lg font-semibold text-deep-ocean">
+                <h3 className="font-display text-heading-lg font-semibold text-dark-driftwood">
                   {room.name}
                 </h3>
-                <p className="font-body text-body-sm text-slate">{room.amenities}</p>
+                <p className="font-body text-body-sm text-driftwood">{room.amenities}</p>
                 {room.notice && (
                   <div className="flex items-center gap-2 bg-amber-50 px-3 py-2">
                     <span className="text-amber-800" aria-hidden="true">⚠</span>
@@ -55,7 +55,7 @@ export default function RoomsSection() {
                 )}
                 <Link
                   href={`/rooms/${room.slug}`}
-                  className="mt-auto flex items-center justify-center bg-deep-ocean px-6 py-3 font-body text-[13px] font-semibold text-pure-white transition-colors hover:bg-ocean-blue"
+                  className="mt-auto flex items-center justify-center bg-dark-driftwood px-6 py-3 font-body text-[13px] font-semibold text-pure-white transition-colors hover:bg-muted-ocean"
                 >
                   Book Now
                 </Link>

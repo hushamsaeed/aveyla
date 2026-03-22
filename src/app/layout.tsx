@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Young_Serif, Lora, Instrument_Sans } from "next/font/google";
 import NavBar from "@/components/global/NavBar";
 import Footer from "@/components/global/Footer";
 import WhatsAppButton from "@/components/global/WhatsAppButton";
@@ -7,24 +7,32 @@ import CookieConsent from "@/components/global/CookieConsent";
 import GoogleAnalytics from "@/lib/analytics/GoogleAnalytics";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const youngSerif = Young_Serif({
   subsets: ["latin"],
-  weight: ["300", "600"],
+  weight: ["400"],
   display: "swap",
-  variable: "--font-cormorant",
+  variable: "--font-young-serif",
 });
 
-const inter = Inter({
+const lora = Lora({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-lora",
+});
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-instrument-sans",
 });
 
 export const metadata: Metadata = {
   title: "Aveyla Manta Village | Maldives",
   description:
-    "Affordable luxury resort on Dharavandhoo Island, Baa Atoll UNESCO Biosphere Reserve. PADI dive centre, manta ray encounters at Hanifaru Bay.",
+    "Beach house hotel on Dharavandhoo Island, Baa Atoll UNESCO Biosphere Reserve. Your home on the reef — manta ray encounters at Hanifaru Bay.",
   metadataBase: new URL("https://www.aveyla.com"),
   icons: {
     icon: [
@@ -56,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${youngSerif.variable} ${lora.variable} ${instrumentSans.variable}`}>
       <body className="font-body antialiased">
         <GoogleAnalytics />
         <a href="#main-content" className="skip-nav">

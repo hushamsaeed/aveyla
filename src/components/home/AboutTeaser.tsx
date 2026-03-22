@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutTeaser() {
   return (
-    <section className="bg-coral-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
+    <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
       <div className="mx-auto flex max-w-content flex-col items-center gap-14 tablet:flex-row">
         {/* Image */}
         <div
@@ -14,10 +14,10 @@ export default function AboutTeaser() {
 
         {/* Content */}
         <div className="space-y-6">
-          <h2 className="font-display text-[clamp(1.5rem,2vw,2.25rem)] font-semibold leading-[1.2] text-deep-ocean">
+          <h2 className="font-display text-[clamp(1.5rem,2vw,2.25rem)] font-semibold leading-[1.2] text-dark-driftwood">
             Built on the Reef. Powered by the Sun.
           </h2>
-          <p className="max-w-[560px] font-body text-body-lg leading-[1.7] text-slate">
+          <p className="max-w-[560px] font-body text-body-lg leading-[1.7] text-driftwood">
             Aveyla Manta Village was established in 2014 on Dharavandhoo Island.
             Sixteen rooms. One hundred percent solar electricity. Licensed by
             the Maldives Ministry of Tourism, operated with the conviction that
@@ -26,7 +26,7 @@ export default function AboutTeaser() {
           </p>
           <Link
             href="/about"
-            className="group inline-flex items-center gap-2 font-body text-[14px] font-medium text-ocean-blue"
+            className="group inline-flex items-center gap-2 font-body text-[14px] font-medium text-muted-ocean"
           >
             Read Our Story
             <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>

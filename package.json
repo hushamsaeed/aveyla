@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.45.0",
+    "@sanity/client": "^7.20.0",
     "@testing-library/jest-dom": "^6.4.0",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.0",

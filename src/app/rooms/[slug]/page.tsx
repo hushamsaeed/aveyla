@@ -37,24 +37,24 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
       {/* Hero */}
       <section className="relative h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${room.image})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-deep-ocean/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark-driftwood/80" />
         <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-12 tablet:px-14">
           <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">{room.name}</h1>
         </div>
       </section>
 
       {/* Content */}
-      <section className="bg-coral-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
+      <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto max-w-content space-y-10">
-          <p className="max-w-editorial font-body text-body-lg leading-[1.7] text-slate">{room.desc}</p>
+          <p className="max-w-editorial font-body text-body-lg leading-[1.7] text-driftwood">{room.desc}</p>
 
           <div>
-            <h2 className="font-display text-heading-lg font-semibold text-deep-ocean">Amenities</h2>
+            <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">Amenities</h2>
             <div className="mt-4 grid grid-cols-2 gap-4 tablet:grid-cols-4">
               {room.amenities.map((a) => (
                 <div key={a} className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-reef-teal" />
-                  <span className="font-body text-body-md text-slate">{a}</span>
+                  <div className="h-2 w-2 rounded-full bg-terracotta" />
+                  <span className="font-body text-body-md text-driftwood">{a}</span>
                 </div>
               ))}
             </div>
@@ -69,7 +69,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
 
           <Link
             href={process.env.NEXT_PUBLIC_IPMS247_URL || "/contact"}
-            className="block w-full bg-sand-gold py-4 text-center font-body text-[14px] font-semibold text-deep-ocean transition-colors hover:bg-sand-gold/90"
+            className="block w-full bg-coral-clay py-4 text-center font-body text-[14px] font-semibold text-dark-driftwood transition-colors hover:bg-coral-clay/90"
           >
             Book This Room
           </Link>

@@ -34,14 +34,14 @@ export default function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-deep-ocean px-6 py-4 tablet:px-14"
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-dark-driftwood px-6 py-4 tablet:px-14"
       role="dialog"
       aria-label="Cookie consent"
     >
       <div className="mx-auto flex max-w-content flex-col items-start gap-4 tablet:flex-row tablet:items-center tablet:justify-between">
         <p className="font-body text-body-sm text-white/80">
           We use cookies for analytics to improve your experience. No personal data is shared with third parties.{" "}
-          <a href="/privacy-policy" className="text-sand-gold underline">
+          <a href="/privacy-policy" className="text-coral-clay underline">
             Privacy Policy
           </a>
         </p>
@@ -54,7 +54,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={accept}
-            className="bg-sand-gold px-5 py-2 font-body text-body-sm font-semibold text-deep-ocean transition-colors hover:bg-sand-gold/90"
+            className="bg-coral-clay px-5 py-2 font-body text-body-sm font-semibold text-dark-driftwood transition-colors hover:bg-coral-clay/90"
           >
             Accept
           </button>

@@ -49,7 +49,7 @@ export default function NavBar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 flex h-20 items-center justify-between px-4 tablet:px-16 transition-colors duration-nav ${
           scrolled
-            ? "bg-deep-ocean"
+            ? "bg-dark-driftwood"
             : "bg-transparent"
         }`}
         role="navigation"
@@ -61,7 +61,7 @@ export default function NavBar() {
           aria-label="Aveyla Manta Village — Home"
         >
           <Image
-            src="/images/logo/aveyla-logo-white-teal-dot.webp"
+            src="/images/logo/aveyla-nav.png"
             alt="Aveyla Manta Village"
             width={152}
             height={82}
@@ -76,7 +76,7 @@ export default function NavBar() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-body text-[14px] font-medium text-pure-white hover:text-sand-gold transition-colors duration-nav"
+              className="font-body text-[14px] font-medium text-pure-white hover:text-coral-clay transition-colors duration-nav"
               role="menuitem"
             >
               {link.label}
@@ -87,7 +87,7 @@ export default function NavBar() {
         {/* Book Now CTA — desktop */}
         <Link
           href="/contact"
-          className="hidden tablet:inline-flex items-center rounded-sm bg-sand-gold px-6 py-3 font-body text-[13px] font-semibold text-deep-ocean hover:bg-sand-gold/90 transition-colors duration-cta"
+          className="hidden tablet:inline-flex items-center rounded-sm bg-coral-clay px-6 py-3 font-body text-[13px] font-semibold text-dark-driftwood hover:bg-coral-clay/90 transition-colors duration-cta"
         >
           Book Now
         </Link>
@@ -132,7 +132,7 @@ export default function NavBar() {
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-deep-ocean"
+          className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-dark-driftwood"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
@@ -142,7 +142,7 @@ export default function NavBar() {
               key={link.href}
               href={link.href}
               onClick={closeMobile}
-              className="font-display text-display-md font-light text-pure-white hover:text-sand-gold transition-colors"
+              className="font-display text-display-md font-light text-pure-white hover:text-coral-clay transition-colors"
             >
               {link.label}
             </Link>
@@ -150,7 +150,7 @@ export default function NavBar() {
           <Link
             href="/contact"
             onClick={closeMobile}
-            className="mt-4 rounded-sm bg-sand-gold px-8 py-4 font-body text-[14px] font-semibold text-deep-ocean hover:bg-sand-gold/90 transition-colors"
+            className="mt-4 rounded-sm bg-coral-clay px-8 py-4 font-body text-[14px] font-semibold text-dark-driftwood hover:bg-coral-clay/90 transition-colors"
           >
             Book Now
           </Link>

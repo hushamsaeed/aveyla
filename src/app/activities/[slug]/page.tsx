@@ -85,23 +85,23 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
     <>
       <section className="relative h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${activity.image})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-deep-ocean/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark-driftwood/80" />
         <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-12 tablet:px-14">
           <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">{activity.name}</h1>
         </div>
       </section>
 
-      <section className="bg-coral-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
+      <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto max-w-content space-y-12">
-          <p className="max-w-editorial font-body text-body-lg leading-[1.7] text-slate">{activity.desc}</p>
+          <p className="max-w-editorial font-body text-body-lg leading-[1.7] text-driftwood">{activity.desc}</p>
 
           {activity.safety && (
-            <div className="bg-lagoon-light p-8">
-              <h2 className="font-display text-heading-lg font-semibold text-deep-ocean">Requirements & Safety</h2>
+            <div className="bg-salt-white p-8">
+              <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">Requirements & Safety</h2>
               <ul className="mt-4 space-y-2">
                 {activity.safety.map((item) => (
-                  <li key={item} className="flex items-start gap-2 font-body text-body-md text-slate">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-reef-teal" />
+                  <li key={item} className="flex items-start gap-2 font-body text-body-md text-driftwood">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
                     {item}
                   </li>
                 ))}
@@ -110,24 +110,24 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
           )}
 
           <div className="flex flex-wrap gap-4">
-            <Link href={process.env.NEXT_PUBLIC_IPMS247_URL || "/contact"} className="bg-sand-gold px-8 py-4 font-body text-[14px] font-semibold text-deep-ocean">
+            <Link href={process.env.NEXT_PUBLIC_IPMS247_URL || "/contact"} className="bg-coral-clay px-8 py-4 font-body text-[14px] font-semibold text-dark-driftwood">
               Book This Activity
             </Link>
-            <Link href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9607773998"}`} target="_blank" rel="noopener noreferrer" className="border border-deep-ocean px-8 py-4 font-body text-[14px] font-medium text-deep-ocean">
+            <Link href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9607773998"}`} target="_blank" rel="noopener noreferrer" className="border border-dark-driftwood px-8 py-4 font-body text-[14px] font-medium text-dark-driftwood">
               Ask a Question
             </Link>
           </div>
 
           {/* Related */}
           <div>
-            <h2 className="font-display text-heading-lg font-semibold text-deep-ocean">You might also like</h2>
+            <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">You might also like</h2>
             <div className="mt-6 grid gap-6 tablet:grid-cols-3">
               {activity.related.map((relSlug) => (
                 <Link key={relSlug} href={`/activities/${relSlug}`} className="group flex flex-col overflow-hidden bg-white">
                   <div className="h-[200px] bg-cover bg-center transition-transform duration-scroll-animation group-hover:scale-105" style={{ backgroundImage: `url(/images/activities/${relSlug.replace("big-game-", "").replace("local-island-", "local-")}.jpg)` }} />
                   <div className="p-4">
-                    <h3 className="font-display text-heading-md font-semibold text-deep-ocean">{ACTIVITY_NAMES[relSlug]}</h3>
-                    <span className="font-body text-body-sm text-ocean-blue">Learn More →</span>
+                    <h3 className="font-display text-heading-md font-semibold text-dark-driftwood">{ACTIVITY_NAMES[relSlug]}</h3>
+                    <span className="font-body text-body-sm text-muted-ocean">Learn More →</span>
                   </div>
                 </Link>
               ))}
