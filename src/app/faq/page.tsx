@@ -1,6 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createClient } from "next-sanity";
+
+const sanityClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "c1itog7c",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2024-01-01",
+  useCdn: true,
+});
 
 interface FaqItem {
   _id: string;
@@ -25,10 +33,10 @@ export default function FAQPage() {
   const [faqItems, setFaqItems] = useState<FaqItem[]>(FALLBACK_FAQ);
 
   useEffect(() => {
-    fetch(`https://c1itog7c.api.sanity.io/v2024-01-01/data/query/production?query=${encodeURIComponent('*[_type == "faqItem" && active == true] | order(sortOrder asc) { _id, question, answer, category }')}`)
-      .then((r) => r.json())
+    sanityClient
+      .fetch<FaqItem[]>(`*[_type == "faqItem" && active == true] | order(sortOrder asc) { _id, question, answer, category }`)
       .then((data) => {
-        if (data.result?.length) setFaqItems(data.result);
+        if (data?.length) setFaqItems(data);
       })
       .catch(() => { /* use fallback */ });
   }, []);

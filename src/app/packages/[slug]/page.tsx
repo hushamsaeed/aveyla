@@ -4,6 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
+import { createClient } from "next-sanity";
+
+const sanityClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "c1itog7c",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2024-01-01",
+  useCdn: true,
+});
 
 interface SanityPricingTier {
   nights: number;
@@ -89,11 +97,14 @@ export default function PackageDetailPage() {
 
   useEffect(() => {
     if (!slug) return;
-    fetch(`https://c1itog7c.api.sanity.io/v2024-01-01/data/query/production?query=${encodeURIComponent(`*[_type == "package" && slug.current == "${slug}"][0] { name, "slug": slug.current, tagline, description, season, inclusions, pricingTiers }`)}`)
-      .then((r) => r.json())
+    sanityClient
+      .fetch<SanityPackage>(
+        `*[_type == "package" && slug.current == $slug][0] { name, "slug": slug.current, tagline, description, season, inclusions, pricingTiers }`,
+        { slug }
+      )
       .then((data) => {
-        if (data.result?.pricingTiers?.length) {
-          setPkg(data.result);
+        if (data?.pricingTiers?.length) {
+          setPkg(data);
           setSelectedDuration(0);
         }
       })

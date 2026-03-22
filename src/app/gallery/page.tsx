@@ -1,10 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createClient } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
 
-const CATEGORIES = ["All", "Underwater", "Rooms", "Beach", "Dining", "Activities"] as const;
+const sanityClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "c1itog7c",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2024-01-01",
+  useCdn: true,
+});
 
-const IMAGES = [
+const builder = imageUrlBuilder(sanityClient);
+
+interface GalleryImage {
+  _id?: string;
+  src?: string;
+  image?: unknown;
+  alt: string;
+  category: string;
+  caption?: string;
+}
+
+const FALLBACK_IMAGES: GalleryImage[] = [
   { src: "/images/gallery/manta-1.jpg", alt: "Manta ray in Hanifaru Bay", category: "Underwater" },
   { src: "/images/gallery/reef-1.jpg", alt: "Coral reef Baa Atoll", category: "Underwater" },
   { src: "/images/gallery/room-1.jpg", alt: "Ocean Deluxe room interior", category: "Rooms" },
@@ -16,11 +34,40 @@ const IMAGES = [
   { src: "/images/gallery/room-2.jpg", alt: "Beach Deluxe terrace", category: "Rooms" },
 ];
 
+function getImageUrl(img: GalleryImage) {
+  if (img.image) {
+    return builder.image(img.image as Parameters<typeof builder.image>[0]).width(800).height(600).format("webp").url();
+  }
+  return img.src || "/images/gallery/manta-1.jpg";
+}
+
+function getFullImageUrl(img: GalleryImage) {
+  if (img.image) {
+    return builder.image(img.image as Parameters<typeof builder.image>[0]).width(1600).height(1200).format("webp").url();
+  }
+  return img.src || "/images/gallery/manta-1.jpg";
+}
+
 export default function GalleryPage() {
   const [filter, setFilter] = useState<string>("All");
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [images, setImages] = useState<GalleryImage[]>(FALLBACK_IMAGES);
+  const [categories, setCategories] = useState<string[]>(["All", "Underwater", "Rooms", "Beach", "Dining", "Activities"]);
 
-  const filtered = filter === "All" ? IMAGES : IMAGES.filter((img) => img.category === filter);
+  useEffect(() => {
+    sanityClient
+      .fetch<GalleryImage[]>(`*[_type == "galleryImage"] | order(_createdAt desc) { _id, image, alt, category, caption }`)
+      .then((data) => {
+        if (data?.length) {
+          setImages(data);
+          const cats = ["All", ...Array.from(new Set(data.map((img) => img.category).filter(Boolean)))];
+          setCategories(cats);
+        }
+      })
+      .catch(() => { /* use fallback */ });
+  }, []);
+
+  const filtered = filter === "All" ? images : images.filter((img) => img.category === filter);
 
   return (
     <>
@@ -28,7 +75,7 @@ export default function GalleryPage() {
         <div className="mx-auto max-w-content">
           <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">Gallery</h1>
           <div className="mt-6 flex flex-wrap gap-3">
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
@@ -49,13 +96,13 @@ export default function GalleryPage() {
         <div className="mx-auto max-w-content columns-1 gap-2 tablet:columns-2 desktop:columns-3">
           {filtered.map((img, i) => (
             <button
-              key={img.src}
+              key={img._id || img.src || i}
               onClick={() => setLightbox(i)}
               className="mb-2 block w-full overflow-hidden"
             >
               <div
                 className="h-[250px] w-full bg-cover bg-center transition-transform duration-scroll-animation hover:scale-105 tablet:h-[300px]"
-                style={{ backgroundImage: `url(${img.src})` }}
+                style={{ backgroundImage: `url(${getImageUrl(img)})` }}
                 role="img"
                 aria-label={img.alt}
               />
@@ -88,13 +135,13 @@ export default function GalleryPage() {
           </button>
           <div
             className="h-[80vh] w-[90vw] max-w-[1200px] bg-cover bg-center"
-            style={{ backgroundImage: `url(${filtered[lightbox].src})` }}
+            style={{ backgroundImage: `url(${getFullImageUrl(filtered[lightbox])})` }}
             role="img"
             aria-label={filtered[lightbox].alt}
             onClick={(e) => e.stopPropagation()}
           />
           <p className="absolute bottom-6 left-1/2 -translate-x-1/2 font-body text-body-sm text-white/60">
-            {filtered[lightbox].alt}
+            {filtered[lightbox].caption || filtered[lightbox].alt}
           </p>
         </div>
       )}

@@ -3,8 +3,16 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { createClient } from "next-sanity";
 
-const PACKAGE_OPTIONS = [
+const sanityClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "c1itog7c",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2024-01-01",
+  useCdn: true,
+});
+
+const FALLBACK_PACKAGE_OPTIONS = [
   { value: "", label: "General Enquiry" },
   { value: "dive-dive-dive", label: "Dive Dive Dive" },
   { value: "dive-hanifaru", label: "Dive Hanifaru" },
@@ -15,13 +23,31 @@ function ContactForm() {
   const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState("");
+  const [packageOptions, setPackageOptions] = useState(FALLBACK_PACKAGE_OPTIONS);
+
+  useEffect(() => {
+    sanityClient
+      .fetch<{ name: string; slug: string }[]>(
+        `*[_type == "package" && active != false] | order(name asc) { name, "slug": slug.current }`
+      )
+      .then((data) => {
+        if (data?.length) {
+          const options = [
+            { value: "", label: "General Enquiry" },
+            ...data.map((pkg) => ({ value: pkg.slug, label: pkg.name })),
+          ];
+          setPackageOptions(options);
+        }
+      })
+      .catch(() => { /* use fallback */ });
+  }, []);
 
   useEffect(() => {
     const pkg = searchParams.get("package");
-    if (pkg && PACKAGE_OPTIONS.some((o) => o.value === pkg)) {
+    if (pkg && packageOptions.some((o) => o.value === pkg)) {
       setSelectedPackage(pkg);
     }
-  }, [searchParams]);
+  }, [searchParams, packageOptions]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,7 +88,7 @@ function ContactForm() {
           onChange={(e) => setSelectedPackage(e.target.value)}
           className="mt-1 w-full border border-gray-200 bg-white px-4 py-3 font-body text-body-md text-dark-driftwood outline-none focus:border-muted-ocean"
         >
-          {PACKAGE_OPTIONS.map((opt) => (
+          {packageOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>{opt.label}</option>
           ))}
         </select>

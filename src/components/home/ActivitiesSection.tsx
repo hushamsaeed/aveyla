@@ -1,17 +1,42 @@
 import Link from "next/link";
+import { client } from "@/sanity/client";
+import { allActivitiesQuery } from "@/sanity/queries";
+import { urlFor } from "@/sanity/image";
 
-const ACTIVITIES = [
-  { name: "Scuba Diving", slug: "scuba-diving", desc: "PADI-certified encounters at 30+ dive sites", image: "/images/activities/scuba.jpg" },
-  { name: "Snorkelling", slug: "snorkelling", desc: "Reef access directly from the shore", image: "/images/activities/snorkelling.jpg" },
-  { name: "Night Snorkelling", slug: "night-snorkelling", desc: "Bioluminescent plankton under the stars", image: "/images/activities/night-snorkelling.jpg" },
-  { name: "Freediving", slug: "freediving", desc: "Single-breath descents into the blue", image: "/images/activities/freediving.jpg" },
-  { name: "Sandbank Trips", slug: "sandbank-trips", desc: "Private sandbars rising from the lagoon", image: "/images/activities/sandbank.jpg" },
-  { name: "Big Game Fishing", slug: "big-game-fishing", desc: "Open-water pursuits beyond the atoll", image: "/images/activities/fishing.jpg" },
-  { name: "Local Island Visits", slug: "local-island-visits", desc: "Dharavandhoo culture beyond the resort", image: "/images/activities/local-island.jpg" },
-  { name: "Dining", slug: "/dining", desc: "Fresh catch, ocean views, no pretension", image: "/images/activities/dining.jpg" },
+const FALLBACK_ACTIVITIES = [
+  { name: "Scuba Diving", slug: "scuba-diving", shortDescription: "PADI-certified encounters at 30+ dive sites", heroImage: null },
+  { name: "Snorkelling", slug: "snorkelling", shortDescription: "Reef access directly from the shore", heroImage: null },
+  { name: "Night Snorkelling", slug: "night-snorkelling", shortDescription: "Bioluminescent plankton under the stars", heroImage: null },
+  { name: "Freediving", slug: "freediving", shortDescription: "Single-breath descents into the blue", heroImage: null },
+  { name: "Sandbank Trips", slug: "sandbank-trips", shortDescription: "Private sandbars rising from the lagoon", heroImage: null },
+  { name: "Big Game Fishing", slug: "big-game-fishing", shortDescription: "Open-water pursuits beyond the atoll", heroImage: null },
+  { name: "Local Island Visits", slug: "local-island-visits", shortDescription: "Dharavandhoo culture beyond the resort", heroImage: null },
 ];
 
-export default function ActivitiesSection() {
+const FALLBACK_IMAGES: Record<string, string> = {
+  "scuba-diving": "/images/activities/scuba.jpg",
+  "snorkelling": "/images/activities/snorkelling.jpg",
+  "night-snorkelling": "/images/activities/night-snorkelling.jpg",
+  "freediving": "/images/activities/freediving.jpg",
+  "sandbank-trips": "/images/activities/sandbank.jpg",
+  "big-game-fishing": "/images/activities/fishing.jpg",
+  "local-island-visits": "/images/activities/local-island.jpg",
+};
+
+function getActivityImage(activity: { heroImage?: unknown; slug: string }) {
+  if (activity.heroImage) {
+    return urlFor(activity.heroImage).width(600).height(400).format("webp").url();
+  }
+  return FALLBACK_IMAGES[activity.slug] || "/images/activities/scuba.jpg";
+}
+
+export default async function ActivitiesSection() {
+  let activities = FALLBACK_ACTIVITIES;
+  try {
+    const sanityActivities = await client.fetch(allActivitiesQuery);
+    if (sanityActivities?.length) activities = sanityActivities;
+  } catch { /* use fallback */ }
+
   return (
     <section
       id="activities"
@@ -28,17 +53,17 @@ export default function ActivitiesSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 desktop:grid-cols-4">
-          {ACTIVITIES.map((act) => {
-            const href = act.slug.startsWith("/") ? act.slug : `/activities/${act.slug}`;
+          {activities.map((act) => {
+            const image = getActivityImage(act);
             return (
               <Link
                 key={act.slug}
-                href={href}
+                href={`/activities/${act.slug}`}
                 className="group relative flex h-[320px] flex-col justify-end overflow-hidden p-6"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-scroll-animation group-hover:scale-105"
-                  style={{ backgroundImage: `url(${act.image})` }}
+                  style={{ backgroundImage: `url(${image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-driftwood/70 to-transparent" />
                 <div className="relative z-10">
@@ -46,7 +71,7 @@ export default function ActivitiesSection() {
                     {act.name}
                   </h3>
                   <p className="mt-1 font-body text-body-sm text-white/80">
-                    {act.desc}
+                    {act.shortDescription}
                   </p>
                 </div>
               </Link>
