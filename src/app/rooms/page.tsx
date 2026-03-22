@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { client } from "@/sanity/client";
 import { allRoomsQuery } from "@/sanity/queries";
+import { urlFor } from "@/sanity/image";
 
 export const metadata: Metadata = {
   title: "Rooms | Aveyla Manta Village | Maldives",
   description: "Three room types at Aveyla Manta Village — Ocean Deluxe, Beach Deluxe, and Village Deluxe. All steps from the reef on Dharavandhoo Island.",
+};
+
+const FALLBACK_IMAGES: Record<string, string> = {
+  "ocean-deluxe": "/images/rooms/ocean-deluxe.jpg",
+  "beach-deluxe": "/images/rooms/beach-deluxe.jpg",
+  "village-deluxe": "/images/rooms/village-deluxe.jpg",
 };
 
 const FALLBACK_ROOMS = [
@@ -14,11 +21,12 @@ const FALLBACK_ROOMS = [
   { name: "Village Deluxe", slug: "village-deluxe", description: "Garden setting, quiet and cool. Eight rooms.", amenities: ["Garden view", "King bed", "Private bath", "A/C"], heroImage: null },
 ];
 
-const ROOM_IMAGES: Record<string, string> = {
-  "ocean-deluxe": "/images/rooms/ocean-deluxe.jpg",
-  "beach-deluxe": "/images/rooms/beach-deluxe.jpg",
-  "village-deluxe": "/images/rooms/village-deluxe.jpg",
-};
+function getRoomImage(room: { heroImage?: unknown; slug: string }) {
+  if (room.heroImage) {
+    return urlFor(room.heroImage).width(800).height(600).format("webp").url();
+  }
+  return FALLBACK_IMAGES[room.slug] || "/images/rooms/ocean-deluxe.jpg";
+}
 
 export default async function RoomsPage() {
   let rooms = FALLBACK_ROOMS;
@@ -38,7 +46,7 @@ export default async function RoomsPage() {
       <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto grid max-w-content gap-8 tablet:grid-cols-3">
           {rooms.map((room) => {
-            const image = ROOM_IMAGES[room.slug] || "/images/rooms/ocean-deluxe.jpg";
+            const image = getRoomImage(room);
             return (
               <Link key={room.slug} href={`/rooms/${room.slug}`} className="group flex flex-col overflow-hidden bg-white transition-shadow hover:shadow-lg">
                 <div className="h-[280px] bg-cover bg-center transition-transform duration-scroll-animation group-hover:scale-105" style={{ backgroundImage: `url(${image})` }} />
