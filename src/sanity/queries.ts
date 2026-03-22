@@ -22,13 +22,14 @@ export const activityBySlugQuery = groq`*[_type == "activity" && slug.current ==
 }`;
 
 // Packages
-export const allPackagesQuery = groq`*[_type == "package"] | order(name asc) {
-  _id, name, "slug": slug.current, tagline, heroImage, inclusions, priceFrom
+export const allPackagesQuery = groq`*[_type == "package" && active != false] | order(name asc) {
+  _id, name, "slug": slug.current, tagline, description, season, heroImage,
+  inclusions, priceFrom, pricingTiers
 }`;
 
 export const packageBySlugQuery = groq`*[_type == "package" && slug.current == $slug][0] {
-  _id, name, "slug": slug.current, tagline, heroImage, inclusions, priceFrom,
-  seasonNotes, bookingLink
+  _id, name, "slug": slug.current, tagline, description, season, heroImage,
+  inclusions, priceFrom, pricingTiers, seasonNotes, bookingLink
 }`;
 
 // Gallery
