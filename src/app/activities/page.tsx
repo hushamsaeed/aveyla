@@ -4,6 +4,8 @@ import { client } from "@/sanity/client";
 import { allActivitiesQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Activities | Aveyla Manta Village | Maldives",
   description: "Scuba diving, snorkelling, freediving, night snorkelling, sandbank trips, fishing, island visits, and dining at Aveyla Manta Village, Baa Atoll.",

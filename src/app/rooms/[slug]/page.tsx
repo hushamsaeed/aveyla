@@ -4,6 +4,9 @@ import { client } from "@/sanity/client";
 import { roomBySlugQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 
+export const revalidate = 60;
+export const dynamicParams = true;
+
 const FALLBACK_IMAGES: Record<string, string> = {
   "ocean-deluxe": "/images/rooms/ocean-deluxe.jpg",
   "beach-deluxe": "/images/rooms/beach-deluxe.jpg",

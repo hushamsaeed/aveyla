@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { hotelSchema } from "@/lib/structuredData";
 import HeroSection from "@/components/home/HeroSection";
 import BrandStatement from "@/components/home/BrandStatement";

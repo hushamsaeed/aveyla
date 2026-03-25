@@ -4,6 +4,8 @@ import { client } from "@/sanity/client";
 import { allRoomsQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Rooms | Aveyla Manta Village | Maldives",
   description: "Three room types at Aveyla Manta Village — Ocean Deluxe, Beach Deluxe, and Village Deluxe. All steps from the reef on Dharavandhoo Island.",

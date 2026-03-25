@@ -4,6 +4,8 @@ import { client } from "@/sanity/client";
 import { allPackagesQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Packages | Aveyla Manta Village | Maldives",
   description: "Dive and snorkelling packages at Aveyla — Dive Dive Dive, Dive Hanifaru, and Manta Madness. 3–7 night all-inclusive stays in the Baa Atoll.",

@@ -4,6 +4,9 @@ import { client } from "@/sanity/client";
 import { activityBySlugQuery, allActivitiesQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 
+export const revalidate = 60;
+export const dynamicParams = true;
+
 interface Activity {
   name: string;
   slug: string;
