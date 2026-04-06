@@ -68,15 +68,7 @@ export default function RootLayout({
     <html lang="en" className={`${youngSerif.variable} ${lora.variable} ${instrumentSans.variable}`}>
       <body className="font-body antialiased">
         <GoogleAnalytics />
-        <a href="#main-content" className="skip-nav">
-          Skip to main content
-        </a>
-        <SiteNotices />
-        <NavBar />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <CookieConsent />
+        {children}
       </body>
     </html>
   );
