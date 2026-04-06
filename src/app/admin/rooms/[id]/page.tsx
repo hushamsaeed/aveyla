@@ -5,6 +5,7 @@ import { eq } from "drizzle-orm";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { updateRoomAction, deleteRoomAction } from "../actions";
+import DeleteButton from "@/components/admin/DeleteButton";
 
 function parseJson(val: string | null): string[] {
   if (!val) return [];
@@ -33,17 +34,7 @@ export default async function EditRoomPage({
           </h1>
           <p className="mt-1 font-body text-sm text-driftwood">{room.name}</p>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-            onClick={(e) => {
-              if (!confirm("Delete this room? This cannot be undone.")) e.preventDefault();
-            }}
-          >
-            Delete Room
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete Room" />
       </div>
 
       <div className="max-w-2xl">

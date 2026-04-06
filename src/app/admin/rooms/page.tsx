@@ -1,6 +1,7 @@
 import { getAllRooms } from "@/lib/data/rooms";
 import Link from "next/link";
 import { deleteRoomAction } from "./actions";
+import DeleteButton from "@/components/admin/DeleteButton";
 
 export default async function AdminRoomsPage() {
   const rooms = await getAllRooms();
@@ -69,24 +70,12 @@ export default async function AdminRoomsPage() {
                     >
                       Edit
                     </Link>
-                    <form
+                    <DeleteButton
                       action={async () => {
                         "use server";
                         await deleteRoomAction(room.id);
                       }}
-                    >
-                      <button
-                        type="submit"
-                        className="font-body text-sm text-red-500 hover:text-red-700 transition-colors"
-                        onClick={(e) => {
-                          if (!confirm("Delete this room? This cannot be undone.")) {
-                            e.preventDefault();
-                          }
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </form>
+                    />
                   </div>
                 </td>
               </tr>
