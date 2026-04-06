@@ -1,112 +1,26 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/client";
-import { activityBySlugQuery, allActivitiesQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { getActivityBySlug, getAllActivities } from "@/lib/data/activities";
+import { getActivityImage } from "@/lib/images";
 
 export const revalidate = 60;
 export const dynamicParams = true;
 
-interface Activity {
-  name: string;
-  slug: string;
-  shortDescription?: string;
-  description?: string;
-  heroImage?: unknown;
-  safetyRequirements?: string[];
-  seasonalNotes?: string;
-}
-
-const FALLBACK_ACTIVITIES: Record<string, Activity> = {
-  "scuba-diving": {
-    name: "Scuba Diving", slug: "scuba-diving",
-    description: "Aveyla's PADI dive centre operates daily guided dives across more than thirty sites in the Baa Atoll. From the shallow house reef — accessible from the beach — to the deep channels where pelagics patrol, every dive is led by instructors who have logged thousands of hours in these waters.",
-    safetyRequirements: [
-      "PADI Open Water certification or equivalent (minimum)",
-      "Medical fitness declaration required",
-      "Minimum age: 12 years (with guardian)",
-      "Equipment provided: BCD, regulator, wetsuit, mask, fins",
-      "All dives include certified dive guide",
-    ],
-  },
-  "snorkelling": {
-    name: "Snorkelling", slug: "snorkelling",
-    description: "The house reef begins ten metres from the beach. Mask, snorkel, and fins are all that's needed to enter a world of reef sharks, eagle rays, and schooling fusiliers. Guided excursions reach outer reefs and Hanifaru Bay during manta season.",
-  },
-  "night-snorkelling": {
-    name: "Night Snorkelling", slug: "night-snorkelling",
-    description: "After dark, the reef transforms. Torch-lit excursions reveal bioluminescent plankton, hunting octopuses, and sleeping parrotfish. The experience is guided and begins from the beach.",
-  },
-  "freediving": {
-    name: "Freediving", slug: "freediving",
-    description: "Single-breath descents into the blue channels of the Baa Atoll. Guided sessions for certified freedivers, with safety divers on every excursion. The clarity here makes depth feel effortless.",
-    safetyRequirements: [
-      "AIDA or equivalent freediving certification recommended",
-      "Medical fitness declaration required",
-      "Minimum age: 16 years",
-      "Safety diver accompanies every session",
-      "Equipment provided on request",
-    ],
-  },
-  "sandbank-trips": {
-    name: "Sandbank Trips", slug: "sandbank-trips",
-    description: "Private sandbars emerge from the lagoon at low tide — islands that exist for hours before the ocean reclaims them. Picnic lunch, snorkelling gear, and nothing else for miles.",
-  },
-  "big-game-fishing": {
-    name: "Big Game Fishing", slug: "big-game-fishing",
-    description: "Beyond the atoll edge, the Indian Ocean drops away. Sailfish, tuna, wahoo, and mahi-mahi run these waters. Half-day and full-day charters depart from Dharavandhoo harbour.",
-  },
-  "local-island-visits": {
-    name: "Local Island Visits", slug: "local-island-visits",
-    description: "Dharavandhoo is a living island — not a resort island. Walk the village, visit the school, meet the people who share this atoll with the mantas. Cultural excursions to neighbouring islands available.",
-  },
-};
-
-const FALLBACK_IMAGES: Record<string, string> = {
-  "scuba-diving": "/images/activities/scuba.jpg",
-  "snorkelling": "/images/activities/snorkelling.jpg",
-  "night-snorkelling": "/images/activities/night-snorkelling.jpg",
-  "freediving": "/images/activities/freediving.jpg",
-  "sandbank-trips": "/images/activities/sandbank.jpg",
-  "big-game-fishing": "/images/activities/fishing.jpg",
-  "local-island-visits": "/images/activities/local-island.jpg",
-};
-
-function getImage(activity: Activity) {
-  if (activity.heroImage) {
-    return urlFor(activity.heroImage).width(1200).height(600).format("webp").url();
-  }
-  return FALLBACK_IMAGES[activity.slug] || "/images/activities/scuba.jpg";
-}
-
 export async function generateStaticParams() {
-  let activities: { slug: string }[] = [];
-  try {
-    activities = await client.fetch(allActivitiesQuery);
-  } catch { /* use fallback slugs */ }
-
-  if (!activities?.length) {
-    activities = Object.keys(FALLBACK_ACTIVITIES).map((slug) => ({ slug }));
-  }
+  const activities = await getAllActivities();
   return activities.map((a) => ({ slug: a.slug }));
 }
 
 export default async function ActivityDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  let activity: Activity | null = null;
-  try {
-    activity = await client.fetch(activityBySlugQuery, { slug });
-  } catch { /* use fallback */ }
-
-  if (!activity) {
-    activity = FALLBACK_ACTIVITIES[slug] || null;
-  }
+  const activity = await getActivityBySlug(slug);
   if (!activity) notFound();
 
-  const image = getImage(activity);
-  const allActivities = Object.keys(FALLBACK_ACTIVITIES).filter((s) => s !== slug);
-  const related = allActivities.slice(0, 3);
+  const image = getActivityImage(activity.heroImage, activity.slug);
+
+  const allActivities = await getAllActivities();
+  const related = allActivities.filter((a) => a.slug !== slug).slice(0, 3);
 
   return (
     <>
@@ -156,12 +70,10 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
           <div>
             <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">You might also like</h2>
             <div className="mt-6 grid gap-6 tablet:grid-cols-3">
-              {related.map((relSlug) => {
-                const rel = FALLBACK_ACTIVITIES[relSlug];
-                if (!rel) return null;
-                const relImage = FALLBACK_IMAGES[relSlug] || "/images/activities/scuba.jpg";
+              {related.map((rel) => {
+                const relImage = getActivityImage(rel.heroImage, rel.slug);
                 return (
-                  <Link key={relSlug} href={`/activities/${relSlug}`} className="group flex flex-col overflow-hidden bg-white">
+                  <Link key={rel.slug} href={`/activities/${rel.slug}`} className="group flex flex-col overflow-hidden bg-white">
                     <div className="h-[200px] bg-cover bg-center transition-transform duration-scroll-animation group-hover:scale-105" style={{ backgroundImage: `url(${relImage})` }} />
                     <div className="p-4">
                       <h3 className="font-display text-heading-md font-semibold text-dark-driftwood">{rel.name}</h3>

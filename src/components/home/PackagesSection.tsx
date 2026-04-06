@@ -1,51 +1,9 @@
 import Link from "next/link";
-import { client } from "@/sanity/client";
-import { allPackagesQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
-
-const FALLBACK_PACKAGES = [
-  {
-    name: "Dive Dive Dive",
-    slug: "dive-dive-dive",
-    tagline: "For those who want nothing but reef time",
-    priceFrom: 1020,
-    heroImage: null,
-  },
-  {
-    name: "Dive Hanifaru",
-    slug: "dive-hanifaru",
-    tagline: "Diving and manta encounters, combined",
-    priceFrom: 1020,
-    heroImage: null,
-  },
-  {
-    name: "Manta Madness",
-    slug: "manta-madness",
-    tagline: "The ultimate Hanifaru Bay snorkelling experience",
-    priceFrom: 720,
-    heroImage: null,
-  },
-];
-
-const FALLBACK_IMAGES: Record<string, string> = {
-  "dive-dive-dive": "/images/packages/dive-dive-dive.jpg",
-  "dive-hanifaru": "/images/packages/dive-hanifaru.jpg",
-  "manta-madness": "/images/packages/manta-madness.jpg",
-};
-
-function getPackageImage(pkg: { heroImage?: unknown; slug: string }) {
-  if (pkg.heroImage) {
-    return urlFor(pkg.heroImage).width(800).height(500).format("webp").url();
-  }
-  return FALLBACK_IMAGES[pkg.slug] || "/images/packages/dive-dive-dive.jpg";
-}
+import { getAllPackages } from "@/lib/data/packages";
+import { getPackageImage } from "@/lib/images";
 
 export default async function PackagesSection() {
-  let packages = FALLBACK_PACKAGES;
-  try {
-    const sanityPackages = await client.fetch(allPackagesQuery);
-    if (sanityPackages?.length) packages = sanityPackages;
-  } catch { /* use fallback */ }
+  const packages = await getAllPackages();
 
   return (
     <section className="bg-[#060E1A] px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
@@ -55,7 +13,7 @@ export default async function PackagesSection() {
         </h2>
 
         {packages.map((pkg) => {
-          const image = getPackageImage(pkg);
+          const image = getPackageImage(pkg.heroImage, pkg.slug);
           return (
             <div key={pkg.slug} className="flex flex-col overflow-hidden tablet:h-[360px] tablet:flex-row">
               <div

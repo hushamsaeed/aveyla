@@ -1,69 +1,24 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/client";
-import { roomBySlugQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { getAllRooms, getRoomBySlug, getRoomGallery } from "@/lib/data/rooms";
+import { getRoomImage } from "@/lib/images";
 
 export const revalidate = 60;
 export const dynamicParams = true;
 
-const FALLBACK_IMAGES: Record<string, string> = {
-  "ocean-deluxe": "/images/rooms/ocean-deluxe.jpg",
-  "beach-deluxe": "/images/rooms/beach-deluxe.jpg",
-  "village-deluxe": "/images/rooms/village-deluxe.jpg",
-};
-
-const FALLBACK_ROOMS: Record<string, { name: string; description: string; amenities: string[]; heroImage?: unknown; gallery?: unknown[]; noticeActive?: boolean; noticeText?: string }> = {
-  "ocean-deluxe": {
-    name: "Ocean Deluxe",
-    description: "The Ocean Deluxe rooms face directly onto the lagoon, with unobstructed views from a private balcony. King bed, air conditioning, boutique bath amenities, and the sound of the reef at night.",
-    amenities: ["King Bed", "Air Conditioning", "In-Room Safe", "LCD TV 32\"", "Tea & Coffee", "Boutique Bath Amenities", "Private Balcony", "Ocean View"],
-  },
-  "beach-deluxe": {
-    name: "Beach Deluxe",
-    description: "Steps from the beach, the Beach Deluxe rooms open onto a private terrace where the lagoon fills the frame. Morning light arrives unfiltered.",
-    amenities: ["King Bed", "Air Conditioning", "In-Room Safe", "LCD TV 32\"", "Tea & Coffee", "Boutique Bath Amenities", "Private Terrace", "Beach Access"],
-  },
-  "village-deluxe": {
-    name: "Village Deluxe",
-    description: "Set among the garden, the Village Deluxe rooms offer quiet retreat after a day on the reef. Eight rooms, each with private bathroom.",
-    amenities: ["King Bed", "Air Conditioning", "In-Room Safe", "LCD TV 32\"", "Tea & Coffee", "Boutique Bath Amenities", "Private Bathroom", "Garden View"],
-    noticeActive: true,
-    noticeText: "Temporary discount — nearby construction",
-  },
-};
-
-function getImage(heroImage: unknown, slug: string, width = 1440, height = 500) {
-  if (heroImage) {
-    return urlFor(heroImage).width(width).height(height).format("webp").url();
-  }
-  return FALLBACK_IMAGES[slug] || "/images/rooms/ocean-deluxe.jpg";
-}
-
 export async function generateStaticParams() {
-  return Object.keys(FALLBACK_ROOMS).map((slug) => ({ slug }));
+  const rooms = await getAllRooms();
+  return rooms.map((r) => ({ slug: r.slug }));
 }
 
 export default async function RoomDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  let room = FALLBACK_ROOMS[slug];
-  try {
-    const sanityRoom = await client.fetch(roomBySlugQuery, { slug });
-    if (sanityRoom) room = sanityRoom;
-  } catch { /* use fallback */ }
-
+  const room = await getRoomBySlug(slug);
   if (!room) notFound();
 
-  const heroImage = getImage(room.heroImage, slug);
-
-  // Build gallery images from Sanity or fallback
-  const galleryImages: string[] = [];
-  if (room.gallery && Array.isArray(room.gallery)) {
-    for (const img of room.gallery) {
-      galleryImages.push(urlFor(img).width(400).height(300).format("webp").url());
-    }
-  }
+  const gallery = await getRoomGallery(room.id);
+  const heroImage = getRoomImage(room.heroImage, slug);
 
   return (
     <>
@@ -75,11 +30,11 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
         </div>
       </section>
 
-      {/* Gallery strip from Sanity */}
-      {galleryImages.length > 0 && (
+      {/* Gallery strip */}
+      {gallery.length > 0 && (
         <section className="flex h-[120px] gap-1 overflow-x-auto bg-dark-driftwood">
-          {galleryImages.map((src, i) => (
-            <div key={i} className="h-full w-[200px] shrink-0 bg-cover bg-center" style={{ backgroundImage: `url(${src})` }} />
+          {gallery.map((g, i) => (
+            <div key={i} className="h-full w-[200px] shrink-0 bg-cover bg-center" style={{ backgroundImage: `url(${g.imagePath})` }} />
           ))}
         </section>
       )}
@@ -100,7 +55,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
             </div>
           </div>
 
-          {room.noticeActive && room.noticeText && (
+          {!!room.noticeActive && room.noticeText && (
             <div className="flex items-center gap-3 bg-amber-50 px-4 py-3">
               <span className="text-amber-800" aria-hidden="true">⚠</span>
               <span className="font-body text-body-sm text-amber-800">{room.noticeText}</span>

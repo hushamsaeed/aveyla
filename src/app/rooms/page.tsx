@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { client } from "@/sanity/client";
-import { allRoomsQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { getAllRooms } from "@/lib/data/rooms";
+import { getRoomImage } from "@/lib/images";
 
 export const revalidate = 60;
 
@@ -11,31 +10,8 @@ export const metadata: Metadata = {
   description: "Three room types at Aveyla Manta Village — Ocean Deluxe, Beach Deluxe, and Village Deluxe. All steps from the reef on Dharavandhoo Island.",
 };
 
-const FALLBACK_IMAGES: Record<string, string> = {
-  "ocean-deluxe": "/images/rooms/ocean-deluxe.jpg",
-  "beach-deluxe": "/images/rooms/beach-deluxe.jpg",
-  "village-deluxe": "/images/rooms/village-deluxe.jpg",
-};
-
-const FALLBACK_ROOMS = [
-  { name: "Ocean Deluxe", slug: "ocean-deluxe", description: "Ocean-facing with private balcony. Four rooms.", amenities: ["Ocean view", "King bed", "Balcony", "A/C"], heroImage: null },
-  { name: "Beach Deluxe", slug: "beach-deluxe", description: "Steps from the sand, morning light on the lagoon.", amenities: ["Beachfront", "King bed", "Terrace", "A/C"], heroImage: null },
-  { name: "Village Deluxe", slug: "village-deluxe", description: "Garden setting, quiet and cool. Eight rooms.", amenities: ["Garden view", "King bed", "Private bath", "A/C"], heroImage: null },
-];
-
-function getRoomImage(room: { heroImage?: unknown; slug: string }) {
-  if (room.heroImage) {
-    return urlFor(room.heroImage).width(800).height(600).format("webp").url();
-  }
-  return FALLBACK_IMAGES[room.slug] || "/images/rooms/ocean-deluxe.jpg";
-}
-
 export default async function RoomsPage() {
-  let rooms = FALLBACK_ROOMS;
-  try {
-    const sanityRooms = await client.fetch(allRoomsQuery);
-    if (sanityRooms?.length) rooms = sanityRooms;
-  } catch { /* use fallback */ }
+  const rooms = await getAllRooms();
 
   return (
     <>
@@ -48,7 +24,7 @@ export default async function RoomsPage() {
       <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto grid max-w-content gap-8 tablet:grid-cols-3">
           {rooms.map((room) => {
-            const image = getRoomImage(room);
+            const image = getRoomImage(room.heroImage, room.slug);
             return (
               <Link key={room.slug} href={`/rooms/${room.slug}`} className="group flex flex-col overflow-hidden bg-white transition-shadow hover:shadow-lg">
                 <div className="h-[280px] bg-cover bg-center transition-transform duration-scroll-animation group-hover:scale-105" style={{ backgroundImage: `url(${image})` }} />

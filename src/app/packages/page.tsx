@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { client } from "@/sanity/client";
-import { allPackagesQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { getAllPackages } from "@/lib/data/packages";
+import { getPackageImage } from "@/lib/images";
 
 export const revalidate = 60;
 
@@ -11,52 +10,8 @@ export const metadata: Metadata = {
   description: "Dive and snorkelling packages at Aveyla — Dive Dive Dive, Dive Hanifaru, and Manta Madness. 3–7 night all-inclusive stays in the Baa Atoll.",
 };
 
-const FALLBACK_IMAGES: Record<string, string> = {
-  "dive-dive-dive": "/images/packages/dive-dive-dive.jpg",
-  "dive-hanifaru": "/images/packages/dive-hanifaru.jpg",
-  "manta-madness": "/images/packages/manta-madness.jpg",
-};
-
-const FALLBACK_PACKAGES = [
-  {
-    name: "Dive Dive Dive",
-    slug: "dive-dive-dive",
-    tagline: "For those who want nothing but reef time",
-    season: null,
-    priceFrom: 1020,
-    heroImage: null,
-  },
-  {
-    name: "Dive Hanifaru",
-    slug: "dive-hanifaru",
-    tagline: "Diving and manta encounters, combined",
-    season: "June – November",
-    priceFrom: 1020,
-    heroImage: null,
-  },
-  {
-    name: "Manta Madness",
-    slug: "manta-madness",
-    tagline: "The ultimate Hanifaru Bay snorkelling experience",
-    season: "June – November",
-    priceFrom: 720,
-    heroImage: null,
-  },
-];
-
-function getPackageImage(pkg: { heroImage?: unknown; slug: string }) {
-  if (pkg.heroImage) {
-    return urlFor(pkg.heroImage).width(800).height(500).format("webp").url();
-  }
-  return FALLBACK_IMAGES[pkg.slug] || "/images/packages/dive-dive-dive.jpg";
-}
-
 export default async function PackagesPage() {
-  let packages = FALLBACK_PACKAGES;
-  try {
-    const sanityPackages = await client.fetch(allPackagesQuery);
-    if (sanityPackages?.length) packages = sanityPackages;
-  } catch { /* use fallback */ }
+  const packages = await getAllPackages();
 
   return (
     <>
@@ -71,7 +26,7 @@ export default async function PackagesPage() {
       <section className="bg-[#060E1A] px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto max-w-content space-y-8">
           {packages.map((pkg) => {
-            const image = getPackageImage(pkg);
+            const image = getPackageImage(pkg.heroImage, pkg.slug);
             return (
               <Link key={pkg.slug} href={`/packages/${pkg.slug}`} className="group flex flex-col overflow-hidden tablet:h-[360px] tablet:flex-row">
                 <div className="h-[240px] bg-cover bg-center transition-transform duration-scroll-animation group-hover:scale-105 tablet:h-full tablet:w-1/2" style={{ backgroundImage: `url(${image})` }} />
