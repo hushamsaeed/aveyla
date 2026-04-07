@@ -2,6 +2,17 @@ import { db } from "@/db";
 import { pageContent } from "@/db/schema";
 import { eq, and, asc } from "drizzle-orm";
 
+export type PageSection = { title: string | null; body: string | null; imagePath: string | null };
+
+export async function getPageContent(pageSlug: string): Promise<Record<string, PageSection>> {
+  const sections = await getPageSections(pageSlug);
+  const map: Record<string, PageSection> = {};
+  for (const s of sections) {
+    map[s.sectionKey] = { title: s.title, body: s.body, imagePath: s.imagePath };
+  }
+  return map;
+}
+
 export async function getPageSections(pageSlug: string) {
   return db
     .select()

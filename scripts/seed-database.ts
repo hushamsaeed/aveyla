@@ -392,6 +392,54 @@ async function seed() {
   insertSetting.run("site_name",        "Aveyla Manta Village");
   insertSetting.run("tagline",          "Manta Village · Maldives");
 
+  // ── PAGE CONTENT ───────────────────────────────────────────────────────────
+  const insertPage = sqlite.prepare("INSERT INTO page_content (page_slug, section_key, title, body, image_path, sort_order) VALUES (?, ?, ?, ?, ?, ?)");
+
+  // Homepage - Hero
+  insertPage.run("home", "hero", "Where the Manta Rays Are.", "Hanifaru Bay. Baa Atoll UNESCO Biosphere Reserve. Dharavandhoo Island, Maldives.", "/images/hero-poster.jpg", 0);
+  insertPage.run("home", "hero_cta1", "Explore the Reef", "/activities", null, 1);
+  insertPage.run("home", "hero_cta2", "Book Your Stay", "", null, 2);
+
+  // Homepage - Brand Statement
+  insertPage.run("home", "brand", "Affordable luxury.\nUntamed ocean.\nNo compromises.", "Aveyla Manta Village sits on Dharavandhoo Island in the Baa Atoll — the Maldives' only UNESCO Marine Biosphere Reserve. Sixteen rooms. One hundred percent solar powered. A PADI dive centre with direct access to Hanifaru Bay, the single most significant manta ray aggregation site on earth. This is not a resort. This is a base camp for the ocean.", null, 3);
+
+  // Homepage - Hanifaru Feature
+  insertPage.run("home", "hanifaru_feature", "Hanifaru Bay. The single greatest congregation of manta rays on earth.", "Every year between June and November, the currents of the Baa Atoll funnel plankton into Hanifaru Bay's shallow lagoon, drawing hundreds of manta rays and whale sharks into a feeding congregation found nowhere else on earth. UNESCO designated the Baa Atoll a World Biosphere Reserve in 2011. Aveyla is the closest accommodation to Hanifaru Bay — a fifteen-minute boat ride from your room to the encounter.", "/images/hanifaru-manta.jpg", 4);
+
+  // Homepage - About Teaser
+  insertPage.run("home", "about_teaser", "Built on the Reef. Powered by the Sun.", "Aveyla Manta Village was established in 2014 on Dharavandhoo Island. Sixteen rooms. One hundred percent solar electricity. Licensed by the Maldives Ministry of Tourism, operated with the conviction that proximity to one of the world's great marine ecosystems demands responsibility, not luxury theatre.", "/images/about-aerial.jpg", 5);
+
+  // About Page
+  insertPage.run("about", "hero", "About Aveyla", null, null, 0);
+  insertPage.run("about", "image", null, null, "/images/about-aerial.jpg", 1);
+  insertPage.run("about", "intro", null, "Aveyla Manta Village was established in 2014 on Dharavandhoo Island in the Baa Atoll — the Maldives' only UNESCO Marine Biosphere Reserve. Sixteen rooms in three categories. A PADI dive centre with direct access to Hanifaru Bay. One hundred percent solar electricity.", null, 2);
+  insertPage.run("about", "legal", null, "We are operated by SEARCH MALDIVES Private Limited (Company Registration C-295/2007, Ministry of Economic Development) under Tourism Licence No. 88-QARS/GH/2015/35, issued by the Ministry of Tourism, Arts & Culture.", null, 3);
+  insertPage.run("about", "philosophy", null, "The property is built on the principle that proximity to one of the world's most significant marine ecosystems demands responsibility. Solar power is not a feature — it is how we operate. Small group dives are not a luxury offering — they are how we protect the reef. Hanifaru Bay is not a marketing asset — it is the reason this place exists, and the reason we take its stewardship seriously.", null, 4);
+  insertPage.run("about", "stat_1", "16", "Rooms", null, 5);
+  insertPage.run("about", "stat_2", "100%", "Solar Powered", null, 6);
+  insertPage.run("about", "stat_3", "2014", "Established", null, 7);
+
+  // Dining Page
+  insertPage.run("dining", "hero", "Dining", null, "/images/activities/dining.jpg", 0);
+  insertPage.run("dining", "content", null, "Meals at Aveyla are built around what arrives that day. The kitchen works with local fishermen and island produce — reef fish grilled whole, coconut curries, tropical fruit that has never seen a cargo hold. No pretension, no buffet theatre. Just food that belongs here.\n\nBreakfast, lunch, and dinner are served in the open-air restaurant overlooking the lagoon. Dietary requirements are accommodated with advance notice. Half-board and full-board options are available with all packages.", null, 1);
+
+  // Hanifaru Bay Page
+  insertPage.run("hanifaru", "hero", "Hanifaru Bay", null, "/images/hanifaru-hero.jpg", 0);
+  insertPage.run("hanifaru", "intro", null, "Hanifaru Bay sits within the Baa Atoll, a UNESCO World Biosphere Reserve since 2011. It is a shallow, funnel-shaped bay approximately 350 metres long, and it produces what marine biologists describe as the largest known feeding aggregation of manta rays on earth.\n\nBetween June and November, the southwest monsoon drives nutrient-rich currents into the bay. Plankton concentrates in the shallows. And with it come the mantas — sometimes dozens, sometimes hundreds, spiralling in coordinated feeding chains that have been documented by the BBC, National Geographic, and the Manta Trust.\n\nAveyla Manta Village is the closest accommodation to Hanifaru Bay. A fifteen-minute boat ride from the dive centre jetty. No other property in the Maldives offers this proximity with this level of operational intimacy — small groups, personal dive guides, and a commitment to the ethical guidelines that protect this site.", null, 1);
+  insertPage.run("hanifaru", "calendar_note", null, "August–October: highest probability of large manta aggregations.", null, 2);
+  insertPage.run("hanifaru", "cta1", "Manta Madness Package", "/packages/manta-madness", null, 3);
+  insertPage.run("hanifaru", "cta2", "Dive Hanifaru Package", "/packages/dive-hanifaru", null, 4);
+
+  // Privacy Policy Page
+  insertPage.run("privacy", "hero", "Privacy Policy", null, null, 0);
+  insertPage.run("privacy", "updated", null, "March 2026", null, 1);
+  insertPage.run("privacy", "controller", "Data Controller", "SEARCH MALDIVES Private Limited (Company Registration C-295/2007), operating as Aveyla Manta Village, Dharavandhoo Island, Baa Atoll, Maldives.", null, 2);
+  insertPage.run("privacy", "collection", "Information We Collect", "When you use our contact form or make a booking enquiry, we collect your name, email address, travel dates, number of guests, and any message you provide. We do not store payment information — all payments are processed securely by our booking engine provider (IPMS247).", null, 3);
+  insertPage.run("privacy", "usage", "How We Use Your Information", "We use your information solely to respond to your enquiry, process your booking, and improve our services. We do not sell, rent, or share your personal data with third parties for marketing purposes.", null, 4);
+  insertPage.run("privacy", "cookies", "Cookies", "This website uses cookies for analytics (Google Analytics 4) and session management. You can control cookie preferences through the consent banner displayed on your first visit. Analytics cookies are not loaded until you provide consent.", null, 5);
+  insertPage.run("privacy", "rights", "Your Rights", "You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at info@aveyla.com.", null, 6);
+  insertPage.run("privacy", "contact", "Contact", "For privacy-related enquiries: info@aveyla.com", null, 7);
+
   // ── ADMIN USER ─────────────────────────────────────────────────────────────
   const email = process.env.ADMIN_EMAIL || "admin@aveyla.com";
   const password = process.env.ADMIN_PASSWORD || "aveyla2024";

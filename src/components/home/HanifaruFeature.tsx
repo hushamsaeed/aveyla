@@ -1,6 +1,16 @@
+import { getPageContent } from "@/lib/data/pages";
 import Link from "next/link";
 
-export default function HanifaruFeature() {
+export default async function HanifaruFeature() {
+  const content = await getPageContent("home");
+  const quote =
+    content.hanifaru_feature?.title ||
+    "Hanifaru Bay. The single greatest congregation of manta rays on earth.";
+  const body =
+    content.hanifaru_feature?.body ||
+    "Every year between June and November, the currents of the Baa Atoll funnel plankton into Hanifaru Bay's shallow lagoon, drawing hundreds of manta rays and whale sharks into a feeding congregation found nowhere else on earth. UNESCO designated the Baa Atoll a World Biosphere Reserve in 2011. Aveyla is the closest accommodation to Hanifaru Bay — a fifteen-minute boat ride from your room to the encounter.";
+  const image = content.hanifaru_feature?.imagePath || "/images/hanifaru-manta.jpg";
+
   return (
     <section className="bg-dark-driftwood">
       <div className="flex flex-col tablet:flex-row">
@@ -8,27 +18,20 @@ export default function HanifaruFeature() {
         <div className="relative h-[400px] w-full tablet:h-auto tablet:w-1/2">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url(/images/hanifaru-manta.jpg)" }}
+            style={{ backgroundImage: `url(${image})` }}
           />
         </div>
 
         {/* Content */}
         <div className="flex w-full flex-col justify-center gap-8 px-6 py-16 tablet:w-1/2 tablet:px-14 tablet:py-20">
           <blockquote className="font-display text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.3] text-coral-clay">
-            Hanifaru Bay. The single greatest congregation of manta rays on
-            earth.
+            {quote}
           </blockquote>
 
           <div className="h-[2px] w-[60px] bg-coral-clay" />
 
           <p className="max-w-[560px] font-body text-body-lg leading-[1.7] text-white/80">
-            Every year between June and November, the currents of the Baa Atoll
-            funnel plankton into Hanifaru Bay&apos;s shallow lagoon, drawing
-            hundreds of manta rays and whale sharks into a feeding congregation
-            found nowhere else on earth. UNESCO designated the Baa Atoll a World
-            Biosphere Reserve in 2011. Aveyla is the closest accommodation to
-            Hanifaru Bay — a fifteen-minute boat ride from your room to the
-            encounter.
+            {body}
           </p>
 
           <Link

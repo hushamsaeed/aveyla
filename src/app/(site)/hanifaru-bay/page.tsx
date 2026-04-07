@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getPageContent } from "@/lib/data/pages";
 
 export const metadata: Metadata = {
   title: "Hanifaru Bay | Aveyla Manta Village | Maldives",
@@ -13,28 +14,35 @@ const MONTHS = [
   { name: "Oct", active: true, peak: true }, { name: "Nov", active: true }, { name: "Dec", active: false },
 ];
 
-export default function HanifaruBayPage() {
+export default async function HanifaruBayPage() {
+  const c = await getPageContent("hanifaru");
+  const heroImage = c.hero?.imagePath || "/images/hanifaru-hero.jpg";
+  const title = c.hero?.title || "Hanifaru Bay";
+  const introText = c.intro?.body || "Hanifaru Bay sits within the Baa Atoll, a UNESCO World Biosphere Reserve since 2011. It is a shallow, funnel-shaped bay approximately 350 metres long, and it produces what marine biologists describe as the largest known feeding aggregation of manta rays on earth.\n\nBetween June and November, the southwest monsoon drives nutrient-rich currents into the bay. Plankton concentrates in the shallows. And with it come the mantas \u2014 sometimes dozens, sometimes hundreds, spiralling in coordinated feeding chains that have been documented by the BBC, National Geographic, and the Manta Trust.\n\nAveyla Manta Village is the closest accommodation to Hanifaru Bay. A fifteen-minute boat ride from the dive centre jetty. No other property in the Maldives offers this proximity with this level of operational intimacy \u2014 small groups, personal dive guides, and a commitment to the ethical guidelines that protect this site.";
+  const introParagraphs = introText.split("\n\n");
+  const calendarNote = c.calendar_note?.body || "August\u2013October: highest probability of large manta aggregations.";
+  const cta1Label = c.cta1?.title || "Manta Madness Package";
+  const cta1Href = c.cta1?.body || "/packages/manta-madness";
+  const cta2Label = c.cta2?.title || "Dive Hanifaru Package";
+  const cta2Href = c.cta2?.body || "/packages/dive-hanifaru";
+
   return (
     <>
       {/* Opening image — no text overlay per FSD */}
       <section className="relative h-screen w-full overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/images/hanifaru-hero.jpg)" }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }} />
       </section>
 
       <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto max-w-editorial space-y-8">
           <h1 className="font-display text-display-md font-semibold tracking-[-0.01em] text-dark-driftwood">
-            Hanifaru Bay
+            {title}
           </h1>
-          <p className="font-body text-body-lg leading-[1.7] text-driftwood">
-            Hanifaru Bay sits within the Baa Atoll, a UNESCO World Biosphere Reserve since 2011. It is a shallow, funnel-shaped bay approximately 350 metres long, and it produces what marine biologists describe as the largest known feeding aggregation of manta rays on earth.
-          </p>
-          <p className="font-body text-body-lg leading-[1.7] text-driftwood">
-            Between June and November, the southwest monsoon drives nutrient-rich currents into the bay. Plankton concentrates in the shallows. And with it come the mantas — sometimes dozens, sometimes hundreds, spiralling in coordinated feeding chains that have been documented by the BBC, National Geographic, and the Manta Trust.
-          </p>
-          <p className="font-body text-body-lg leading-[1.7] text-driftwood">
-            Aveyla Manta Village is the closest accommodation to Hanifaru Bay. A fifteen-minute boat ride from the dive centre jetty. No other property in the Maldives offers this proximity with this level of operational intimacy — small groups, personal dive guides, and a commitment to the ethical guidelines that protect this site.
-          </p>
+          {introParagraphs.map((para, i) => (
+            <p key={i} className="font-body text-body-lg leading-[1.7] text-driftwood">
+              {para}
+            </p>
+          ))}
         </div>
       </section>
 
@@ -56,18 +64,18 @@ export default function HanifaruBayPage() {
             ))}
           </div>
           <p className="mt-4 font-body text-body-sm text-driftwood">
-            August–October: highest probability of large manta aggregations.
+            {calendarNote}
           </p>
         </div>
       </section>
 
       <section className="bg-linen px-6 py-16 tablet:px-14">
         <div className="mx-auto flex max-w-content flex-wrap gap-4">
-          <Link href="/packages/manta-madness" className="bg-coral-clay px-8 py-4 font-body text-[14px] font-semibold text-dark-driftwood">
-            Manta Madness Package
+          <Link href={cta1Href} className="bg-coral-clay px-8 py-4 font-body text-[14px] font-semibold text-dark-driftwood">
+            {cta1Label}
           </Link>
-          <Link href="/packages/dive-hanifaru" className="border border-dark-driftwood px-8 py-4 font-body text-[14px] font-medium text-dark-driftwood">
-            Dive Hanifaru Package
+          <Link href={cta2Href} className="border border-dark-driftwood px-8 py-4 font-body text-[14px] font-medium text-dark-driftwood">
+            {cta2Label}
           </Link>
         </div>
       </section>
