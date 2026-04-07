@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const SIDEBAR_LINKS = [
   { label: "Dashboard", href: "/admin" },
+  { label: "Hero Media", href: "/admin/hero-media" },
   { label: "Rooms", href: "/admin/rooms" },
   { label: "Activities", href: "/admin/activities" },
   { label: "Packages", href: "/admin/packages" },

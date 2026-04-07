@@ -175,6 +175,18 @@ export const pageContent = sqliteTable("page_content", {
   updatedAt: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });
 
+// ─── heroMedia ───────────────────────────────────────────────────────────────
+export const heroMedia = sqliteTable("hero_media", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  mediaType: text("media_type").notNull(), // 'image' or 'video'
+  mediaPath: text("media_path").notNull(),
+  posterPath: text("poster_path"),
+  alt: text("alt"),
+  sortOrder: integer("sort_order").default(0),
+  active: integer("active").default(1),
+  createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
+});
+
 // ─── Relations ────────────────────────────────────────────────────────────────
 
 export const packagesRelations = relations(packages, ({ many }) => ({

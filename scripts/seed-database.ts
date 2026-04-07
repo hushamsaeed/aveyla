@@ -170,6 +170,17 @@ async function seed() {
       sort_order INTEGER DEFAULT 0,
       updated_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
+
+    CREATE TABLE IF NOT EXISTS hero_media (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      media_type TEXT NOT NULL,
+      media_path TEXT NOT NULL,
+      poster_path TEXT,
+      alt TEXT,
+      sort_order INTEGER DEFAULT 0,
+      active INTEGER DEFAULT 1,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
   `);
 
   // Check if already seeded
@@ -439,6 +450,12 @@ async function seed() {
   insertPage.run("privacy", "cookies", "Cookies", "This website uses cookies for analytics (Google Analytics 4) and session management. You can control cookie preferences through the consent banner displayed on your first visit. Analytics cookies are not loaded until you provide consent.", null, 5);
   insertPage.run("privacy", "rights", "Your Rights", "You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at info@aveyla.com.", null, 6);
   insertPage.run("privacy", "contact", "Contact", "For privacy-related enquiries: info@aveyla.com", null, 7);
+
+  // ── HERO MEDIA ─────────────────────────────────────────────────────────────
+  const insertHeroMedia = sqlite.prepare("INSERT INTO hero_media (media_type, media_path, poster_path, alt, sort_order, active) VALUES (?, ?, ?, ?, ?, 1)");
+  insertHeroMedia.run("video", "/videos/hero.mp4", "/images/hero-poster.jpg", "Underwater dive footage at Hanifaru Bay", 0);
+  insertHeroMedia.run("image", "/images/hanifaru-hero.jpg", null, "Hanifaru Bay aerial view", 1);
+  insertHeroMedia.run("image", "/images/about-aerial.jpg", null, "Dharavandhoo Island aerial", 2);
 
   // ── ADMIN USER ─────────────────────────────────────────────────────────────
   const email = process.env.ADMIN_EMAIL || "admin@aveyla.com";
