@@ -19,8 +19,8 @@ data/*.db
 data/*.db-wal
 data/*.db-shm
 
-# Uploads (user-uploaded content)
-uploads/
+# Uploads (user-uploaded content at project root)
+/uploads/
 
 # Drizzle migrations
 drizzle/
