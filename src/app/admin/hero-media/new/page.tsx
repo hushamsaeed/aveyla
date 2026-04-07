@@ -18,7 +18,7 @@ export default function NewHeroMediaPage() {
             </Select>
           </Field>
 
-          <ImageUpload name="mediaPath" label="Media File (image or video)" />
+          <ImageUpload name="mediaPath" label="Media File (image or video)" acceptVideo />
 
           <ImageUpload name="posterPath" label="Poster Image (for videos — shown while loading)" />
 

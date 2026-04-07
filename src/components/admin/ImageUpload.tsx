@@ -6,12 +6,14 @@ interface ImageUploadProps {
   name: string;
   defaultValue?: string;
   label?: string;
+  acceptVideo?: boolean;
 }
 
 export default function ImageUpload({
   name,
   defaultValue = "",
   label = "Image",
+  acceptVideo = false,
 }: ImageUploadProps) {
   const [preview, setPreview] = useState<string>(defaultValue);
   const [uploading, setUploading] = useState(false);
@@ -96,7 +98,7 @@ export default function ImageUpload({
           {uploading ? "Uploading..." : "Choose file"}
           <input
             type="file"
-            accept="image/jpeg,image/png,image/webp,image/gif"
+            accept={acceptVideo ? "image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" : "image/jpeg,image/png,image/webp,image/gif"}
             onChange={handleFileChange}
             disabled={uploading}
             className="sr-only"

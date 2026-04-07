@@ -35,7 +35,7 @@ export default async function EditHeroMediaPage({
             </Select>
           </Field>
 
-          <ImageUpload name="mediaPath" label="Media File" defaultValue={item.mediaPath} />
+          <ImageUpload name="mediaPath" label="Media File" defaultValue={item.mediaPath} acceptVideo />
 
           <ImageUpload name="posterPath" label="Poster Image (for videos)" defaultValue={item.posterPath || ""} />
 
