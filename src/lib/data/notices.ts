@@ -35,7 +35,7 @@ export async function createNotice(data: {
     .all();
 }
 
-export async function updateNotice(id: number, data: Partial<typeof siteNotices.$inferInsert>) {
+export async function updateNotice(id: number, data: Record<string, unknown>) {
   const values: Record<string, unknown> = { ...data, updatedAt: new Date().toISOString() };
   if (Array.isArray(data.targetPages)) values.targetPages = JSON.stringify(data.targetPages);
   return db.update(siteNotices).set(values).where(eq(siteNotices.id, id)).returning().all();

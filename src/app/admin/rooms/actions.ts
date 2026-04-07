@@ -44,7 +44,7 @@ export async function updateRoomAction(id: number, formData: FormData) {
     roomType: (formData.get("roomType") as string) || undefined,
     description: (formData.get("description") as string) || undefined,
     heroImage: (formData.get("heroImage") as string) || undefined,
-    amenities: JSON.stringify(amenities),
+    amenities,
     priceFrom: formData.get("priceFrom") ? Number(formData.get("priceFrom")) : undefined,
     noticeActive: formData.get("noticeActive") === "1" ? 1 : 0,
     noticeText: (formData.get("noticeText") as string) || undefined,

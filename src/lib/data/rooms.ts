@@ -50,9 +50,9 @@ export async function createRoom(data: {
     .all();
 }
 
-export async function updateRoom(id: number, data: Partial<typeof rooms.$inferInsert>) {
+export async function updateRoom(id: number, data: Record<string, unknown>) {
   const values: Record<string, unknown> = { ...data, updatedAt: new Date().toISOString() };
-  if (data.amenities) values.amenities = JSON.stringify(data.amenities);
+  if (Array.isArray(data.amenities)) values.amenities = JSON.stringify(data.amenities);
   if (data.noticeActive !== undefined) values.noticeActive = data.noticeActive ? 1 : 0;
   return db.update(rooms).set(values).where(eq(rooms.id, id)).returning().all();
 }

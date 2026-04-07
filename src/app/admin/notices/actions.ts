@@ -31,7 +31,7 @@ export async function updateNoticeAction(id: number, formData: FormData) {
   await updateNotice(id, {
     title: formData.get("title") as string,
     body: (formData.get("body") as string) || undefined,
-    targetPages: JSON.stringify(targetPages),
+    targetPages,
     severity: (formData.get("severity") as string) || "info",
     active: formData.get("active") === "1" ? 1 : 0,
   });

@@ -90,9 +90,9 @@ export async function createPackage(data: {
     .all();
 }
 
-export async function updatePackage(id: number, data: Partial<typeof packages.$inferInsert>) {
+export async function updatePackage(id: number, data: Record<string, unknown>) {
   const values: Record<string, unknown> = { ...data, updatedAt: new Date().toISOString() };
-  if (data.inclusions) values.inclusions = JSON.stringify(data.inclusions);
+  if (Array.isArray(data.inclusions)) values.inclusions = JSON.stringify(data.inclusions);
   return db.update(packages).set(values).where(eq(packages.id, id)).returning().all();
 }
 

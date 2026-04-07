@@ -44,7 +44,7 @@ export async function updateActivityAction(id: number, formData: FormData) {
     shortDescription: (formData.get("shortDescription") as string) || undefined,
     description: (formData.get("description") as string) || undefined,
     heroImage: (formData.get("heroImage") as string) || undefined,
-    safetyRequirements: JSON.stringify(safetyRequirements),
+    safetyRequirements,
     seasonalNotes: (formData.get("seasonalNotes") as string) || undefined,
     sortOrder: formData.get("sortOrder") ? Number(formData.get("sortOrder")) : 0,
   });

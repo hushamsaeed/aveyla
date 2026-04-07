@@ -99,7 +99,7 @@ export async function updatePackageAction(id: number, formData: FormData) {
     description: (formData.get("description") as string) || undefined,
     heroImage: (formData.get("heroImage") as string) || undefined,
     season: (formData.get("season") as string) || undefined,
-    inclusions: JSON.stringify(inclusions),
+    inclusions,
     priceFrom: formData.get("priceFrom") ? Number(formData.get("priceFrom")) : undefined,
     active: formData.get("active") === "1" ? 1 : 0,
     seasonNotes: (formData.get("seasonNotes") as string) || undefined,

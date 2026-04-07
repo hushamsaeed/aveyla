@@ -48,9 +48,9 @@ export async function createActivity(data: {
     .all();
 }
 
-export async function updateActivity(id: number, data: Partial<typeof activities.$inferInsert>) {
+export async function updateActivity(id: number, data: Record<string, unknown>) {
   const values: Record<string, unknown> = { ...data, updatedAt: new Date().toISOString() };
-  if (data.safetyRequirements) values.safetyRequirements = JSON.stringify(data.safetyRequirements);
+  if (Array.isArray(data.safetyRequirements)) values.safetyRequirements = JSON.stringify(data.safetyRequirements);
   return db.update(activities).set(values).where(eq(activities.id, id)).returning().all();
 }
 
