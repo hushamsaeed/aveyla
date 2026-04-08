@@ -84,11 +84,20 @@ export default function ImageUpload({
       {/* Preview */}
       {preview && (
         <div className="w-32 h-20 overflow-hidden rounded-sm border border-gray-200">
-          <img
-            src={preview}
-            alt="Preview"
-            className="w-full h-full object-cover"
-          />
+          {/\.(mp4|webm|mov)$/i.test(preview) ? (
+            <video
+              src={preview}
+              className="w-full h-full object-cover"
+              muted
+              playsInline
+            />
+          ) : (
+            <img
+              src={preview}
+              alt="Preview"
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
       )}
 

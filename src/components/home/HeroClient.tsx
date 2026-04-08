@@ -92,7 +92,7 @@ export default function HeroClient({ title, subtitle, cta1Label, cta2Label, slid
               poster={s.poster}
               onEnded={hasMultiple ? nextSlide : undefined}
             >
-              <source src={s.src} type={s.src.endsWith(".webm") ? "video/webm" : "video/mp4"} />
+              <source src={s.src} type={s.src.endsWith(".webm") ? "video/webm" : s.src.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
             </video>
           ) : (
             <div
