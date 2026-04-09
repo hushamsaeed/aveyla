@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createReadStream, existsSync, statSync } from "fs";
+import { existsSync, statSync, readSync, openSync, closeSync } from "fs";
+import { readFile } from "fs/promises";
 import path from "path";
 
 const CONTENT_TYPES: Record<string, string> = {
@@ -12,6 +13,8 @@ const CONTENT_TYPES: Record<string, string> = {
   webm: "video/webm",
   mov: "video/mp4",
 };
+
+const isVideo = (ext: string) => ["mp4", "webm", "mov"].includes(ext);
 
 export async function GET(
   request: NextRequest,
@@ -37,27 +40,22 @@ export async function GET(
 
   const ext = safeName.split(".").pop()?.toLowerCase() || "";
   const contentType = CONTENT_TYPES[ext] || "application/octet-stream";
-  const stat = statSync(filepath);
-  const fileSize = stat.size;
-
+  const fileSize = statSync(filepath).size;
   const range = request.headers.get("range");
 
-  if (range) {
+  // For video files with range requests, serve partial content
+  if (range && isVideo(ext)) {
     const parts = range.replace(/bytes=/, "").split("-");
     const start = parseInt(parts[0], 10);
-    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    const end = parts[1] ? parseInt(parts[1], 10) : Math.min(start + 1024 * 1024 - 1, fileSize - 1);
     const chunkSize = end - start + 1;
 
-    const stream = createReadStream(filepath, { start, end });
-    const readable = new ReadableStream({
-      start(controller) {
-        stream.on("data", (chunk) => controller.enqueue(chunk));
-        stream.on("end", () => controller.close());
-        stream.on("error", (err) => controller.error(err));
-      },
-    });
+    const fd = openSync(filepath, "r");
+    const buffer = Buffer.alloc(chunkSize);
+    readSync(fd, buffer, 0, chunkSize, start);
+    closeSync(fd);
 
-    return new NextResponse(readable, {
+    return new NextResponse(buffer, {
       status: 206,
       headers: {
         "Content-Range": `bytes ${start}-${end}/${fileSize}`,
@@ -69,16 +67,9 @@ export async function GET(
     });
   }
 
-  const stream = createReadStream(filepath);
-  const readable = new ReadableStream({
-    start(controller) {
-      stream.on("data", (chunk) => controller.enqueue(chunk));
-      stream.on("end", () => controller.close());
-      stream.on("error", (err) => controller.error(err));
-    },
-  });
-
-  return new NextResponse(readable, {
+  // For non-range requests (images, or full video)
+  const data = await readFile(filepath);
+  return new NextResponse(data, {
     headers: {
       "Content-Type": contentType,
       "Content-Length": String(fileSize),
