@@ -19,6 +19,7 @@ export async function createNoticeAction(formData: FormData) {
   });
 
   revalidatePath("/admin/notices");
+  revalidatePath("/", "layout");
   redirect("/admin/notices");
 }
 
@@ -37,11 +38,13 @@ export async function updateNoticeAction(id: number, formData: FormData) {
   });
 
   revalidatePath("/admin/notices");
+  revalidatePath("/", "layout");
   redirect("/admin/notices");
 }
 
 export async function deleteNoticeAction(id: number) {
   await deleteNotice(id);
   revalidatePath("/admin/notices");
+  revalidatePath("/", "layout");
   redirect("/admin/notices");
 }

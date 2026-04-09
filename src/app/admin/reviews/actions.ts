@@ -15,6 +15,7 @@ export async function createReviewAction(formData: FormData) {
   });
 
   revalidatePath("/admin/reviews");
+  revalidatePath("/", "layout");
   redirect("/admin/reviews");
 }
 
@@ -29,11 +30,13 @@ export async function updateReviewAction(id: number, formData: FormData) {
   });
 
   revalidatePath("/admin/reviews");
+  revalidatePath("/", "layout");
   redirect("/admin/reviews");
 }
 
 export async function deleteReviewAction(id: number) {
   await deleteReview(id);
   revalidatePath("/admin/reviews");
+  revalidatePath("/", "layout");
   redirect("/admin/reviews");
 }

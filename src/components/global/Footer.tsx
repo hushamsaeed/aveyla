@@ -1,14 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const EXPLORE_LINKS = [
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+const DEFAULT_EXPLORE = [
   { label: "Rooms", href: "/rooms" },
   { label: "Activities", href: "/activities" },
   { label: "Packages", href: "/packages" },
   { label: "Gallery", href: "/gallery" },
 ];
 
-const INFO_LINKS = [
+const DEFAULT_INFO = [
   { label: "About Us", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -32,7 +37,7 @@ function FooterColumn({
   );
 }
 
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+function FooterLinkEl({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
       href={href}
@@ -43,7 +48,24 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   );
 }
 
-export default function Footer() {
+interface FooterProps {
+  exploreLinks?: FooterLink[];
+  infoLinks?: FooterLink[];
+  phone?: string;
+  email?: string;
+  whatsapp?: string;
+}
+
+export default function Footer({
+  exploreLinks,
+  infoLinks,
+  phone = "+960 668-0068",
+  email = "info@aveyla.com",
+  whatsapp = "9606680068",
+}: FooterProps) {
+  const explore = exploreLinks && exploreLinks.length > 0 ? exploreLinks : DEFAULT_EXPLORE;
+  const info = infoLinks && infoLinks.length > 0 ? infoLinks : DEFAULT_INFO;
+
   return (
     <footer className="w-full bg-dark-driftwood" role="contentinfo">
       <div className="mx-auto max-w-[1440px] px-4 tablet:px-16 pt-16 pb-8">
@@ -65,38 +87,38 @@ export default function Footer() {
 
           {/* Explore column */}
           <FooterColumn title="Explore">
-            {EXPLORE_LINKS.map((link) => (
-              <FooterLink key={link.href} href={link.href}>
+            {explore.map((link) => (
+              <FooterLinkEl key={link.href} href={link.href}>
                 {link.label}
-              </FooterLink>
+              </FooterLinkEl>
             ))}
           </FooterColumn>
 
           {/* Information column */}
           <FooterColumn title="Information">
-            {INFO_LINKS.map((link) => (
-              <FooterLink key={link.href} href={link.href}>
+            {info.map((link) => (
+              <FooterLinkEl key={link.href} href={link.href}>
                 {link.label}
-              </FooterLink>
+              </FooterLinkEl>
             ))}
           </FooterColumn>
 
           {/* Contact column */}
           <FooterColumn title="Contact">
             <a
-              href="tel:+9606680068"
+              href={`tel:${phone.replace(/\s/g, "")}`}
               className="font-body text-[13px] font-normal text-white/[0.73] hover:text-pure-white transition-colors"
             >
-              +960 668-0068
+              {phone}
             </a>
             <a
-              href="mailto:info@aveyla.com"
+              href={`mailto:${email}`}
               className="font-body text-[13px] font-normal text-white/[0.73] hover:text-pure-white transition-colors"
             >
-              info@aveyla.com
+              {email}
             </a>
             <a
-              href="https://wa.me/9606680068"
+              href={`https://wa.me/${whatsapp.replace(/\D/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-[13px] font-normal text-white/[0.73] hover:text-pure-white transition-colors"

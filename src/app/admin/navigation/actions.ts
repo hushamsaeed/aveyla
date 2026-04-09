@@ -14,6 +14,7 @@ export async function createNavItemAction(formData: FormData) {
   });
 
   revalidatePath("/admin/navigation");
+  revalidatePath("/", "layout");
   redirect("/admin/navigation");
 }
 
@@ -27,11 +28,13 @@ export async function updateNavItemAction(id: number, formData: FormData) {
   });
 
   revalidatePath("/admin/navigation");
+  revalidatePath("/", "layout");
   redirect("/admin/navigation");
 }
 
 export async function deleteNavItemAction(id: number) {
   await deleteNavItem(id);
   revalidatePath("/admin/navigation");
+  revalidatePath("/", "layout");
   redirect("/admin/navigation");
 }

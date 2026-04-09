@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const NAV_LINKS = [
+const DEFAULT_LINKS = [
   { label: "Rooms", href: "/rooms" },
   { label: "Activities", href: "/activities" },
   { label: "Dining", href: "/dining" },
@@ -14,7 +14,13 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function NavBar() {
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+export default function NavBar({ links }: { links?: NavLink[] }) {
+  const NAV_LINKS = links && links.length > 0 ? links : DEFAULT_LINKS;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 

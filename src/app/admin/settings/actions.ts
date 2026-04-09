@@ -15,6 +15,7 @@ export async function saveSettingsAction(formData: FormData) {
   }
 
   revalidatePath("/admin/settings");
+  revalidatePath("/", "layout");
   redirect("/admin/settings");
 }
 
@@ -27,5 +28,6 @@ export async function addSettingAction(formData: FormData) {
   }
 
   revalidatePath("/admin/settings");
+  revalidatePath("/", "layout");
   redirect("/admin/settings");
 }
