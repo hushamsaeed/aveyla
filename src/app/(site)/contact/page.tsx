@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getAllPackages } from "@/lib/data/packages";
+import { getPageContent } from "@/lib/data/pages";
 import ContactClient from "./ContactClient";
 
 export const revalidate = 60;
@@ -10,10 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const packages = await getAllPackages();
+  const [packages, content] = await Promise.all([
+    getAllPackages(),
+    getPageContent("contact"),
+  ]);
   const packageOptions = [
     { value: "", label: "General Enquiry" },
     ...packages.map((p) => ({ value: p.slug, label: p.name })),
   ];
-  return <ContactClient packageOptions={packageOptions} />;
+  return <ContactClient packageOptions={packageOptions} content={content} />;
 }

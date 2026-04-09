@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
+interface PageSection {
+  title: string | null;
+  body: string | null;
+  imagePath: string | null;
+}
+
 interface PackageOption {
   value: string;
   label: string;
@@ -98,16 +104,20 @@ function ContactForm({ packageOptions }: { packageOptions: PackageOption[] }) {
   );
 }
 
-export default function ContactClient({ packageOptions }: { packageOptions: PackageOption[] }) {
+export default function ContactClient({ packageOptions, content }: { packageOptions: PackageOption[]; content: Record<string, PageSection> }) {
+  const heroTitle = content.hero?.title || "Get in Touch";
+  const heroBody = content.hero?.body || "We respond within 24 hours. Or reach us instantly on WhatsApp.";
+  const sidebarTitle = content.sidebar?.title || "Direct Contact";
+
   return (
     <>
       <section className="bg-dark-driftwood px-6 pb-16 pt-32 tablet:px-14">
         <div className="mx-auto max-w-content">
           <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">
-            Get in Touch
+            {heroTitle}
           </h1>
           <p className="mt-4 font-body text-body-lg text-white/60">
-            We respond within 24 hours. Or reach us instantly on WhatsApp.
+            {heroBody}
           </p>
         </div>
       </section>
@@ -123,7 +133,7 @@ export default function ContactClient({ packageOptions }: { packageOptions: Pack
 
           {/* Sidebar */}
           <div className="w-full space-y-8 tablet:w-[400px]">
-            <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">Direct Contact</h2>
+            <h2 className="font-display text-heading-lg font-semibold text-dark-driftwood">{sidebarTitle}</h2>
             <a href="https://wa.me/9607773998" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-body-md text-muted-ocean hover:underline">
               <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
               +960 777 3998 (WhatsApp)
@@ -136,9 +146,12 @@ export default function ContactClient({ packageOptions }: { packageOptions: Pack
               <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
               info@aveyla.com
             </a>
-            <div className="h-[200px] w-full bg-salt-white flex items-center justify-center">
-              <span className="font-body text-body-md text-driftwood">Map — Dharavandhoo Island</span>
-            </div>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=72.99%2C5.14%2C73.03%2C5.17&layer=mapnik&marker=5.1567%2C73.0117"
+              className="h-[200px] w-full border-0"
+              loading="lazy"
+              title="Dharavandhoo Island, Baa Atoll, Maldives"
+            />
           </div>
         </div>
       </section>
