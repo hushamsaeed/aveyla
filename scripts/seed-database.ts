@@ -451,6 +451,15 @@ async function seed() {
   insertPage.run("privacy", "rights", "Your Rights", "You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at info@aveyla.com.", null, 6);
   insertPage.run("privacy", "contact", "Contact", "For privacy-related enquiries: info@aveyla.com", null, 7);
 
+  // Rooms Page
+  insertPage.run("rooms", "hero", "Rooms", "Three room types, all steps from the reef.", null, 0);
+
+  // Packages Page
+  insertPage.run("packages", "hero", "Packages", "3–7 night all-inclusive packages. Full board, flights, and guided experiences included.", null, 0);
+
+  // Activities Page
+  insertPage.run("activities", "hero", "Activities", "Eight ways to meet the ocean.", null, 0);
+
   // ── HERO MEDIA ─────────────────────────────────────────────────────────────
   const insertHeroMedia = sqlite.prepare("INSERT INTO hero_media (media_type, media_path, poster_path, alt, sort_order, active) VALUES (?, ?, ?, ?, ?, 1)");
   insertHeroMedia.run("video", "/videos/hero.mp4", "/images/hero-poster.jpg", "Underwater dive footage at Hanifaru Bay", 0);

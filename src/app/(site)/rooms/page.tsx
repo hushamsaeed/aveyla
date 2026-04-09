@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllRooms } from "@/lib/data/rooms";
+import { getPageContent } from "@/lib/data/pages";
 import { getRoomImage } from "@/lib/images";
 
 export const revalidate = 60;
@@ -11,14 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default async function RoomsPage() {
-  const rooms = await getAllRooms();
+  const [rooms, content] = await Promise.all([getAllRooms(), getPageContent("rooms")]);
+  const title = content.hero?.title || "Rooms";
+  const intro = content.hero?.body || "Three room types, all steps from the reef.";
 
   return (
     <>
       <section className="bg-dark-driftwood px-6 pb-16 pt-32 tablet:px-14">
         <div className="mx-auto max-w-content">
-          <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">Rooms</h1>
-          <p className="mt-4 font-body text-body-lg text-white/60">Three room types, all steps from the reef.</p>
+          <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">{title}</h1>
+          <p className="mt-4 font-body text-body-lg text-white/60">{intro}</p>
         </div>
       </section>
       <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">

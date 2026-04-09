@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllActivities } from "@/lib/data/activities";
+import { getPageContent } from "@/lib/data/pages";
 import { getActivityImage } from "@/lib/images";
 
 export const revalidate = 60;
@@ -11,14 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default async function ActivitiesPage() {
-  const activities = await getAllActivities();
+  const [activities, content] = await Promise.all([getAllActivities(), getPageContent("activities")]);
+  const title = content.hero?.title || "Activities";
+  const intro = content.hero?.body || "Eight ways to meet the ocean.";
 
   return (
     <>
       <section className="bg-dark-driftwood px-6 pb-16 pt-32 tablet:px-14">
         <div className="mx-auto max-w-content">
-          <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">Activities</h1>
-          <p className="mt-4 font-body text-body-lg text-white/60">Eight ways to meet the ocean.</p>
+          <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">{title}</h1>
+          <p className="mt-4 font-body text-body-lg text-white/60">{intro}</p>
         </div>
       </section>
       <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">

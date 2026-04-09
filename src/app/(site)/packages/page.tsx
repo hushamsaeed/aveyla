@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPackages } from "@/lib/data/packages";
+import { getPageContent } from "@/lib/data/pages";
 import { getPackageImage } from "@/lib/images";
 
 export const revalidate = 60;
@@ -11,16 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default async function PackagesPage() {
-  const packages = await getAllPackages();
+  const [packages, content] = await Promise.all([getAllPackages(), getPageContent("packages")]);
+  const title = content.hero?.title || "Packages";
+  const intro = content.hero?.body || "3–7 night all-inclusive packages. Full board, flights, and guided experiences included.";
 
   return (
     <>
       <section className="bg-dark-driftwood px-6 pb-16 pt-32 tablet:px-14">
         <div className="mx-auto max-w-content">
-          <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">Packages</h1>
-          <p className="mt-4 font-body text-body-lg text-white/60">
-            3–7 night all-inclusive packages. Full board, flights, and guided experiences included.
-          </p>
+          <h1 className="font-display text-display-lg font-light tracking-[-0.02em] text-pure-white">{title}</h1>
+          <p className="mt-4 font-body text-body-lg text-white/60">{intro}</p>
         </div>
       </section>
       <section className="bg-[#060E1A] px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
