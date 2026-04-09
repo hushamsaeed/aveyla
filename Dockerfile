@@ -68,8 +68,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # Copy the seeded database
 COPY --from=builder --chown=nextjs:nodejs /app/data ./data
 
-# Create uploads directory
-RUN mkdir -p uploads && chown nextjs:nodejs uploads data
+# Create uploads directory and Next.js ISR cache directory
+RUN mkdir -p uploads .next/cache && chown nextjs:nodejs uploads data .next/cache
 
 USER nextjs
 
