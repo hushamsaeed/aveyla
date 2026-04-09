@@ -1,16 +1,9 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { packages, pricingTiers } from "@/db/schema";
-import { eq, asc } from "drizzle-orm";
+import { getPackageById, getPricingTiers } from "@/lib/data/packages";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
 import PricingTiersForm from "@/components/admin/PricingTiersForm";
 import { updatePackageAction, deletePackageAction } from "../actions";
-
-function parseJson(val: string | null): string[] {
-  if (!val) return [];
-  try { return JSON.parse(val); } catch { return []; }
-}
 
 export default async function EditPackagePage({
   params,
@@ -18,17 +11,10 @@ export default async function EditPackagePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [pkg] = db.select().from(packages).where(eq(packages.id, Number(id))).limit(1).all();
+  const pkg = await getPackageById(Number(id));
   if (!pkg) notFound();
 
-  const tiers = db
-    .select()
-    .from(pricingTiers)
-    .where(eq(pricingTiers.packageId, pkg.id))
-    .orderBy(asc(pricingTiers.sortOrder))
-    .all();
-
-  const inclusions = parseJson(pkg.inclusions);
+  const tiers = await getPricingTiers(pkg.id);
   const updateAction = updatePackageAction.bind(null, pkg.id);
   const deleteAction = deletePackageAction.bind(null, pkg.id);
 
@@ -102,7 +88,7 @@ export default async function EditPackagePage({
               id="inclusions"
               name="inclusions"
               rows={6}
-              defaultValue={inclusions.join("\n")}
+              defaultValue={pkg.inclusions.join("\n")}
             />
           </Field>
 

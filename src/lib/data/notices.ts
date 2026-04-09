@@ -12,6 +12,12 @@ export async function getActiveNotices() {
   return rows.map((n) => ({ ...n, targetPages: parseJsonField<string[]>(n.targetPages) }));
 }
 
+export async function getNoticeById(id: number) {
+  const rows = db.select().from(siteNotices).where(eq(siteNotices.id, id)).limit(1).all();
+  if (!rows[0]) return null;
+  return { ...rows[0], targetPages: parseJsonField<string[]>(rows[0].targetPages) };
+}
+
 export async function getAllNotices() {
   const rows = db.select().from(siteNotices).orderBy(desc(siteNotices.createdAt)).all();
   return rows.map((n) => ({ ...n, targetPages: parseJsonField<string[]>(n.targetPages) }));

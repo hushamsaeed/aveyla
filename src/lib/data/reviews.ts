@@ -6,6 +6,11 @@ export async function getActiveReviews() {
   return db.select().from(reviews).where(eq(reviews.active, 1)).orderBy(desc(reviews.createdAt)).all();
 }
 
+export async function getReviewById(id: number) {
+  const [review] = db.select().from(reviews).where(eq(reviews.id, id)).limit(1).all();
+  return review || null;
+}
+
 export async function getAllReviews() {
   return db.select().from(reviews).orderBy(desc(reviews.createdAt)).all();
 }

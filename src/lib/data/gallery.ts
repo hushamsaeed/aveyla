@@ -6,6 +6,11 @@ export async function getAllGalleryImages() {
   return db.select().from(galleryImages).orderBy(asc(galleryImages.sortOrder)).all();
 }
 
+export async function getGalleryImageById(id: number) {
+  const [image] = db.select().from(galleryImages).where(eq(galleryImages.id, id)).limit(1).all();
+  return image || null;
+}
+
 export async function getGalleryImagesByCategory(category: string) {
   return db
     .select()

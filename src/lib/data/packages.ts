@@ -17,6 +17,12 @@ export async function getAllPackages() {
   return rows.map((p) => ({ ...p, inclusions: parseJsonField<string[]>(p.inclusions) }));
 }
 
+export async function getPackageById(id: number) {
+  const [pkg] = db.select().from(packages).where(eq(packages.id, id)).limit(1).all();
+  if (!pkg) return null;
+  return { ...pkg, inclusions: parseJsonField<string[]>(pkg.inclusions) };
+}
+
 export async function getPackageBySlug(slug: string) {
   const [pkg] = db.select().from(packages).where(eq(packages.slug, slug)).limit(1).all();
   if (!pkg) return null;

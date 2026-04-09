@@ -1,16 +1,9 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { rooms } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getRoomById } from "@/lib/data/rooms";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { updateRoomAction, deleteRoomAction } from "../actions";
 import DeleteButton from "@/components/admin/DeleteButton";
-
-function parseJson(val: string | null): string[] {
-  if (!val) return [];
-  try { return JSON.parse(val); } catch { return []; }
-}
 
 export default async function EditRoomPage({
   params,
@@ -18,10 +11,8 @@ export default async function EditRoomPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [room] = db.select().from(rooms).where(eq(rooms.id, Number(id))).limit(1).all();
+  const room = await getRoomById(Number(id));
   if (!room) notFound();
-
-  const amenities = parseJson(room.amenities);
   const updateAction = updateRoomAction.bind(null, room.id);
   const deleteAction = deleteRoomAction.bind(null, room.id);
 
@@ -68,7 +59,7 @@ export default async function EditRoomPage({
               id="amenities"
               name="amenities"
               rows={6}
-              defaultValue={amenities.join("\n")}
+              defaultValue={room.amenities.join("\n")}
             />
           </Field>
 

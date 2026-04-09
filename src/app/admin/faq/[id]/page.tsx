@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { faqItems } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getFaqItemById } from "@/lib/data/faq";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import { updateFaqAction, deleteFaqAction } from "../actions";
 
@@ -11,7 +9,7 @@ export default async function EditFaqPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [item] = db.select().from(faqItems).where(eq(faqItems.id, Number(id))).limit(1).all();
+  const item = await getFaqItemById(Number(id));
   if (!item) notFound();
 
   const updateAction = updateFaqAction.bind(null, item.id);

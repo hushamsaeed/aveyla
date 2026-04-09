@@ -1,14 +1,7 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { siteNotices } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getNoticeById } from "@/lib/data/notices";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import { updateNoticeAction, deleteNoticeAction } from "../actions";
-
-function parseJson(val: string | null): string[] {
-  if (!val) return [];
-  try { return JSON.parse(val); } catch { return []; }
-}
 
 export default async function EditNoticePage({
   params,
@@ -16,10 +9,8 @@ export default async function EditNoticePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [notice] = db.select().from(siteNotices).where(eq(siteNotices.id, Number(id))).limit(1).all();
+  const notice = await getNoticeById(Number(id));
   if (!notice) notFound();
-
-  const targetPages = parseJson(notice.targetPages);
   const updateAction = updateNoticeAction.bind(null, notice.id);
   const deleteAction = deleteNoticeAction.bind(null, notice.id);
 
@@ -69,7 +60,7 @@ export default async function EditNoticePage({
               id="targetPages"
               name="targetPages"
               rows={4}
-              defaultValue={targetPages.join("\n")}
+              defaultValue={notice.targetPages.join("\n")}
             />
           </Field>
 

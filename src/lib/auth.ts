@@ -1,7 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { hash, compare } from "bcryptjs";
 import { cookies } from "next/headers";
-import { getUserByEmail } from "@/lib/data/users";
+import { getUserByEmail, updateUser } from "@/lib/data/users";
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "aveyla-dev-secret-change-me");
 const COOKIE_NAME = "admin_session";
@@ -67,5 +67,6 @@ export async function login(email: string, password: string): Promise<boolean> {
   if (!valid) return false;
 
   await createSession(user.id, user.email, user.role || "admin");
+  await updateUser(user.id, { lastLoginAt: new Date().toISOString() });
   return true;
 }

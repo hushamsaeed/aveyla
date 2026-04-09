@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { galleryImages } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getGalleryImageById } from "@/lib/data/gallery";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { updateGalleryImageAction, deleteGalleryImageAction } from "../actions";
@@ -12,7 +10,7 @@ export default async function EditGalleryImagePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [image] = db.select().from(galleryImages).where(eq(galleryImages.id, Number(id))).limit(1).all();
+  const image = await getGalleryImageById(Number(id));
   if (!image) notFound();
 
   const updateAction = updateGalleryImageAction.bind(null, image.id);

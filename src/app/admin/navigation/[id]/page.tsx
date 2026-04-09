@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { navItems } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getNavItemById } from "@/lib/data/navigation";
 import AdminForm, { Field, Input, Select } from "@/components/admin/AdminForm";
 import { updateNavItemAction, deleteNavItemAction } from "../actions";
 
@@ -11,7 +9,7 @@ export default async function EditNavItemPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [item] = db.select().from(navItems).where(eq(navItems.id, Number(id))).limit(1).all();
+  const item = await getNavItemById(Number(id));
   if (!item) notFound();
 
   const updateAction = updateNavItemAction.bind(null, item.id);

@@ -1,15 +1,8 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { activities } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getActivityById } from "@/lib/data/activities";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { updateActivityAction, deleteActivityAction } from "../actions";
-
-function parseJson(val: string | null): string[] {
-  if (!val) return [];
-  try { return JSON.parse(val); } catch { return []; }
-}
 
 export default async function EditActivityPage({
   params,
@@ -17,10 +10,8 @@ export default async function EditActivityPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [activity] = db.select().from(activities).where(eq(activities.id, Number(id))).limit(1).all();
+  const activity = await getActivityById(Number(id));
   if (!activity) notFound();
-
-  const safetyRequirements = parseJson(activity.safetyRequirements);
   const updateAction = updateActivityAction.bind(null, activity.id);
   const deleteAction = deleteActivityAction.bind(null, activity.id);
 
@@ -90,7 +81,7 @@ export default async function EditActivityPage({
               id="safetyRequirements"
               name="safetyRequirements"
               rows={5}
-              defaultValue={safetyRequirements.join("\n")}
+              defaultValue={activity.safetyRequirements.join("\n")}
             />
           </Field>
 

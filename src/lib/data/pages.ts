@@ -22,6 +22,11 @@ export async function getPageSections(pageSlug: string) {
     .all();
 }
 
+export async function getPageSectionById(id: number) {
+  const [section] = db.select().from(pageContent).where(eq(pageContent.id, id)).limit(1).all();
+  return section || null;
+}
+
 export async function updatePageSection(
   pageSlug: string,
   sectionKey: string,

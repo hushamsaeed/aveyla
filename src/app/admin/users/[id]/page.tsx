@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { adminUsers } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getUserById } from "@/lib/data/users";
 import AdminForm, { Field, Input, Select } from "@/components/admin/AdminForm";
 import { updateUserAction, deleteUserAction } from "../actions";
 
@@ -11,7 +9,7 @@ export default async function EditUserPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [user] = db.select().from(adminUsers).where(eq(adminUsers.id, Number(id))).limit(1).all();
+  const user = await getUserById(Number(id));
   if (!user) notFound();
 
   const updateAction = updateUserAction.bind(null, user.id);

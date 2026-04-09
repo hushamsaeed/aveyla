@@ -12,6 +12,12 @@ export async function getAllActivities() {
   return rows.map((a) => ({ ...a, safetyRequirements: parseJsonField<string[]>(a.safetyRequirements) }));
 }
 
+export async function getActivityById(id: number) {
+  const [activity] = db.select().from(activities).where(eq(activities.id, id)).limit(1).all();
+  if (!activity) return null;
+  return { ...activity, safetyRequirements: parseJsonField<string[]>(activity.safetyRequirements) };
+}
+
 export async function getActivityBySlug(slug: string) {
   const [activity] = db.select().from(activities).where(eq(activities.slug, slug)).limit(1).all();
   if (!activity) return null;

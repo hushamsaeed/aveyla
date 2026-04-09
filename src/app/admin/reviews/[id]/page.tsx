@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { reviews } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getReviewById } from "@/lib/data/reviews";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import { updateReviewAction, deleteReviewAction } from "../actions";
 
@@ -11,7 +9,7 @@ export default async function EditReviewPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [review] = db.select().from(reviews).where(eq(reviews.id, Number(id))).limit(1).all();
+  const review = await getReviewById(Number(id));
   if (!review) notFound();
 
   const updateAction = updateReviewAction.bind(null, review.id);

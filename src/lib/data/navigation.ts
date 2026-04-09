@@ -11,6 +11,11 @@ export async function getNavItems(location: string) {
     .all();
 }
 
+export async function getNavItemById(id: number) {
+  const [item] = db.select().from(navItems).where(eq(navItems.id, id)).limit(1).all();
+  return item || null;
+}
+
 export async function getAllNavItems() {
   return db.select().from(navItems).orderBy(asc(navItems.location), asc(navItems.sortOrder)).all();
 }

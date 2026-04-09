@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
-import { db } from "@/db";
-import { pageContent } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getPageSectionById } from "@/lib/data/pages";
 import AdminForm, { Field, Input, Textarea } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { updatePageSectionByIdAction, deletePageSectionByIdAction } from "../actions";
@@ -12,7 +10,7 @@ export default async function EditPageSectionPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [section] = db.select().from(pageContent).where(eq(pageContent.id, Number(id))).limit(1).all();
+  const section = await getPageSectionById(Number(id));
   if (!section) notFound();
 
   const updateAction = updatePageSectionByIdAction.bind(null, section.id);

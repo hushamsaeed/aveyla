@@ -11,6 +11,11 @@ export async function getActiveFaq() {
     .all();
 }
 
+export async function getFaqItemById(id: number) {
+  const [item] = db.select().from(faqItems).where(eq(faqItems.id, id)).limit(1).all();
+  return item || null;
+}
+
 export async function getAllFaq() {
   return db.select().from(faqItems).orderBy(asc(faqItems.sortOrder)).all();
 }

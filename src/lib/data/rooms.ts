@@ -12,6 +12,12 @@ export async function getAllRooms() {
   return rows.map((r) => ({ ...r, amenities: parseJsonField<string[]>(r.amenities) }));
 }
 
+export async function getRoomById(id: number) {
+  const [room] = db.select().from(rooms).where(eq(rooms.id, id)).limit(1).all();
+  if (!room) return null;
+  return { ...room, amenities: parseJsonField<string[]>(room.amenities) };
+}
+
 export async function getRoomBySlug(slug: string) {
   const [room] = db.select().from(rooms).where(eq(rooms.slug, slug)).limit(1).all();
   if (!room) return null;
