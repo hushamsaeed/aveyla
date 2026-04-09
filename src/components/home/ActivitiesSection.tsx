@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { getAllActivities } from "@/lib/data/activities";
+import { getPageContent } from "@/lib/data/pages";
 import { getActivityImage } from "@/lib/images";
 
 export default async function ActivitiesSection() {
-  const activities = await getAllActivities();
+  const [activities, content] = await Promise.all([getAllActivities(), getPageContent("home")]);
+  const title = content.activities_section?.title || "Go Deeper.";
+  const subtitle = content.activities_section?.body || "Eight ways to meet the ocean.";
 
   return (
     <section
@@ -13,10 +16,10 @@ export default async function ActivitiesSection() {
       <div className="mx-auto max-w-content">
         <div className="mb-12">
           <h2 className="font-display text-display-md font-semibold tracking-[-0.01em] text-pure-white">
-            Go Deeper.
+            {title}
           </h2>
           <p className="mt-3 font-body text-body-lg text-white/60">
-            Eight ways to meet the ocean.
+            {subtitle}
           </p>
         </div>
 

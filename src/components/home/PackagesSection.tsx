@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { getAllPackages } from "@/lib/data/packages";
+import { getPageContent } from "@/lib/data/pages";
 import { getPackageImage } from "@/lib/images";
 
 export default async function PackagesSection() {
-  const packages = await getAllPackages();
+  const [packages, content] = await Promise.all([getAllPackages(), getPageContent("home")]);
+  const title = content.packages_section?.title || "Choose Your Depth.";
 
   return (
     <section className="bg-[#060E1A] px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
       <div className="mx-auto max-w-content space-y-12">
         <h2 className="font-display text-display-md font-semibold tracking-[-0.01em] text-pure-white">
-          Choose Your Depth.
+          {title}
         </h2>
 
         {packages.map((pkg) => {

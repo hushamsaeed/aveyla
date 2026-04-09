@@ -1,19 +1,22 @@
 import Link from "next/link";
 import { getAllRooms } from "@/lib/data/rooms";
+import { getPageContent } from "@/lib/data/pages";
 import { getRoomImage } from "@/lib/images";
 
 export default async function RoomsSection() {
-  const rooms = await getAllRooms();
+  const [rooms, content] = await Promise.all([getAllRooms(), getPageContent("home")]);
+  const title = content.rooms_section?.title || "Your Base Camp.";
+  const subtitle = content.rooms_section?.body || "Three room types, all steps from the reef.";
 
   return (
     <section className="bg-salt-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet desktop:py-section-desktop">
       <div className="mx-auto max-w-content">
         <div className="mb-12">
           <h2 className="font-display text-display-md font-semibold tracking-[-0.01em] text-dark-driftwood">
-            Your Base Camp.
+            {title}
           </h2>
           <p className="mt-3 font-body text-body-lg text-driftwood">
-            Three room types, all steps from the reef.
+            {subtitle}
           </p>
         </div>
 

@@ -451,6 +451,11 @@ async function seed() {
   insertPage.run("privacy", "rights", "Your Rights", "You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at info@aveyla.com.", null, 6);
   insertPage.run("privacy", "contact", "Contact", "For privacy-related enquiries: info@aveyla.com", null, 7);
 
+  // Homepage - Section Headings
+  insertPage.run("home", "rooms_section", "Your Base Camp.", "Three room types, all steps from the reef.", null, 6);
+  insertPage.run("home", "packages_section", "Choose Your Depth.", null, null, 7);
+  insertPage.run("home", "activities_section", "Go Deeper.", "Eight ways to meet the ocean.", null, 8);
+
   // Rooms Page
   insertPage.run("rooms", "hero", "Rooms", "Three room types, all steps from the reef.", null, 0);
 
