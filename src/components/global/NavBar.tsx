@@ -7,6 +7,7 @@ import Link from "next/link";
 const NAV_LINKS = [
   { label: "Rooms", href: "/rooms" },
   { label: "Activities", href: "/activities" },
+  { label: "Dining", href: "/dining" },
   { label: "Packages", href: "/packages" },
   { label: "Hanifaru Bay", href: "/hanifaru-bay" },
   { label: "Gallery", href: "/gallery" },
