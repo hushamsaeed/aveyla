@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getPageContent } from "@/lib/data/pages";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Privacy Policy | Aveyla Manta Village | Maldives",
   description: "Privacy policy for Aveyla Manta Village website — data collection, cookies, and your rights.",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getPageContent } from "@/lib/data/pages";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Dining | Aveyla Manta Village | Maldives",
   description: "Fresh-caught seafood, coconut curries, and tropical fruit. Open-air restaurant overlooking the lagoon on Dharavandhoo Island.",

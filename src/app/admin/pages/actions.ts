@@ -18,6 +18,7 @@ export async function createPageSectionAction(formData: FormData) {
   });
 
   revalidatePath("/admin/pages");
+  revalidatePath("/", "layout");
   redirect("/admin/pages");
 }
 
@@ -33,6 +34,7 @@ export async function updatePageSectionByIdAction(id: number, formData: FormData
   });
 
   revalidatePath("/admin/pages");
+  revalidatePath("/", "layout");
   redirect("/admin/pages");
 }
 
@@ -42,5 +44,6 @@ export async function deletePageSectionByIdAction(id: number) {
 
   await deletePageSection(existing.pageSlug, existing.sectionKey);
   revalidatePath("/admin/pages");
+  revalidatePath("/", "layout");
   redirect("/admin/pages");
 }

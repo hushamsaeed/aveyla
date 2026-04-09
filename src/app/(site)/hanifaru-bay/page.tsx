@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getPageContent } from "@/lib/data/pages";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Hanifaru Bay | Aveyla Manta Village | Maldives",
   description: "Hanifaru Bay — UNESCO Biosphere Reserve, the largest known manta ray feeding aggregation on earth. Aveyla is the closest accommodation, 15 minutes by boat.",
