@@ -12,10 +12,10 @@ export default async function DiningPage() {
   const c = await getPageContent("dining");
   const heroImage = c.hero?.imagePath || "/images/activities/dining.jpg";
   const heroTitle = c.hero?.title || "Dining";
-  const heroBody = c.hero?.body || "Fresh-caught seafood, coconut curries, and tropical fruit. Open-air restaurant overlooking the lagoon on Dharavandhoo Island.";
+  const heroBody = c.hero?.body || "";
   const contentTitle = c.content?.title || "Our Restaurant";
   const contentBody = c.content?.body || "Meals at Aveyla are built around what arrives that day. The kitchen works with local fishermen and island produce \u2014 reef fish grilled whole, coconut curries, tropical fruit that has never seen a cargo hold. No pretension, no buffet theatre. Just food that belongs here.\n\nBreakfast, lunch, and dinner are served in the open-air restaurant overlooking the lagoon. Dietary requirements are accommodated with advance notice. Half-board and full-board options are available with all packages.";
-  const heroParagraphs = heroBody.split("\n\n");
+  const heroParagraphs = heroBody ? heroBody.split("\n\n") : [];
   const contentParagraphs = contentBody.split("\n\n");
 
   return (
@@ -28,15 +28,17 @@ export default async function DiningPage() {
         </div>
       </section>
 
-      <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
-        <div className="mx-auto max-w-editorial space-y-8">
-          {heroParagraphs.map((para, i) => (
-            <p key={i} className="font-body text-body-lg leading-[1.7] text-driftwood">
-              {para}
-            </p>
-          ))}
-        </div>
-      </section>
+      {heroParagraphs.length > 0 && (
+        <section className="bg-linen px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
+          <div className="mx-auto max-w-editorial space-y-8">
+            {heroParagraphs.map((para, i) => (
+              <p key={i} className="font-body text-body-lg leading-[1.7] text-driftwood">
+                {para}
+              </p>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="bg-salt-white px-6 py-section-mobile tablet:px-14 tablet:py-section-tablet">
         <div className="mx-auto max-w-editorial space-y-8">
