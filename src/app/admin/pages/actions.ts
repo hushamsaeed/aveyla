@@ -31,9 +31,9 @@ export async function updatePageSectionByIdAction(id: number, formData: FormData
     if (!existing) return;
 
     await updatePageSection(existing.pageSlug, existing.sectionKey, {
-      title: (formData.get("title") as string) || undefined,
-      body: (formData.get("body") as string) || undefined,
-      imagePath: (formData.get("imagePath") as string) || undefined,
+      title: (formData.get("title") as string) || null,
+      body: (formData.get("body") as string) || null,
+      imagePath: (formData.get("imagePath") as string) || null,
       sortOrder: formData.get("sortOrder") ? Number(formData.get("sortOrder")) : 0,
     });
 
