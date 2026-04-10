@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getActivityById } from "@/lib/data/activities";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updateActivityAction, deleteActivityAction } from "../actions";
 
 export default async function EditActivityPage({
@@ -24,14 +25,7 @@ export default async function EditActivityPage({
           </h1>
           <p className="mt-1 font-body text-sm text-driftwood">{activity.name}</p>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete Activity
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete Activity" />
       </div>
 
       <div className="max-w-2xl">

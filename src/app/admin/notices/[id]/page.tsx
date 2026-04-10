@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getNoticeById } from "@/lib/data/notices";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updateNoticeAction, deleteNoticeAction } from "../actions";
 
 export default async function EditNoticePage({
@@ -23,14 +24,7 @@ export default async function EditNoticePage({
           </h1>
           <p className="mt-1 font-body text-sm text-driftwood">{notice.title}</p>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete Notice
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete Notice" />
       </div>
 
       <div className="max-w-2xl">

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getUserById } from "@/lib/data/users";
 import AdminForm, { Field, Input, Select } from "@/components/admin/AdminForm";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updateUserAction, deleteUserAction } from "../actions";
 
 export default async function EditUserPage({
@@ -24,14 +25,7 @@ export default async function EditUserPage({
           </h1>
           <p className="mt-1 font-body text-sm text-driftwood">{user.email}</p>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete User
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete User" />
       </div>
 
       <div className="max-w-lg">

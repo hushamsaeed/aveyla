@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getGalleryImageById } from "@/lib/data/gallery";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updateGalleryImageAction, deleteGalleryImageAction } from "../actions";
 
 export default async function EditGalleryImagePage({
@@ -24,14 +25,7 @@ export default async function EditGalleryImagePage({
             Edit Gallery Image
           </h1>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete Image
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete Image" />
       </div>
 
       <div className="max-w-2xl">

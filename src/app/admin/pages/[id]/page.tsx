@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getPageSectionById } from "@/lib/data/pages";
 import AdminForm, { Field, Input, Textarea } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updatePageSectionByIdAction, deletePageSectionByIdAction } from "../actions";
 
 export default async function EditPageSectionPage({
@@ -27,14 +28,7 @@ export default async function EditPageSectionPage({
             <span className="font-mono">{section.pageSlug}</span> / <span className="font-mono">{section.sectionKey}</span>
           </p>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete Section
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete Section" />
       </div>
 
       <div className="max-w-2xl">

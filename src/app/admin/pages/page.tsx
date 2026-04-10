@@ -2,6 +2,7 @@ import { db } from "@/db";
 import { pageContent } from "@/db/schema";
 import { asc } from "drizzle-orm";
 import Link from "next/link";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { deletePageSectionByIdAction } from "./actions";
 
 export default async function AdminPagesPage() {
@@ -82,19 +83,7 @@ export default async function AdminPagesPage() {
                         >
                           Edit
                         </Link>
-                        <form
-                          action={async () => {
-                            "use server";
-                            await deletePageSectionByIdAction(section.id);
-                          }}
-                        >
-                          <button
-                            type="submit"
-                            className="font-body text-sm text-red-500 hover:text-red-700 transition-colors"
-                          >
-                            Delete
-                          </button>
-                        </form>
+                        <DeleteButton action={deletePageSectionByIdAction.bind(null, section.id)} />
                       </div>
                     </td>
                   </tr>

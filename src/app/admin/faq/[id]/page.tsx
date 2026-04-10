@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getFaqItemById } from "@/lib/data/faq";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updateFaqAction, deleteFaqAction } from "../actions";
 
 export default async function EditFaqPage({
@@ -23,14 +24,7 @@ export default async function EditFaqPage({
             Edit FAQ Item
           </h1>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete" />
       </div>
 
       <div className="max-w-2xl">

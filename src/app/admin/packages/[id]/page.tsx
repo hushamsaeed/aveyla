@@ -3,6 +3,7 @@ import { getPackageById, getPricingTiers } from "@/lib/data/packages";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
 import ImageUpload from "@/components/admin/ImageUpload";
 import PricingTiersForm from "@/components/admin/PricingTiersForm";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updatePackageAction, deletePackageAction } from "../actions";
 
 export default async function EditPackagePage({
@@ -27,14 +28,7 @@ export default async function EditPackagePage({
           </h1>
           <p className="mt-1 font-body text-sm text-driftwood">{pkg.name}</p>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete Package
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete Package" />
       </div>
 
       <div className="max-w-4xl">

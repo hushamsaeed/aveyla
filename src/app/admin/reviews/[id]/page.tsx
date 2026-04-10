@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getReviewById } from "@/lib/data/reviews";
 import AdminForm, { Field, Input, Textarea, Select } from "@/components/admin/AdminForm";
+import DeleteButton from "@/components/admin/DeleteButton";
 import { updateReviewAction, deleteReviewAction } from "../actions";
 
 export default async function EditReviewPage({
@@ -24,14 +25,7 @@ export default async function EditReviewPage({
           </h1>
           <p className="mt-1 font-body text-sm text-driftwood">{review.guestName}</p>
         </div>
-        <form action={deleteAction}>
-          <button
-            type="submit"
-            className="border border-red-200 px-4 py-2 font-body text-sm text-red-600 hover:bg-red-50 transition-colors rounded-sm"
-          >
-            Delete Review
-          </button>
-        </form>
+        <DeleteButton action={deleteAction} label="Delete Review" />
       </div>
 
       <div className="max-w-2xl">
