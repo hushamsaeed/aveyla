@@ -38,7 +38,7 @@ export default async function SiteLayout({
         email={settingsMap.contact_email || "info@aveyla.com"}
         whatsapp={settingsMap.whatsapp_number || "9606680068"}
       />
-      <WhatsAppButton />
+      <WhatsAppButton number={settingsMap.whatsapp_number} />
       <CookieConsent />
     </>
   );

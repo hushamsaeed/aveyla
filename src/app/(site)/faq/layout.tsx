@@ -18,7 +18,7 @@ export default async function FAQLayout({ children }: { children: React.ReactNod
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqForSchema)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqForSchema)).replace(/</g, "\\u003C") }}
       />
       {children}
     </>

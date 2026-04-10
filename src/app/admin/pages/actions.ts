@@ -2,10 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createPageSection, updatePageSection, deletePageSection } from "@/lib/data/pages";
-import { db } from "@/db";
-import { pageContent } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { createPageSection, updatePageSection, deletePageSection, getPageSectionById } from "@/lib/data/pages";
 
 export async function createPageSectionAction(formData: FormData) {
   try {
@@ -30,7 +27,7 @@ export async function createPageSectionAction(formData: FormData) {
 
 export async function updatePageSectionByIdAction(id: number, formData: FormData) {
   try {
-    const [existing] = db.select().from(pageContent).where(eq(pageContent.id, id)).limit(1).all();
+    const existing = await getPageSectionById(id);
     if (!existing) return;
 
     await updatePageSection(existing.pageSlug, existing.sectionKey, {
@@ -52,7 +49,7 @@ export async function updatePageSectionByIdAction(id: number, formData: FormData
 
 export async function deletePageSectionByIdAction(id: number) {
   try {
-    const [existing] = db.select().from(pageContent).where(eq(pageContent.id, id)).limit(1).all();
+    const existing = await getPageSectionById(id);
     if (!existing) return;
 
     await deletePageSection(existing.pageSlug, existing.sectionKey);
