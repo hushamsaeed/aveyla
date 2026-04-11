@@ -395,10 +395,10 @@ async function seed() {
 
   // ── SITE SETTINGS ──────────────────────────────────────────────────────────
   const insertSetting = sqlite.prepare("INSERT INTO site_settings (key, value) VALUES (?, ?)");
-  insertSetting.run("phone",            "+960 668-0068");
+  insertSetting.run("phone",            "+960 777 3998");
   insertSetting.run("email",            "info@aveyla.com");
-  insertSetting.run("whatsapp",         "9606680068");
-  insertSetting.run("whatsapp_display", "+960 668-0068");
+  insertSetting.run("whatsapp",         "9607773998");
+  insertSetting.run("whatsapp_display", "+960 777 3998");
   insertSetting.run("booking_url",      "");
   insertSetting.run("site_name",        "Aveyla Manta Village");
   insertSetting.run("tagline",          "Manta Village · Maldives");
