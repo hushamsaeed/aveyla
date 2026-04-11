@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     if (!ALLOWED_TYPES.includes(file.type)) {
       return NextResponse.json(
-        { error: "Invalid file type. Allowed: jpg, png, webp, gif" },
+        { error: "Invalid file type. Allowed: jpg, png, webp, gif, mp4, webm, mov" },
         { status: 400 }
       );
     }

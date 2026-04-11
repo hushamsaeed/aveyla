@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { login, verifySession } from "@/lib/auth";
+import { rateLimit } from "@/lib/rateLimit";
 
 export default async function AdminLoginPage({
   searchParams,
@@ -11,11 +13,21 @@ export default async function AdminLoginPage({
 
   const params = await searchParams;
   const hasError = params.error === "1";
+  const isLocked = params.error === "locked";
 
   async function handleLogin(formData: FormData) {
     "use server";
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
+
+    // Rate limit by IP: 5 attempts per 15 minutes
+    const h = await headers();
+    const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip") || "unknown";
+    const rl = rateLimit(`login:${ip}`, 5, 15 * 60 * 1000);
+    if (!rl.allowed) {
+      redirect("/admin/login?error=locked");
+    }
+
     const success = await login(email, password);
     if (success) redirect("/admin");
     redirect("/admin/login?error=1");
@@ -36,6 +48,11 @@ export default async function AdminLoginPage({
         {hasError && (
           <div className="rounded-sm border border-red-200 bg-red-50 px-4 py-3 font-body text-sm text-red-700">
             Invalid email or password. Please try again.
+          </div>
+        )}
+        {isLocked && (
+          <div className="rounded-sm border border-red-200 bg-red-50 px-4 py-3 font-body text-sm text-red-700">
+            Too many attempts. Please wait 15 minutes before trying again.
           </div>
         )}
 
