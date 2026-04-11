@@ -1,14 +1,16 @@
 import { MetadataRoute } from "next";
 
+const BASE_URL = process.env.SITE_URL || "https://www.aveyla.com";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/studio/", "/api/"],
+        disallow: ["/api/"],
       },
     ],
-    sitemap: "https://www.aveyla.com/sitemap.xml",
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }

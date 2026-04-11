@@ -59,9 +59,9 @@ interface FooterProps {
 export default function Footer({
   exploreLinks,
   infoLinks,
-  phone = "+960 668-0068",
+  phone = "+960 777 3998",
   email = "info@aveyla.com",
-  whatsapp = "9606680068",
+  whatsapp = "9607773998",
 }: FooterProps) {
   const explore = exploreLinks && exploreLinks.length > 0 ? exploreLinks : DEFAULT_EXPLORE;
   const info = infoLinks && infoLinks.length > 0 ? infoLinks : DEFAULT_INFO;

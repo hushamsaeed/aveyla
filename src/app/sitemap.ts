@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://www.aveyla.com";
+const BASE_URL = process.env.SITE_URL || "https://www.aveyla.com";
 
 const STATIC_PAGES = [
   "/",

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   title: "Aveyla Manta Village | Maldives",
   description:
     "Beach house hotel on Dharavandhoo Island, Baa Atoll UNESCO Biosphere Reserve. Your home on the reef — manta ray encounters at Hanifaru Bay.",
-  metadataBase: new URL("https://www.aveyla.com"),
+  metadataBase: new URL(process.env.SITE_URL || "https://www.aveyla.com"),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

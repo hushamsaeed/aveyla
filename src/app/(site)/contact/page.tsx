@@ -29,9 +29,9 @@ export default async function ContactPage() {
     <ContactClient
       packageOptions={packageOptions}
       content={content}
-      phone={settingsMap.phone_number || "+960 668-0068"}
-      email={settingsMap.contact_email || "info@aveyla.com"}
-      whatsapp={settingsMap.whatsapp_number || "9606680068"}
+      phone={settingsMap.phone || "+960 777 3998"}
+      email={settingsMap.email || "info@aveyla.com"}
+      whatsapp={settingsMap.whatsapp || "9607773998"}
     />
   );
 }

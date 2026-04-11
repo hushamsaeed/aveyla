@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getActivityBySlug, getAllActivities } from "@/lib/data/activities";
+import { getSetting } from "@/lib/data/settings";
 import { getActivityImage } from "@/lib/images";
 
 export const revalidate = 60;
@@ -14,8 +15,9 @@ export async function generateStaticParams() {
 export default async function ActivityDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  const activity = await getActivityBySlug(slug);
+  const [activity, whatsappRaw] = await Promise.all([getActivityBySlug(slug), getSetting("whatsapp")]);
   if (!activity) notFound();
+  const whatsapp = (whatsappRaw || "9607773998").replace(/\D/g, "");
 
   const image = getActivityImage(activity.heroImage, activity.slug);
 
@@ -61,7 +63,7 @@ export default async function ActivityDetailPage({ params }: { params: Promise<{
             <Link href={process.env.NEXT_PUBLIC_IPMS247_URL || "/contact"} className="bg-coral-clay px-8 py-4 font-body text-[14px] font-semibold text-dark-driftwood">
               Book This Activity
             </Link>
-            <Link href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9607773998"}`} target="_blank" rel="noopener noreferrer" className="border border-dark-driftwood px-8 py-4 font-body text-[14px] font-medium text-dark-driftwood">
+            <Link href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener noreferrer" className="border border-dark-driftwood px-8 py-4 font-body text-[14px] font-medium text-dark-driftwood">
               Ask a Question
             </Link>
           </div>

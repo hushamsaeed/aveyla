@@ -1,4 +1,4 @@
-export default function WhatsAppButton({ number = "9606680068" }: { number?: string }) {
+export default function WhatsAppButton({ number = "9607773998" }: { number?: string }) {
   return (
     <a
       href={`https://wa.me/${number.replace(/\D/g, "")}`}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPackageBySlug, getAllPackages } from "@/lib/data/packages";
+import { getSetting } from "@/lib/data/settings";
 import { getPackageImage } from "@/lib/images";
 import PricingTable from "@/components/packages/PricingTable";
 
@@ -15,8 +16,9 @@ export async function generateStaticParams() {
 export default async function PackageDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  const pkg = await getPackageBySlug(slug);
+  const [pkg, whatsappRaw] = await Promise.all([getPackageBySlug(slug), getSetting("whatsapp")]);
   if (!pkg) notFound();
+  const whatsapp = (whatsappRaw || "9607773998").replace(/\D/g, "");
 
   const image = getPackageImage(pkg.heroImage, slug);
 
@@ -79,7 +81,7 @@ export default async function PackageDetailPage({ params }: { params: Promise<{ 
               Enquire About This Package
             </Link>
             <Link
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9607773998"}?text=${encodeURIComponent(`Hi, I'm interested in the ${pkg.name} package.`)}`}
+              href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(`Hi, I'm interested in the ${pkg.name} package.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-dark-driftwood px-8 py-4 font-body text-[14px] font-medium text-dark-driftwood"

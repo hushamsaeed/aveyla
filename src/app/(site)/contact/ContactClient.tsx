@@ -112,7 +112,7 @@ interface ContactClientProps {
   whatsapp?: string;
 }
 
-export default function ContactClient({ packageOptions, content, phone = "+960 668-0068", email = "info@aveyla.com", whatsapp = "9606680068" }: ContactClientProps) {
+export default function ContactClient({ packageOptions, content, phone = "+960 777 3998", email = "info@aveyla.com", whatsapp = "9607773998" }: ContactClientProps) {
   const heroTitle = content.hero?.title || "Get in Touch";
   const heroBody = content.hero?.body || "We respond within 24 hours. Or reach us instantly on WhatsApp.";
   const sidebarTitle = content.sidebar?.title || "Direct Contact";
